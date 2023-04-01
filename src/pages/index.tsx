@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import SharedHeader from '@/shared/sharedHeader/SharedHeader';
+import { Login } from '@/features/login/ui';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <main >
         <SharedHeader/>
+        <Login/>
       </main>
     </>
   )
