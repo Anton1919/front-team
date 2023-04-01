@@ -1,76 +1,94 @@
 @import "constants";
-
 @mixin flex-center() {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @mixin text-fs-fw-lh($FS, $FW, $LH) {
-  font-weight: $FW;
-  font-size: $FS;
-  line-height: $LH;
+    font-weight: $FW;
+    font-size: $FS;
+    line-height: $LH;
 }
 
 @mixin text-large() {
-  @include text-fs-fw-lh(26px, 600, 36px)
+    @include text-fs-fw-lh(26px, 600, 36px)
 }
 
 @mixin text-h1() {
-  @include text-fs-fw-lh(20px, 700, 36px)
+    @include text-fs-fw-lh(20px, 700, 36px)
 }
 
 @mixin text-h2() {
-  @include text-fs-fw-lh(18px, 700, 24px)
+    @include text-fs-fw-lh(18px, 700, 24px)
 }
 
 @mixin text-h3() {
-  @include text-fs-fw-lh(16px, 600, 24px)
+    @include text-fs-fw-lh(16px, 600, 24px)
 }
 
 @mixin text-regular_16() {
-  @include text-fs-fw-lh(16px, 400, 24px)
+    @include text-fs-fw-lh(16px, 400, 24px)
 }
 
 @mixin text-regular_14() {
-  @include text-fs-fw-lh(14px, 400, 24px)
+    @include text-fs-fw-lh(14px, 400, 24px)
 }
 
 @mixin text-medium_14() {
-  @include text-fs-fw-lh(14px, 500, 24px)
+    @include text-fs-fw-lh(14px, 500, 24px)
 }
 
 @mixin text-bold_16() {
-  @include text-fs-fw-lh(16px, 700, 24px)
+    @include text-fs-fw-lh(16px, 700, 24px)
 }
 
 @mixin text-bold_14() {
-  @include text-fs-fw-lh(14px, 700, 24px)
+    @include text-fs-fw-lh(14px, 700, 24px)
 }
 
 @mixin text-small() {
-  @include text-fs-fw-lh(12px, 400, 16px)
+    @include text-fs-fw-lh(12px, 400, 16px)
 }
 
 @mixin text-small-semibold() {
-  @include text-fs-fw-lh(12px, 600, 16px)
+    @include text-fs-fw-lh(12px, 600, 16px)
 }
 
 // Links
-
 @mixin link() {
-  color: $accent-color_500;
-  text-decoration-line: underline;
+    color: $accent-color_500;
+    text-decoration-line: underline;
 }
 
 @mixin link-regular() {
-  @include text-regular_14();
-  @include link();
+    @include text-regular_14();
+    @include link();
 }
 
 @mixin link-small() {
-  @include text-small();
-  @include link();
+    @include text-small();
+    @include link();
 }
 
-
+//Button 
+@mixin button($bgk, $text_color) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+    height: 36px;
+    background-color: $bgk;
+    border-radius: 2px;
+    transition: color .2s ease;
+    transition: background-color .5s ease;
+    color: $text_color;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}

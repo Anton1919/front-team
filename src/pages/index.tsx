@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import SharedHeader from '@/shared/sharedHeader/SharedHeader';
+import { Button } from '@/shared/button/Button';
 
 export default function Home() {
   return (
@@ -13,7 +14,10 @@ export default function Home() {
       </Head>
       <main >
         <SharedHeader />
-
+        <Button button_name={'send'} size={'large'} variant={'primary'} />
+        <Button button_name={'send'} size={'large'} variant={'outlined'} />
+        <Button button_name={'send'} size={'large'} variant={'transparent'} />
+        <Button button_name={'send'} size={'large'} variant={'white'} />
       </main>
     </>
   )
