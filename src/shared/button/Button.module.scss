@@ -62,16 +62,13 @@
 
 .button_outlined {
     @include button(transparent, $accent-color_500);
-    border: 2px solid $accent-color_500;
     &:hover {
         transition: color .2s ease;
         @include button(transparent, $accent-color_100);
-        border: 2px solid $accent-color_100;
     }
     &:active {
         transition: color .2s ease;
         @include button( transparent, $accent-color_700);
-        border: 2px solid $accent-color_700;
     }
     &:focus {
         transition: color .2s ease;
