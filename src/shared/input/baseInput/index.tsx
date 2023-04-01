@@ -28,7 +28,7 @@ export const BaseInput: FC<BaseInputProps> = (
       <label className={s.inputWrapper}>
         {label && <span className={classNames(s.label)}>{label}</span>}
         <input className={classNames(className, s.input, error && s.error, type)} disabled={disabled} {...rest} />
-        <span>{icon}</span>
+        {icon}
       </label>
       <div className={s.errorText}>{error}</div>
     </div>
