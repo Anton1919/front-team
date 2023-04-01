@@ -1,0 +1,19 @@
+.icon {
+  cursor: pointer;
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon.disabled {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(8%) saturate(8%) hue-rotate(345deg) brightness(96%) contrast(90%);
+}
+
+.icon.left {
+  left: 5px;
+}
+
+.icon.right {
+  right: 5px;
+}

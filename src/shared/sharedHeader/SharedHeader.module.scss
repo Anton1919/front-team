@@ -1,0 +1,19 @@
+.headerBlock{
+  color:#FFFFFF;
+  height: 181px;
+  display: flex;
+  justify-content: center;
+
+  .title{
+    font-size: 26px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 600;
+    border-bottom:solid 1px #333333;
+    width: 1280px;
+    height: 60px;
+    margin-top: 31px;
+    padding-top:12px;
+    padding-left:60px;
+  }
+}

@@ -1,0 +1,58 @@
+.inputWrapper {
+  position: relative;
+  display: inline-flex;
+
+  .input {
+    display: block;
+    height: 48px;
+    font-size: 16px;
+    background: transparent;
+    border: 2px solid transparent;
+    outline: 0;
+    color: #BCBFC5;
+    padding: 0 0 0 5px;
+    border-radius: 5px;
+
+    &:disabled { color: #4C4C4C; }
+  }
+
+  &:has(.label) {
+    .input { padding: 26px 0 6px 5px; }
+  }
+
+  .outline {
+    border: 2px solid #333333;
+    border-radius: 5px;
+    &.error {
+      border-color: #CC1439;
+    }
+  }
+
+  .base {
+    border-bottom: 2px solid #333333;
+    &.error {
+      border-bottom-color: #CC1439;
+      &:focus {
+        border: 2px solid #CC1439;
+      }
+    }
+    &:focus {
+      border: 2px solid #2F68CC;
+    }
+  }
+
+  .label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 14px;
+    color: #4C4C4C;
+  }
+}
+
+.errorText {
+  color: #CC1439;
+}
+
+
+
