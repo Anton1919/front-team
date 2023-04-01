@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import SharedHeader from '@/shared/sharedHeader/SharedHeader';
+import { Button } from '@/shared/button/Button';
 
 export default function Home() {
   return (

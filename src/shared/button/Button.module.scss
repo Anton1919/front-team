@@ -76,3 +76,20 @@
         border: 2px solid $accent-color_700;
     }
 }
+
+.button_primary_dis {
+    @include button( $accent-color_900, $light-color_900)
+}
+
+.button_white_dis {
+    @include button( $light-color_900, $dark-color_900)
+}
+
+.button_transparent_dis {
+    @include button( transparent, $accent-color_900);
+    border: 2px solid $accent-color_900;
+}
+
+.button_outlined_dis {
+    @include button( transparent, $accent-color_900)
+}
