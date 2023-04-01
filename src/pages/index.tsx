@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import SharedHeader from "@/shared/sharedHeader/SharedHeader";
 
-const inter = Inter({ subsets: ['latin'] })
+import SharedHeader from '@/shared/sharedHeader/SharedHeader';
 
 export default function Home() {
   return (
@@ -14,7 +12,7 @@ export default function Home() {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       <main >
-          <SharedHeader/>
+        <SharedHeader/>
       </main>
     </>
   )
