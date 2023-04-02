@@ -27,10 +27,6 @@ export const Button = ({ button_name, button_handler, variant = 'primary', disab
         if (variant === 'transparent') button_variant = s.button_transparent
         if (variant === 'outlined') button_variant = s.button_outlined
     }
-
-
-
-
     return (
         <button
             type={'submit'}
