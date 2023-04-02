@@ -23,7 +23,7 @@ export const useLogin = () => {
     console.log('submitting...');
   };
 
-  const emailRules = { required: 'Check your email.', pattern: emailPattern }
+  const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = { required: 'You must enter your password.' }
 
   return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules }
