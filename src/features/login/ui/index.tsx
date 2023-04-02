@@ -7,6 +7,7 @@ import { BaseInput } from '@/shared/input/baseInput'
 import { PasswordInput } from '@/shared/input/passwordInput'
 import { useLogin } from '@/hooks/useLogin'
 import facebook from '@/assets/icons/facebook.svg'
+import { Button } from '@/shared/button/Button'
 
 import s from './Login.module.scss'
 
@@ -43,7 +44,7 @@ export const Login = () => {
             <span>Forgot password</span>
           </div>
         </div>
-        <button type={'submit'}>Sign in</button>
+        <Button button_name={'Sign in'} />
       </form>
       <p className={s.text}>Don’t have an account?</p>
       <a className={s.link} href={'#'}>Sign up</a>
