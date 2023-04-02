@@ -6,7 +6,7 @@ import { InputIcon } from '@/shared/input/inputIcon';
 import { BaseInput, BaseInputProps } from '../baseInput';
 
 export const PasswordInput = <TFormValues extends Record<string, unknown>> (
-  { error, disabled, name, register, rules, className }: BaseInputProps<TFormValues>): JSX.Element => {
+  { error, disabled, name, register, rules, className, label }: BaseInputProps<TFormValues>): JSX.Element => {
   const [show, setShow] = useState<boolean>(true)
 
   const setShowHandler = () => setShow(!show)
@@ -14,7 +14,7 @@ export const PasswordInput = <TFormValues extends Record<string, unknown>> (
   return (
     <BaseInput
       name={name}
-      label={'password'}
+      label={label}
       type={show ? 'password' : 'text'}
       icon={ <InputIcon icon={eyeIcon} position={'right'} onClick={setShowHandler} disabled={disabled}/> }
       error={error}

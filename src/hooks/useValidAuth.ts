@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 export type LoginFormFields = {
   email: string;
   password: string;
+  cpassword?: string
 };
 
 const emailPattern = {
@@ -10,12 +11,12 @@ const emailPattern = {
   message: 'Enter a valid email address.',
 };
 
-export const useLogin = () => {
-
+export const useValidAuth = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues
   } = useForm<LoginFormFields>();
 
   const onSubmit = (data) => {
@@ -26,5 +27,13 @@ export const useLogin = () => {
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = { required: 'You must enter your password.' }
 
-  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules }
+  const cPasswordRules = {
+    required: 'You must enter your password.',
+    validate: (value) => {
+      const { password } = getValues();
+      return password === value || 'The password must match the new password!';
+    }
+  }
+
+  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, cPasswordRules }
 };

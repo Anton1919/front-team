@@ -5,15 +5,16 @@ import google from '@/assets/icons/google.svg'
 import { Card } from '@/shared/card'
 import { BaseInput } from '@/shared/input/baseInput'
 import { PasswordInput } from '@/shared/input/passwordInput'
-import { useLogin } from '@/hooks/useLogin'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
+
+import { useValidAuth } from '@/hooks/useValidAuth';
 
 import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLogin()
+  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useValidAuth()
 
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
