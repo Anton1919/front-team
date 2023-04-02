@@ -73,4 +73,26 @@
   @include link();
 }
 
-
+//Button
+@mixin button($bgk, $text_color) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+    height: 36px;
+    background-color: $bgk;
+    border-radius: 2px;
+    transition: color .2s ease;
+    transition: background-color .5s ease;
+    color: $text_color;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    min-width: 90px;
+    border: none;
+}
