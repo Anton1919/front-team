@@ -1,5 +1,7 @@
+@import "src/styles/constants";
+
 .headerBlock{
-  color:#FFFFFF;
+  color:$light-color_100;
   height: 181px;
   display: flex;
   justify-content: center;
