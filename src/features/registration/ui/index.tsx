@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-import s from '@/features/login/ui/Login.module.scss';
 import google from '@/assets/icons/google.svg';
 import facebook from '@/assets/icons/facebook.svg';
 import { BaseInput } from '@/shared/input/baseInput';
@@ -10,12 +9,14 @@ import { Button } from '@/shared/button/Button';
 import { Card } from '@/shared/card';
 import { useValidAuth } from '@/hooks/useValidAuth';
 
+import s from './Registration.module.scss';
+
 export const Registration = () => {
   
   const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useValidAuth()
 
   return (
-    <Card maxWidth={'378px'} className={s.loginContainer}>
+    <Card maxWidth={'378px'} className={s.container}>
       <h2 className={s.title}>Sign Up</h2>
       <div className={s.icons}>
         <Image src={google} alt={'google'} />
@@ -46,7 +47,7 @@ export const Registration = () => {
           rules={cPasswordRules}
           error={errors.cpassword?.message}
         />
-        <Button button_name={'Sign in'} />
+        <Button button_name={'Sign up'} />
       </form>
       <p className={s.text}>Do you have an account?</p>
       <a className={s.link} href={'#'}>Sign In</a>

@@ -1,0 +1,36 @@
+@import "src/styles/mixins";
+
+.title {
+  @include text-h2()
+}
+
+.form {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.container {
+  padding: 30px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.icons {
+  display: flex;
+  column-gap: 50px;
+}
+
+.text {
+  @include text-regular()
+}
+
+.link {
+  @include link-regular()
+}
