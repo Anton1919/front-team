@@ -2,7 +2,6 @@ import React, { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
 import { Header } from '@/shared/header';
-import SideBar from '@/shared/sideBar/sideBar';
 
 type Props = {
     children: ReactNode
@@ -15,7 +14,6 @@ export const Layout: FC<Props> = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
       <Header/>
-      <SideBar/>
       <main>
         {children}
       </main>
