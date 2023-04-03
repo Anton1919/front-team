@@ -17,6 +17,7 @@ export const SharedLink: FC<LinkPropsType> = ({ text, href, icon }) => {
         </span>
         {text}
       </div>
+
     </Link>
   )
 }

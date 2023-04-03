@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { SharedLink } from '@/shared/link/link';
+import { SharedLink } from '@/shared/sideBar/link/link';
 
 import homeI from '../../assets/icons/home.svg';
-import favoritesI from '../../assets/icons/favorites.svg';
+import FavoritesI from '../../assets/icons/favorites.svg';
 import createI from '../../assets/icons/create.svg';
 import logOutI from '../../assets/icons/logOut.svg';
-import myProfileI from '../../assets/icons/myProfile.svg';
+import MyProfileI from '../../assets/icons/myProfile.svg';
 import statisticsI from '../../assets/icons/statistics.svg';
 
 import style from './SideBar.module.scss'
@@ -14,10 +14,10 @@ import style from './SideBar.module.scss'
 const SideBar = () => {
 
   const homeIcon = homeI
-  const favoritesIcon = favoritesI
+  const favoritesIcon = FavoritesI
   const createIcon = createI
   const logOutIcon = logOutI
-  const myProfileIcon = myProfileI
+  const myProfileIcon = MyProfileI
   const statisticsIcon = statisticsI
 
   return (
