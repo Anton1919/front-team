@@ -10,9 +10,11 @@ type LinkPropsType = {
 }
 export const SharedLink: FC<LinkPropsType> = ({ text, href, icon }) => {
   return (
-    <Link style={{ color: 'white' }} href={href}>
+    <Link className={style.link} href={href}>
       <div>
-        <img className={style.icon} alt={'icon'} src={icon}/>
+        <span>
+          <img className={style.icon} alt={'icon'} src={icon}/>
+        </span>
         {text}
       </div>
     </Link>
