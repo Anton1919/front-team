@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import SharedHeader from '@/shared/header/SharedHeader';
+import SideBar from '@/shared/sideBar/sideBar';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <main>
         <SharedHeader/>
+        <SideBar/>
       </main>
     </>
   )
