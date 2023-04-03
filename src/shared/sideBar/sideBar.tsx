@@ -23,7 +23,7 @@ const SideBar = () => {
   return (
     <div className={style.sideBarBlock}>
       <div className={style.home}>
-        <SharedLink href={'/bla'} text={'Home'} icon={homeIcon}/>
+        <SharedLink href={'/bla'} text={'Hsssome'} icon={homeIcon}/>
       </div>
       <div className={style.create}>
         <SharedLink href={'/bla1'} text={'Create'} icon={createIcon}/>
