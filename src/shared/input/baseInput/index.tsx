@@ -1,17 +1,21 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
-
+import React, { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
+import { RegisterOptions, UseFormRegister, Path } from 'react-hook-form';
 
 import s from './BaseInput.module.scss'
 
-export type BaseInputProps = {
+export type BaseInputProps<TFormValues> = {
   error?: string
   label?: string
   icon?: ReactNode
-  xType?: 'base' | 'outline'
+  xType?: 'base' | 'outline',
+
+  name: Path<TFormValues>
+  rules?: RegisterOptions
+  register?: UseFormRegister<TFormValues>
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export const BaseInput: FC<BaseInputProps> = (
+export const BaseInput = <TFormValues extends Record<string, unknown>> (
   {
     error,
     label,
@@ -19,7 +23,10 @@ export const BaseInput: FC<BaseInputProps> = (
     disabled,
     icon,
     xType,
-    ...rest }) => {
+    register,
+    name,
+    rules,
+    ...props }: BaseInputProps<TFormValues>): JSX.Element => {
 
   const type = xType === 'outline' ? s.outline : s.base
 
@@ -27,7 +34,12 @@ export const BaseInput: FC<BaseInputProps> = (
     <div>
       <label className={s.inputWrapper}>
         {label && <span className={classNames(s.label)}>{label}</span>}
-        <input className={classNames(className, s.input, error && s.error, type)} disabled={disabled} {...rest} />
+        <input
+          className={classNames(className, s.input, error && s.error, type)}
+          disabled={disabled}
+          {...props}
+          {...(register && register(name, rules))}
+        />
         {icon}
       </label>
       <div className={s.errorText}>{error}</div>
