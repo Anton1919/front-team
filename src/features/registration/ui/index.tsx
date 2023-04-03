@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
+import Link from 'next/link';
+
 import google from '@/assets/icons/google.svg';
 import facebook from '@/assets/icons/facebook.svg';
 import { BaseInput } from '@/shared/input/baseInput';
@@ -50,7 +52,7 @@ export const Registration = () => {
         <Button button_name={'Sign up'} />
       </form>
       <p className={s.text}>Do you have an account?</p>
-      <a className={s.link} href={'#'}>Sign In</a>
+      <Link className={s.link} href={'/login'}>Sign In</Link>
     </Card>
   );
 };
