@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import Image from 'next/image';
+
 import style from './Link.module.scss'
 
 type LinkPropsType = {
@@ -11,12 +13,9 @@ type LinkPropsType = {
 export const SharedLink: FC<LinkPropsType> = ({ text, href, icon }) => {
   return (
     <Link className={style.link} href={href}>
-      <div>
-        <span>
-          <img className={style.icon} alt={'icon'} src={icon}/>
-        </span>
-        {text}
-      </div>
+
+      <Image className={style.icon} alt={'icon'} src={icon}/>
+      <span>{text}</span>
 
     </Link>
   )
