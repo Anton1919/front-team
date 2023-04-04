@@ -1,0 +1,23 @@
+@import '../../../styles/constants';
+
+.link {
+  color: $light-color_100;
+  font-weight: 500;
+
+  &:hover {
+    color: $accent-color_100;
+  }
+
+  &:active {
+    color: $accent-color_500
+  }
+
+  .icon {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+
+
+  }
+}
+

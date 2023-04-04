@@ -12,38 +12,38 @@
 }
 
 @mixin text-large() {
-    @include text-fs-fw-lh(26px, 600, 36px)
+    @include text-fs-fw-lh(28px, 600, 36px)
 }
 
 @mixin text-h1() {
-    @include text-fs-fw-lh(20px, 700, 36px)
+    @include text-fs-fw-lh(26px, 700, 36px)
 }
 
 @mixin text-h2() {
-    @include text-fs-fw-lh(18px, 700, 24px)
+    @include text-fs-fw-lh(24px, 700, 24px)
 }
 
 @mixin text-h3() {
-    @include text-fs-fw-lh(16px, 600, 24px)
+    @include text-fs-fw-lh(20px, 600, 24px)
 }
 
-@mixin text-regular_16() {
+@mixin text-regular() {
+    @include text-fs-fw-lh(18px, 400, 24px)
+}
+
+@mixin text-regular_small() {
     @include text-fs-fw-lh(16px, 400, 24px)
 }
 
-@mixin text-regular_14() {
-    @include text-fs-fw-lh(14px, 400, 24px)
+@mixin text-medium() {
+    @include text-fs-fw-lh(16px, 500, 24px)
 }
 
-@mixin text-medium_14() {
-    @include text-fs-fw-lh(14px, 500, 24px)
-}
-
-@mixin text-bold_16() {
+@mixin text-bold() {
     @include text-fs-fw-lh(16px, 700, 24px)
 }
 
-@mixin text-bold_14() {
+@mixin text-bold_small() {
     @include text-fs-fw-lh(14px, 700, 24px)
 }
 
@@ -62,7 +62,7 @@
 }
 
 @mixin link-regular() {
-    @include text-regular_14();
+    @include text-regular();
     @include link();
 }
 
@@ -71,7 +71,7 @@
     @include link();
 }
 
-//Button 
+//Button
 @mixin button($bgk, $text_color) {
     display: flex;
     flex-direction: row;
@@ -93,4 +93,17 @@
     text-align: center;
     min-width: 90px;
     border: none;
+}
+
+//Textarea
+@mixin textarea( $border-color, $text-color) {
+    border: 1px solid $border-color;
+    background-color: $dark-color_500;
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: $text-color;
+    padding: 12px;
+    transition: all 0.2s;
 }
