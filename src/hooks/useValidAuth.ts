@@ -20,8 +20,9 @@ export const useValidAuth = () => {
   } = useForm<LoginFormFields>();
 
   const onSubmit = (data) => {
+    alert('Данная фича пока не доступна')
     console.log(data);
-    console.log('submitting...');
+    // console.log('submitting...');
   };
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
