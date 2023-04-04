@@ -23,7 +23,7 @@ export const useRegister = () => {
 
   const { mutate: registration, } = useRegisterMutation()
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: LoginFormFields) => {
     const { email, password } = data
     registration({ email, password })
   };
