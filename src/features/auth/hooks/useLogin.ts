@@ -19,8 +19,8 @@ export const useLogin = () => {
 
   // const { mutate: login, } = useRegisterMutation()
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = () => {
+    // console.log(data)
   };
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
