@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
-
 import { AxiosError } from 'axios';
 
-import { useRegisterMutation } from '@/features/auth/hooks/useRegisterMutation';
+import { selectSetEmail, useAuthStore } from '@/features/auth/store';
+
+import { useRegisterMutation } from './useRegisterMutation';
 
 export type LoginFormFields = {
   email: string;
@@ -16,6 +17,8 @@ const emailPattern = {
 };
 
 export const useRegister = () => {
+  const setEmail = useAuthStore(selectSetEmail)
+
   const {
     register,
     handleSubmit,
@@ -28,6 +31,7 @@ export const useRegister = () => {
   const onSubmit = (data: LoginFormFields) => {
     const { email, password } = data
     registration({ email, password })
+    setEmail(email)
   };
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
