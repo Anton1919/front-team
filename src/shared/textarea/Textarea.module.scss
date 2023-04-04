@@ -38,3 +38,18 @@
     align-items: flex-end;
     color: $light-color_900;
 }
+
+.my_disabled_textarea {
+    @include textarea($dark-color_100, $dark-color_100);
+}
+
+.label_text_disabled {
+    transition: all 0.2s;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: flex-end;
+    color: $dark-color_100;
+}

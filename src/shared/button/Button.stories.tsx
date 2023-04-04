@@ -1,10 +1,9 @@
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';
 
 export default {
-  title: 'shared/button/Button',
   component: Button,
   parameters: {
     docs: {
@@ -14,36 +13,56 @@ export default {
     },
   },
   argTypes: {
-    color: {
-      description: 'Color of the text and the background with border',
-      control: 'Color of the text and the background with border',
+    variant: {
+      description: 'This param control style button and has four variants ',
+
+    },
+    disabled: {
+      description: 'This param responsable for button style and ations',
+      control: 'boolean',
+      defaultValue: false
+    },
+    button_name: {
+      description: 'This name for any button',
+      defaultValue: 'Send'
+    },
+    sx: {
+      description: ' This param is waiting object {width: number, height:number}'
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+type Story = StoryObj<typeof Button>
 
-export const Primary = Template.bind({});
-Primary.args = {
-  button_name: 'Send',
-  variant: 'primary',
-  sx: { width: '300px' }
-};
-
-export const White = Template.bind({});
-White.args = {
-  button_name: 'Send',
-  variant: 'white',
-};
-
-export const Transparent = Template.bind({});
-Transparent.args = {
-  button_name: 'Send',
-  variant: 'transparent'
-};
-
-export const Outlined = Template.bind({});
-Outlined.args = {
-  button_name: 'Send',
-  variant: 'outlined'
-};
+export const Primary: Story = {
+  args: {
+    button_name: 'Send',
+    disabled: false,
+    variant: 'primary',
+    sx: { width: 200, height: 50 }
+  }
+}
+export const White: Story = {
+  args: {
+    button_name: 'Send',
+    disabled: false,
+    variant: 'white',
+    sx: { width: 200, height: 50 }
+  }
+}
+export const Transparent: Story = {
+  args: {
+    button_name: 'Send',
+    disabled: false,
+    variant: 'transparent',
+    sx: { width: 200, height: 50 }
+  }
+}
+export const Outlined: Story = {
+  args: {
+    button_name: 'Send',
+    disabled: false,
+    variant: 'outlined',
+    sx: { width: 200, height: 50 }
+  }
+}
