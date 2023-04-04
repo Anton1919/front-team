@@ -27,7 +27,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   button_name: 'Send',
   variant: 'primary',
-  sx: { width: '300px' }
+  sx: { width: 300 }
 };
 
 export const White = Template.bind({});
