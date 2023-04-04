@@ -1,12 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
 import Link from 'next/link';
 
 import google from '@/assets/icons/google.svg';
 import facebook from '@/assets/icons/facebook.svg';
-import { BaseInput } from '@/shared/input/baseInput';
-import { PasswordInput } from '@/shared/input/passwordInput';
+import { BaseInput } from '@/shared/input';
+import { PasswordInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { Card } from '@/shared/card';
 import { useValidAuth } from '@/hooks/useValidAuth';

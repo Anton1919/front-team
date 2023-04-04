@@ -16,24 +16,24 @@ interface TextareaTypes {
 }
 
 export const Textarea = ({ name, id, placeholder, cols, rows, sx, error, disabled, label }: TextareaTypes) => {
-    return (
-        <>
-            <div className={s.label_text}>
-                {label}
-            </div>
-            <textarea
-                name={name}
-                id={id ? id : ''}
-                placeholder={placeholder}
-                cols={cols}
-                rows={rows}
-                style={sx}
-                className={error ? s.my_textarea_error : s.my_textarea_style}
-                disabled={disabled} />
-            <div className={s.error_text}>
-                {error}
-            </div>
-        </>
+  return (
+    <>
+      <div className={s.label_text}>
+        {label}
+      </div>
+      <textarea
+        name={name}
+        id={id ? id : ''}
+        placeholder={placeholder}
+        cols={cols}
+        rows={rows}
+        style={sx}
+        className={error ? s.my_textarea_error : s.my_textarea_style}
+        disabled={disabled} />
+      <div className={s.error_text}>
+        {error}
+      </div>
+    </>
 
-    );
+  );
 }
