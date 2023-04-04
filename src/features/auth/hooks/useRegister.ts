@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 
+import { AxiosError } from 'axios';
+
 import { useRegisterMutation } from '@/features/auth/hooks/useRegisterMutation';
 
 export type LoginFormFields = {
@@ -42,7 +44,7 @@ export const useRegister = () => {
     }
   }
 
-  const serverErrorMessage = isError && error.response?.data?.errorsMessages[0].message
+  const serverErrorMessage = error instanceof AxiosError && isError && error.response?.data?.errorsMessages[0].message
 
   return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, cPasswordRules, serverErrorMessage, isLoading }
 };
