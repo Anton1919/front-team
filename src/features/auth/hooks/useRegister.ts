@@ -37,7 +37,8 @@ export const useRegister = () => {
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = {
     required: 'You must enter your password.',
-    minLength: { value: 6, message: 'Password must be more than 6 characters' }
+    minLength: { value: 6, message: 'Password must be more than 6 characters' },
+    maxLength: { value: 20, message: 'Password must be shorter than 20 characters' }
   }
 
   const cPasswordRules = {
