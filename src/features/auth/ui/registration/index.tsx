@@ -8,13 +8,14 @@ import { BaseInput } from '@/shared/input';
 import { PasswordInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { Card } from '@/shared/card';
-import { useValidAuth } from '@/hooks/useValidAuth';
+
+import { useRegister } from '../../hooks/useRegister';
 
 import s from './Registration.module.scss';
 
 export const Registration = () => {
   
-  const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useValidAuth()
+  const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useRegister()
 
   return (
     <Card maxWidth={'378px'} className={s.container}>
