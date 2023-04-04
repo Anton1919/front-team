@@ -31,3 +31,9 @@
 .link {
   @include link-regular()
 }
+
+.serverError {
+  color: #CC1439;
+  text-align: center;
+  height: 10px;
+}
