@@ -33,7 +33,7 @@ export const useRegister = () => {
 
   const cPasswordRules = {
     required: 'You must enter your password.',
-    validate: (value) => {
+    validate: (value: string) => {
       const { password } = getValues();
       return password === value || 'The password must match the new password!';
     }
