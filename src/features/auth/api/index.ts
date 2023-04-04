@@ -1,5 +1,5 @@
 import { instance } from '@/constants/instance';
-import { AuthDataType } from '@/features/auth/model';
+import { AuthDataType } from '@/features/auth/types';
 
 export const AuthAPI = {
   me() {
