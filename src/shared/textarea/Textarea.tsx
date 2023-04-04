@@ -1,6 +1,6 @@
 import s from './Textarea.module.scss';
 
-interface TextareaTypes {
+export interface TextareaTypes {
     name: string
     id?: string
     placeholder?: string

@@ -1,23 +1,47 @@
 @import '../../../styles/constants';
 
+
 .link {
   color: $light-color_100;
   font-weight: 500;
 
+
   &:hover {
     color: $accent-color_100;
+    font-weight: 500;
   }
 
+
   &:active {
-    color: $accent-color_500
+    color: $accent-color_500;
+    font-weight: 500;
   }
+
 
   .icon {
     margin-right: 10px;
     width: 24px;
     height: 24px;
+    vertical-align: middle;
+
+
+    &:hover {
+      //width: 47px;
+      //height: 47px;
+      //stroke: #0A6638;
+      //color: #0A6638;
+      //fill: #0A6638;
+    }
 
 
   }
+
+
+}
+
+.active {
+  color: $accent-color_500;
+  font-weight: 500;
+
 }
 

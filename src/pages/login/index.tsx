@@ -1,8 +1,8 @@
 import React from 'react';
-
 import Head from 'next/head';
 
-import { Login } from '@/features/login/ui';
+import { Login } from '@/features/auth/ui/login';
+
 
 const LoginPage = () => {
 

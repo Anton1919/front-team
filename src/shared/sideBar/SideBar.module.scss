@@ -7,33 +7,27 @@
   align-items: center;
   padding-top: 72px;
   padding-bottom: 36px;
-  font-size: 14px;
 
-  .home {
 
-  }
-
-  .create {
-    padding-top: 24px;
-  }
-
-  .profile {
-    padding-top: 24px;
-
-  }
-
-  .statistics {
-    padding-top: 60px;
-
-  }
-
-  .favorites {
-    padding-top: 24px;
-
-  }
-
-  .logOut {
-    padding-top: 276px;
-
-  }
 }
+
+.sideBarBlock :nth-child(2) {
+  margin-top: 24px;
+}
+
+.sideBarBlock :nth-child(3) {
+  margin-top: 24px;
+}
+
+.sideBarBlock :nth-child(4) {
+  margin-top: 60px;
+}
+
+.sideBarBlock :nth-child(5) {
+  margin-top: 24px;
+}
+
+.sideBarBlock :nth-child(6) {
+  margin-top: 274px;
+}
+

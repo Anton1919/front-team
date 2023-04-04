@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Registration } from '@/features/registration/ui';
+import { Registration } from '@/features/auth/ui/registration';
 
 const Register = () => {
   return (
