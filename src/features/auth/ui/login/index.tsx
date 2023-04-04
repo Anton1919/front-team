@@ -8,13 +8,13 @@ import { BaseInput } from '@/shared/input/'
 import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
-import { useValidAuth } from '@/hooks/useValidAuth';
+import { useLogin } from '@/features/auth/hooks/useLogin';
 
 import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useValidAuth()
+  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLogin()
 
   return (
 
