@@ -28,7 +28,7 @@ export default function Home() {
       <Header><LogOutButton callBack={logOutButtonHandler}/></Header>
       <SideBar/>
       <ModalWindow isActive={isActiveModal} setIsActive={setIsActiveModal} title={'Log Out'}>
-        <div>Are you really want to log out of your account "Epam@epam.com"?
+        <div>Are you really want to log out of your account `Epam@epam.com`?
           <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
             <Button button_name={'Yes'} variant={'transparent'} button_handler={() => {
             }}/>

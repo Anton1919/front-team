@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import Image from 'next/image';
 
@@ -10,6 +10,7 @@ type ModalWindowProps = {
     isActive: boolean
     setIsActive: (value: boolean) => void
     title: string
+    children: ReactNode
 }
 
 const ModalWindow: FC<ModalWindowProps> = ({ isActive, setIsActive, children, title }) => {
