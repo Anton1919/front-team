@@ -1,0 +1,16 @@
+@import './src/styles/constants';
+.logoutBlock{
+  height: 40px;
+  position: absolute;
+  right: 60px;
+  top:20px;
+  &:hover{
+    color: $accent-color_100;
+  }
+
+  .icon{
+    margin-right: 10px;
+    vertical-align: middle;
+
+  }
+}

@@ -7,6 +7,7 @@ export const useRegisterMutation = () => {
   const { push } = useRouter();
   return useMutation({
     mutationFn: AuthAPI.register,
+    retry: false,
     onSuccess: () => {
       push('registration/sent');
     }

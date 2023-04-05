@@ -17,7 +17,6 @@ export const Login = () => {
   const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLogin()
 
   return (
-
     <Card maxWidth={'378px'} className={s.loginContainer}>
       <h2 className={s.title}>Sign In</h2>
       <div className={s.icons}>

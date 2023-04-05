@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useRouter } from 'next/router';
 
 import { Card } from '@/shared/card';
 import { Button } from '@/shared/button/Button';
 
+import { selectEmail, useAuthStore } from '@/features/auth/store';
+
 import s from './EmailSent.module.scss'
 
-type Props = {
-  email: string
-}
-
-export const EmailSent:FC<Props> = ({ email }) => {
+export const EmailSent = () => {
   const router = useRouter();
+  const email = useAuthStore(selectEmail)
 
   const toLogin = () => router.push('/login')
 
