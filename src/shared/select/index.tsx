@@ -23,10 +23,10 @@ const SelectBox = ({}: SelectPropsType) => {
           <div className={s.value}>
             <Select.Value placeholder={array[0].title}/>
           </div>
-          {!disabled &&
-              <Select.Icon asChild>
-                <Image className={s.icon} src={arrowDown} alt={'arrow'} width={15} height={8}/>
-              </Select.Icon>
+          {!disabled && 
+            <Select.Icon asChild>
+              <Image className={s.icon} src={arrowDown} alt={'arrow'} width={15} height={8}/>
+            </Select.Icon>
           }
         </Select.Trigger>
         <Select.Portal>
