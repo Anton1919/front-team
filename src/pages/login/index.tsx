@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 
 import { Login } from '@/features/auth/ui/login';
-import SideBar from '@/shared/sideBar/sideBar';
 
 const LoginPage = () => {
   return (
@@ -10,9 +9,8 @@ const LoginPage = () => {
       <Head>
         <title>Login</title>
       </Head>
-      <SideBar/>
 
-      <Login />
+      <Login/>
     </>
   )
 };

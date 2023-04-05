@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 
 import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Header } from '@/shared/header';
-import LogOutButton from '@/features/auth/ui/logOut/logOutButton/logOutButton';
+import Index from '@/features/auth/ui/logOut/logOutButton';
 import SideBar from '@/shared/sideBar/sideBar';
 import { Button } from '@/shared/button/Button';
+import LogOutButton from '@/features/auth/ui/logOut/logOutButton';
 
 export default function Home() {
   const router = useRouter()
@@ -37,7 +38,6 @@ export default function Home() {
           </div>
         </div>
       </ModalWindow>
-
     </>
   )
 }

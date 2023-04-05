@@ -6,7 +6,7 @@ import FavoritesI from '@/assets/icons/favorites.svg';
 import logOutI from '@/assets/icons/logOut.svg';
 
 export const linksData = [
-  { title: 'Home', path: '/bla', icon: homeI },
+  { title: 'Home', path: '/', icon: homeI },
   { title: 'Create', path: '/bla1', icon: createI },
   { title: 'My profile', path: '/bla2', icon: MyProfileI },
   { title: 'Statistics', path: '/bla3', icon: statisticsI },
