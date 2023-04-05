@@ -15,7 +15,16 @@ import s from './Registration.module.scss';
 
 export const Registration = () => {
   
-  const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useRegister()
+  const {
+    register,
+    errors,
+    emailRules,
+    passwordRules,
+    cPasswordRules,
+    handleSubmit,
+    onSubmit,
+    serverErrorMessage,
+    isLoading } = useRegister()
 
   return (
     <Card maxWidth={'378px'} className={s.container}>
@@ -49,8 +58,9 @@ export const Registration = () => {
           rules={cPasswordRules}
           error={errors.cpassword?.message}
         />
-        <Button button_name={'Sign up'} />
+        <Button button_name={'Sign up'} disabled={isLoading} />
       </form>
+      <div className={s.serverError}>{serverErrorMessage}</div>
       <p className={s.text}>Do you have an account?</p>
       <Link className={s.link} href={'/login'}>Sign In</Link>
     </Card>

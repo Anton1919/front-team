@@ -78,7 +78,8 @@
 }
 
 .button_primary_dis {
-    @include button( $accent-color_900, $light-color_900)
+    @include button( $accent-color_900, $light-color_900);
+    cursor: not-allowed;
 }
 
 .button_white_dis {
@@ -91,5 +92,5 @@
 }
 
 .button_outlined_dis {
-    @include button( transparent, $accent-color_900)
+    @include button( transparent, $accent-color_900);
 }

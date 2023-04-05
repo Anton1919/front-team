@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form';
+import { AxiosError } from 'axios';
 
-import { useRegisterMutation } from '@/features/auth/hooks/useRegisterMutation';
+import { selectSetEmail, useAuthStore } from '@/features/auth/store';
+
+import { useRegisterMutation } from './useRegisterMutation';
 
 export type LoginFormFields = {
   email: string;
@@ -14,6 +17,8 @@ const emailPattern = {
 };
 
 export const useRegister = () => {
+  const setEmail = useAuthStore(selectSetEmail)
+
   const {
     register,
     handleSubmit,
@@ -21,15 +26,20 @@ export const useRegister = () => {
     getValues
   } = useForm<LoginFormFields>();
 
-  const { mutate: registration, } = useRegisterMutation()
+  const { mutate: registration,  isError, error, isLoading } = useRegisterMutation()
 
   const onSubmit = (data: LoginFormFields) => {
     const { email, password } = data
     registration({ email, password })
+    setEmail(email)
   };
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
-  const passwordRules = { required: 'You must enter your password.' }
+  const passwordRules = {
+    required: 'You must enter your password.',
+    minLength: { value: 6, message: 'Password must be more than 6 characters' },
+    maxLength: { value: 20, message: 'Password must be shorter than 20 characters' }
+  }
 
   const cPasswordRules = {
     required: 'You must enter your password.',
@@ -39,5 +49,7 @@ export const useRegister = () => {
     }
   }
 
-  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, cPasswordRules }
+  const serverErrorMessage = error instanceof AxiosError && isError && error.response?.data?.errorsMessages[0].message
+
+  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, cPasswordRules, serverErrorMessage, isLoading }
 };

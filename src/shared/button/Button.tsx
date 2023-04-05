@@ -1,16 +1,16 @@
 import s from './Button.module.scss'
 
 interface WH {
-    width?: string
-    height?: string
+  width?: number
+  height?: number
 }
 
 interface PropsButton {
-    button_name: string
-    variant?: 'primary' | 'white' | 'transparent' | 'outlined'
-    disabled?: boolean
-    sx?: WH
-    button_handler?: () => void
+  button_name: string
+  variant?: 'primary' | 'white' | 'transparent' | 'outlined'
+  disabled?: boolean
+  sx?: WH
+  button_handler?: () => void
 }
 
 export const Button = ({ button_name, button_handler, variant = 'primary', disabled, sx }: PropsButton) => {

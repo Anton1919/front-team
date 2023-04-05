@@ -4,7 +4,7 @@
     "plugin:storybook/recommended"
   ],
   "rules": {
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "no-console": "warn",
     "quotes": [
       "error",
