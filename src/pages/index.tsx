@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Homeeee</title>
+        <title>Home</title>
       </Head>
     </>
   )
