@@ -22,3 +22,4 @@ export const useAuthStore = create(immer<AuthState>((set) => ({
 
 export const selectEmail = (state: AuthState): string => state.email
 export const selectSetEmail = (state: AuthState) => state.setEmail
+export const selectSetIsLogin = (state: AuthState) => state.setIsLogin
