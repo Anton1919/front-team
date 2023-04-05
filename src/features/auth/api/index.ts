@@ -11,6 +11,9 @@ export const AuthAPI = {
   confirm(data: RegistrationConfirmationType) {
     return instance.post('auth/registration-confirmation', data);
   },
+  resendRegistration() {
+    return instance.post('auth/registration-email-resending', {});
+  },
   login(data: AuthDataType) {
     return instance.post('auth/registration', data);
   }
