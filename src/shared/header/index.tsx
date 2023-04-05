@@ -9,7 +9,7 @@ type HeaderPropsType = {
 export const Header: FC<HeaderPropsType> = ({ children }) => {
   return (
     <header className={style.headerBlock}>
-      <div className={style.title}>Intagram</div>
+      <div className={style.title}>Inctagram</div>
       {children}
     </header>
   );
