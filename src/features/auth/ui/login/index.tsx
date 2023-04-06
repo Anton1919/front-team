@@ -41,9 +41,9 @@ export const Login = () => {
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <div className={s.forgot}>
+          <Link href={'/forgot-password'} className={s.forgot}>
             <span>Forgot password</span>
-          </div>
+          </Link>
         </div>
         <Button button_name={'Sign in'}/>
       </form>

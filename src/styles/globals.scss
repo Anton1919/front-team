@@ -69,7 +69,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     border-bottom: 2px solid black !important;
     -webkit-text-fill-color: inherit;
-    -webkit-box-shadow: 0 0 0px 1000px $light-color_100 inset;
+    -webkit-box-shadow: 0 0 0 1000px $light-color_100 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -85,7 +85,6 @@ button::-moz-focus-inner {
 a,
 a:visited {
     text-decoration: none;
-    color: black;
     cursor: pointer;
     user-select: none;
 }

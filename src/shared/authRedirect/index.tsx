@@ -11,6 +11,7 @@ export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
     router.pathname == '/login' ||
     router.pathname === '/registration' ||
     router.pathname === '/confirm-email' ||
+    router.pathname === '/forgot-password' ||
     router.pathname === '/registration/sent';
 
   if (isLoading) {
