@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { useRouter } from 'next/router';
 
 import { selectEmail, selectIsAuth, selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/store';
 import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
-import { AuthAPI } from '@/features/auth/api';
+import { useMeQuery } from '@/features/auth/hooks/useMeQuery';
 
 type ModalLogOutProps = {
     isActiveModal: boolean
@@ -20,17 +20,15 @@ const ModalForLogOut: FC<ModalLogOutProps> = ({ isActiveModal, setIsActiveModal 
   const setIsAuth = useAuthStore(selectSetIsAuth)
   const isAuth = useAuthStore(selectIsAuth)
   const router = useRouter()
-  // const { isLoading, isError } = useQuery({});
-  const mutation = useMutation(() => AuthAPI.logOut())
+  const queryClient = useQueryClient();
+  const { isLoading } = useMeQuery()
   const logOutHandler = () => {
-    mutation.mutate()
-    setEmail('')
-    setIsAuth(false)
-    setIsActiveModal(false)
+    localStorage.setItem('accessToken', '')
+    queryClient.invalidateQueries(['me'])
   }
-  // if (isLoading) {
-  //   return <div>LOADING............</div>
-  // }
+  if (isLoading) {
+    return <div>LOADING............</div>
+  }
   if (!isAuth) {
     router.push('/login');
   }

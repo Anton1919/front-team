@@ -3,7 +3,9 @@ import { AuthDataType, RegistrationConfirmationType } from '@/features/auth/type
 
 export const AuthAPI = {
   me() {
-    return instance.get('auth/me');
+    return instance.get('auth/me')
+      .then(res => res.data)
+
   },
   register(data: AuthDataType) {
     return instance.post('auth/registration', data);

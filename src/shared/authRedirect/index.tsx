@@ -8,7 +8,7 @@ export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
 
   const isAuthPage =
-        router.pathname == '/login' ||
+        router.pathname === '/login' ||
         router.pathname === '/registration' ||
         router.pathname === '/confirm-email' ||
         router.pathname === '/registration/sent';

@@ -13,11 +13,11 @@ export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      {/*<AuthRedirect>*/}
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      {/*</AuthRedirect>*/}
+      <AuthRedirect>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthRedirect>
     </QueryClientProvider>
   )
 }

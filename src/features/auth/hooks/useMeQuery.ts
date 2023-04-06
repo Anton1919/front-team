@@ -15,12 +15,13 @@ export const useMeQuery = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     refetchOnReconnect: false,
-    onSuccess: (data: { email: string, userId: number }) => {
+    onSuccess: (data: { email: string, userId: string }) => {
       setEmail(data.email)
       setIsAuth(true)
     },
     onError: () => {
       setIsAuth(false)
+      setEmail('')
     }
   });
 };

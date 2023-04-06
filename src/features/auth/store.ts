@@ -10,7 +10,7 @@ type AuthState = {
 
 export const useAuthStore = create(immer<AuthState>((set) => ({
   email: '',
-  isAuth: true,
+  isAuth: false,
   setEmail: (email: string) => set(state => {
     state.email = email
   }),

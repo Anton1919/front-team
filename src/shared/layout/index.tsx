@@ -3,10 +3,8 @@ import Head from 'next/head';
 
 import { Header } from '@/shared/header';
 import LogOutButton from '@/features/auth/ui/logOut/logOutButton';
-import ModalWindow from '@/shared/modalWindow/modalWindow';
-import { Button } from '@/shared/button/Button';
-import { selectEmail, selectIsAuth, useAuthStore } from '@/features/auth/store';
 import ModalForLogOut from '@/features/auth/ui/logOut/modalForLogOut';
+import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 
 type Props = {
     children: ReactNode
