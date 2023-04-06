@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -8,17 +8,18 @@ import s from './modalWindow.module.scss'
 
 type ModalWindowProps = {
     isActive: boolean
-    setIsActive: (value: boolean) => void
     title: string
     children: ReactNode
 }
 
-const ModalWindow: FC<ModalWindowProps> = ({ isActive, setIsActive, children, title }) => {
-  const closeModalHandler = () => {
-    setIsActive(false)
-  }
+export const ModalWindow: FC<ModalWindowProps> = ({ isActive, children, title }) => {
+
+  const [isOpened, setIsOpened] = useState<boolean>(isActive)
+
+  const closeModalHandler = () => setIsOpened(false)
+
   return (<>
-    {isActive ? <div className={s.modalBlock} onClick={closeModalHandler}>
+    {isOpened ? <div className={s.modalBlock} onClick={closeModalHandler}>
       <div className={s.modalContent} onClick={event => event.stopPropagation()}>
         <div className={s.title}>
           {title}
@@ -32,5 +33,3 @@ const ModalWindow: FC<ModalWindowProps> = ({ isActive, setIsActive, children, ti
   </>
   );
 };
-
-export default ModalWindow;
