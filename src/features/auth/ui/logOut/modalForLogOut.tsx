@@ -27,7 +27,7 @@ const ModalForLogOut: FC<ModalLogOutProps> = ({ isActiveModal, setIsActiveModal 
     queryClient.invalidateQueries(['me'])
   }
   if (isLoading) {
-    return <div>LOADING............</div>
+    return <div>LOADING................</div>
   }
   if (!isAuth) {
     router.push('/login');
