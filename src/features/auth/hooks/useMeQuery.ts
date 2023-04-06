@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { AuthAPI } from '@/features/auth/api';
-
 import { selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/store';
 
 export const useMeQuery = () => {
@@ -16,7 +15,7 @@ export const useMeQuery = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     refetchOnReconnect: false,
-    onSuccess: (data) => {
+    onSuccess: (data: { email: string, userId: number }) => {
       setEmail(data.email)
       setIsAuth(true)
     },
