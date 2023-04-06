@@ -20,4 +20,7 @@ export const AuthAPI = {
   refreshToken() {
     return instance.post('auth/refresh-token', {}, { withCredentials: true });
   },
+  logOut() {
+    return instance.post('auth/logout')
+  },
 }

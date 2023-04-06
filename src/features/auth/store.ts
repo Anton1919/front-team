@@ -2,20 +2,17 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 type AuthState = {
-  email: string;
-  setEmail: (email: string) => void;
-  isAuth: boolean,
-  setIsAuth: (isAuth: boolean) => void;
+    email: string;
+    setEmail: (email: string) => void;
+    isAuth: boolean,
+    setIsAuth: (isAuth: boolean) => void;
 }
 
 export const useAuthStore = create(immer<AuthState>((set) => ({
   email: '',
-  isAuth: false,
+  isAuth: true,
   setEmail: (email: string) => set(state => {
     state.email = email
-  }),
-  setIsLogin: (value: boolean) => set(state => {
-    state.isLogin = value
   }),
   setIsAuth: (isAuth: boolean) => set(state => {
     state.isAuth = isAuth
