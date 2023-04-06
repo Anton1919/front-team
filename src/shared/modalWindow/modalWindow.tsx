@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import Image from 'next/image';
 
@@ -7,19 +7,18 @@ import closeIcon from '../../assets/icons/close.svg'
 import s from './modalWindow.module.scss'
 
 type ModalWindowProps = {
-    isActive: boolean
-    title: string
-    children: ReactNode
+  isOpen: boolean
+  title: string
+  setIsOpen: (value: boolean) => void
+  children: ReactNode
 }
 
-export const ModalWindow: FC<ModalWindowProps> = ({ isActive, children, title }) => {
+export const ModalWindow: FC<ModalWindowProps> = ({ isOpen, setIsOpen, children, title }) => {
 
-  const [isOpened, setIsOpened] = useState<boolean>(isActive)
-
-  const closeModalHandler = () => setIsOpened(false)
+  const closeModalHandler = () => setIsOpen(!isOpen)
 
   return (<>
-    {isOpened ? <div className={s.modalBlock} onClick={closeModalHandler}>
+    {isOpen ? <div className={s.modalBlock} onClick={closeModalHandler}>
       <div className={s.modalContent} onClick={event => event.stopPropagation()}>
         <div className={s.title}>
           {title}
