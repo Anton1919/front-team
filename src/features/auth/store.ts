@@ -1,12 +1,7 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
-type AuthState = {
-  email: string;
-  setEmail: (email: string) => void;
-  isAuth: boolean,
-  setIsAuth: (isAuth: boolean) => void;
-}
+import { AuthState } from '@/features/auth/types';
 
 export const useAuthStore = create(immer<AuthState>((set) => ({
   email: '',
