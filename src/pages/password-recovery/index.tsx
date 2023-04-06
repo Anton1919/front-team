@@ -7,6 +7,8 @@ import { PasswordInput } from '@/shared/input';
 import { useNewPassValid } from '@/features/auth/hooks/forgotPassword/useNewPassValid';
 import { Button } from '@/shared/button/Button';
 
+import s from './Password-recovery.module.scss'
+
 const PasswordRecovery = () => {
   const { query, push } = useRouter()
   const recoveryCode = query.recoveryCode;
@@ -21,8 +23,9 @@ const PasswordRecovery = () => {
   }
 
   return (
-    <Card>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Card maxWidth={'378px'}>
+      <form onSubmit={handleSubmit(onSubmit)} className={s.container} >
+        <h2>Create new password</h2>
         <PasswordInput
           name={'password'}
           label={'New password'}
@@ -38,7 +41,7 @@ const PasswordRecovery = () => {
           error={errors.cpassword?.message}
         />
 
-        <p>Your password must be between 6 and 20 characters</p>
+        <p className={s.text}>Your password must be between 6 and 20 characters</p>
 
         <Button button_name={'Create new password'}/>
       </form>
