@@ -8,13 +8,13 @@ import { BaseInput } from '@/shared/input/'
 import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
-import { useLogin } from '@/features/auth/hooks/useLogin';
+import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
 import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLogin()
+  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLoginValid()
 
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
@@ -41,9 +41,9 @@ export const Login = () => {
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <div className={s.forgot}>
+          <Link href={'/forgot-password'} className={s.forgot}>
             <span>Forgot password</span>
-          </div>
+          </Link>
         </div>
         <Button button_name={'Sign in'}/>
       </form>

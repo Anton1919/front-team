@@ -9,7 +9,7 @@ import { PasswordInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { Card } from '@/shared/card';
 
-import { useRegister } from '../../hooks/useRegister';
+import { useRegisterValid } from '@/features/auth/hooks/registration/useRegisterValid';
 
 import s from './Registration.module.scss';
 
@@ -24,7 +24,7 @@ export const Registration = () => {
     handleSubmit,
     onSubmit,
     serverErrorMessage,
-    isLoading } = useRegister()
+    isLoading } = useRegisterValid()
 
   return (
     <Card maxWidth={'378px'} className={s.container}>
