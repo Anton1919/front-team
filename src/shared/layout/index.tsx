@@ -6,13 +6,12 @@ import LogOutButton from '@/features/auth/ui/logOut/logOutButton';
 import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
 import { selectEmail, selectIsAuth, useAuthStore } from '@/features/auth/store';
+import ModalForLogOut from '@/features/auth/ui/logOut/modalForLogOut';
 
 type Props = {
     children: ReactNode
 }
 export const Layout: FC<Props> = ({ children }) => {
-
-  const email = useAuthStore(selectEmail)
 
   const isAuth = useAuthStore(selectIsAuth)
 
@@ -27,19 +26,7 @@ export const Layout: FC<Props> = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
       <Header>{isAuth && <LogOutButton callBack={logOutButtonHandler}/>}</Header>
-
-      <ModalWindow isActive={isActiveModal} setIsActive={setIsActiveModal} title={'Log Out'}>
-        <div>{`Are you really want to log out of your account ${email} ?`}
-          <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
-            <Button button_name={'Yes'} variant={'transparent'} button_handler={() => {
-            }}/>
-            <Button button_name={'No'} button_handler={() => {
-              setIsActiveModal(false)
-            }}/>
-          </div>
-        </div>
-      </ModalWindow>
-
+      <ModalForLogOut isActiveModal={isActiveModal} setIsActiveModal={setIsActiveModal}/>
       <main>
         {children}
       </main>
