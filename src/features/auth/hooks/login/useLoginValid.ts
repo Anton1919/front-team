@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { useLoginMutation } from '@/features/auth/hooks/useLoginMutation';
+import { useLoginMutation } from '@/features/auth/hooks/login/useLoginMutation';
 import { AuthDataType } from '@/features/auth/types';
 
 export type LoginFormFields = {

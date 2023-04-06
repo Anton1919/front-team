@@ -8,7 +8,7 @@ import { BaseInput } from '@/shared/input/'
 import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
-import { useLoginValid } from '@/features/auth/hooks/useLoginValid';
+import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
 import s from './Login.module.scss'
 

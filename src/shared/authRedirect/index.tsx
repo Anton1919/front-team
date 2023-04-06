@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC, PropsWithChildren } from 'react';
 
-import { useMeQuery } from '@/features/auth/hooks/useMeQuery';
+import { useMeQuery } from '@/features/auth/hooks/login/useMeQuery';
 
 export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   const { isLoading, isError } = useMeQuery();
@@ -12,7 +12,9 @@ export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
     router.pathname === '/registration' ||
     router.pathname === '/confirm-email' ||
     router.pathname === '/forgot-password' ||
-    router.pathname === '/registration/sent';
+    router.pathname === '/password-recovery' ||
+    router.pathname === '/confirm-message/confirmed' ||
+    router.pathname === '/confirm-message';
 
   if (isLoading) {
     return <div>Loading...</div>;
