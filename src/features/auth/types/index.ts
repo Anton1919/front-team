@@ -3,5 +3,5 @@ export type AuthDataType = {
   password: string
 }
 export type RegistrationConfirmationType = {
-  recoveryCode: string
+  code: string
 }

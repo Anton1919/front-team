@@ -13,7 +13,6 @@
 }
 
 .container {
-  margin: 0 auto;
   @include flex-center();
   flex-direction: column;
   row-gap: 20px;

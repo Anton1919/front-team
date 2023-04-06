@@ -2,9 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 
 import { AuthAPI } from '@/features/auth/api';
 
-export const useConfrimRegistration = () => {
+export const useRefreshMutation = () => {
   return useMutation({
-    mutationFn: AuthAPI.confirm,
+    mutationFn: AuthAPI.refreshToken,
     retry: false,
+    onSuccess: () => {
+
+    }
   });
-}
+};

@@ -3,7 +3,7 @@ import { AuthDataType, RegistrationConfirmationType } from '@/features/auth/type
 
 export const AuthAPI = {
   me() {
-    return instance.post('auth/me');
+    return instance.get('auth/me');
   },
   register(data: AuthDataType) {
     return instance.post('auth/registration', data);
@@ -11,7 +11,13 @@ export const AuthAPI = {
   confirm(data: RegistrationConfirmationType) {
     return instance.post('auth/registration-confirmation', data);
   },
+  resendRegistration() {
+    return instance.post('auth/registration-email-resending', {});
+  },
   login(data: AuthDataType) {
-    return instance.post('auth/registration', data);
-  }
+    return instance.post('auth/login', data);
+  },
+  refreshToken() {
+    return instance.post('auth/refresh-token', {}, { withCredentials: true });
+  },
 }
