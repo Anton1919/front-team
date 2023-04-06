@@ -1,10 +1,10 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
-import { RegisterOptions, UseFormRegister, Path } from 'react-hook-form';
+import { RegisterOptions, UseFormRegister, Path, FieldValues } from 'react-hook-form';
 
 import s from './BaseInput.module.scss'
 
-export type BaseInputProps<TFormValues> = {
+export type BaseInputProps<TFormValues extends FieldValues> = {
   error?: string
   label?: string
   icon?: ReactNode

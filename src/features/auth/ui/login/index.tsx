@@ -4,21 +4,20 @@ import Link from 'next/link';
 
 import google from '@/assets/icons/google.svg'
 import { Card } from '@/shared/card'
-import { BaseInput } from '@/shared/input/baseInput'
-import { PasswordInput } from '@/shared/input/passwordInput'
+import { BaseInput } from '@/shared/input/'
+import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
-import { Button } from '@/shared/button'
 
-import { useValidAuth } from '@/hooks/useValidAuth';
+import { useLoginValid } from '@/features/auth/hooks/useLoginValid';
 
 import s from './Login.module.scss'
+import { Button } from '@/shared/button';
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useValidAuth()
+  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLoginValid()
 
   return (
-
     <Card maxWidth={'378px'} className={s.loginContainer}>
       <h2 className={s.title}>Sign In</h2>
       <div className={s.icons}>

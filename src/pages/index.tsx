@@ -1,19 +1,15 @@
 import Head from 'next/head'
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+
+import SideBar from '@/shared/sideBar/sideBar';
 
 export default function Home() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.push('/login')
-  }, [router])
-
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
+      <SideBar />
     </>
   )
 }

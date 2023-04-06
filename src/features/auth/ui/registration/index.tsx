@@ -1,21 +1,31 @@
 import React from 'react';
 import Image from 'next/image';
-
 import Link from 'next/link';
 
 import google from '@/assets/icons/google.svg';
 import facebook from '@/assets/icons/facebook.svg';
-import { BaseInput } from '@/shared/input/baseInput';
-import { PasswordInput } from '@/shared/input/passwordInput';
-import { Button } from '@/shared/button';
+import { BaseInput } from '@/shared/input';
+import { PasswordInput } from '@/shared/input';
+
 import { Card } from '@/shared/card';
-import { useValidAuth } from '@/hooks/useValidAuth';
+
+import { useRegister } from '../../hooks/useRegister';
 
 import s from './Registration.module.scss';
+import { Button } from '@/shared/button';
 
 export const Registration = () => {
 
-  const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useValidAuth()
+  const {
+    register,
+    errors,
+    emailRules,
+    passwordRules,
+    cPasswordRules,
+    handleSubmit,
+    onSubmit,
+    serverErrorMessage,
+    isLoading } = useRegister()
 
   return (
     <Card maxWidth={'378px'} className={s.container}>
@@ -49,8 +59,9 @@ export const Registration = () => {
           rules={cPasswordRules}
           error={errors.cpassword?.message}
         />
-        <Button button_name={'Sign up'} />
+        <Button button_name={'Sign up'} disabled={isLoading} />
       </form>
+      <div className={s.serverError}>{serverErrorMessage}</div>
       <p className={s.text}>Do you have an account?</p>
       <Link className={s.link} href={'/login'}>Sign In</Link>
     </Card>
