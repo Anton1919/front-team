@@ -1,8 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
-import { selectEmail, selectIsAuth, useAuthStore } from '@/features/auth/store';
+import { useMutation, useQuery } from '@tanstack/react-query';
+
+import { useRouter } from 'next/router';
+
+import { selectEmail, selectIsAuth, selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/store';
 import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
+import { AuthAPI } from '@/features/auth/api';
 
 type ModalLogOutProps = {
     isActiveModal: boolean
@@ -11,13 +16,30 @@ type ModalLogOutProps = {
 
 const ModalForLogOut: FC<ModalLogOutProps> = ({ isActiveModal, setIsActiveModal }) => {
   const email = useAuthStore(selectEmail)
+  const setEmail = useAuthStore(selectSetEmail)
+  const setIsAuth = useAuthStore(selectSetIsAuth)
+  const isAuth = useAuthStore(selectIsAuth)
+  const router = useRouter()
+  // const { isLoading, isError } = useQuery({});
+  const mutation = useMutation(() => AuthAPI.logOut())
+  const logOutHandler = () => {
+    mutation.mutate()
+    setEmail('')
+    setIsAuth(false)
+    setIsActiveModal(false)
+  }
+  // if (isLoading) {
+  //   return <div>LOADING............</div>
+  // }
+  if (!isAuth) {
+    router.push('/login');
+  }
   return (
     <div>
       <ModalWindow isActive={isActiveModal} setIsActive={setIsActiveModal} title={'Log Out'}>
         <div>{`Are you really want to log out of your account ${email} ?`}
           <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
-            <Button button_name={'Yes'} variant={'transparent'} button_handler={() => {
-            }}/>
+            <Button button_name={'Yes'} variant={'transparent'} button_handler={logOutHandler}/>
             <Button button_name={'No'} button_handler={() => {
               setIsActiveModal(false)
             }}/>
