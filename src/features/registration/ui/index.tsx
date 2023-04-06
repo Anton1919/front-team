@@ -7,14 +7,14 @@ import google from '@/assets/icons/google.svg';
 import facebook from '@/assets/icons/facebook.svg';
 import { BaseInput } from '@/shared/input/baseInput';
 import { PasswordInput } from '@/shared/input/passwordInput';
-import { Button } from '@/shared/button/Button';
+import { Button } from '@/shared/button';
 import { Card } from '@/shared/card';
 import { useValidAuth } from '@/hooks/useValidAuth';
 
 import s from './Registration.module.scss';
 
 export const Registration = () => {
-  
+
   const { register, errors, emailRules, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useValidAuth()
 
   return (

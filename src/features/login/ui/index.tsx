@@ -7,7 +7,7 @@ import { Card } from '@/shared/card'
 import { BaseInput } from '@/shared/input/baseInput'
 import { PasswordInput } from '@/shared/input/passwordInput'
 import facebook from '@/assets/icons/facebook.svg'
-import { Button } from '@/shared/button/Button'
+import { Button } from '@/shared/button'
 
 import { useValidAuth } from '@/hooks/useValidAuth';
 
@@ -22,8 +22,8 @@ export const Login = () => {
     <Card maxWidth={'378px'} className={s.loginContainer}>
       <h2 className={s.title}>Sign In</h2>
       <div className={s.icons}>
-        <Image src={google} alt={'google'}/>
-        <Image src={facebook} alt={'facebook'}/>
+        <Image src={google} alt={'google'} />
+        <Image src={facebook} alt={'facebook'} />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
@@ -47,7 +47,7 @@ export const Login = () => {
             <span>Forgot password</span>
           </div>
         </div>
-        <Button button_name={'Sign in'}/>
+        <Button button_name={'Sign in'} />
       </form>
       <p className={s.text}>Don’t have an account?</p>
       <Link className={s.link} href={'/registration'}>Sign up</Link>
