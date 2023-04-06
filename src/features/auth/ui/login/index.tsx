@@ -14,7 +14,7 @@ import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLoginValid()
+  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit, errorServer, isLoading } = useLoginValid()
 
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
@@ -44,8 +44,10 @@ export const Login = () => {
           <Link href={'/forgot-password'} className={s.forgot}>
             <span>Forgot password</span>
           </Link>
+          <div className={s.serverErrorMessage}>{errorServer}</div>
         </div>
-        <Button button_name={'Sign in'}/>
+
+        <Button button_name={'Sign in'} disabled={isLoading}/>
       </form>
       <p className={s.text}>Don’t have an account?</p>
       <Link className={s.link} href={'/registration'}>Sign up</Link>

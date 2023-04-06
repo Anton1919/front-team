@@ -13,7 +13,6 @@ import s from './LogOut.module.scss'
 export const LogOut = () => {
   const [openModal, setOpenModal] = useState<boolean>(false)
   const email = useAuthStore(selectEmail)
-
   const onClick = () => setOpenModal(!openModal)
 
   const queryClient = useQueryClient();

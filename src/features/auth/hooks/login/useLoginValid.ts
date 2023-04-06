@@ -20,7 +20,7 @@ export const useLoginValid = () => {
     formState: { errors },
   } = useForm<LoginFormFields>();
 
-  const { mutate: login, } = useLoginMutation()
+  const { mutate: login, isError, isLoading } = useLoginMutation()
 
   const onSubmit = (data: AuthDataType) => {
     login(data)
@@ -28,6 +28,7 @@ export const useLoginValid = () => {
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = { required: 'You must enter your password.' }
+  const errorServer = isError ? 'Incorrect login or password' : null
 
-  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules }
+  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, errorServer, isLoading }
 };

@@ -1,4 +1,5 @@
 @import "src/styles/mixins";
+@import "src/styles/constants";
 
 .title {
   @include text-h2()
@@ -36,4 +37,11 @@
 
 .link {
   @include link-regular()
+}
+
+.serverErrorMessage {
+  text-align: center;
+  height: 15px;
+  padding-top: 7px;
+  color: $danger-color_500;
 }
