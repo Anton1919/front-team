@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { useConfrimRegistration } from '@/features/auth/hooks/useConfrimRegistration';
+import { useConfrimRegistration } from '@/features/auth/hooks/registration/useConfrimRegistration';
 import { Confirmed } from '@/shared/confirmed';
 import { ConfirmExpired } from '@/shared/confirmExpired';
 import { selectIsAuth, useAuthStore } from '@/features/auth/store';

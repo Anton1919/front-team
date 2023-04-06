@@ -8,7 +8,7 @@ import { BaseInput } from '@/shared/input/'
 import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
-import { useLoginValid } from '@/features/auth/hooks/useLoginValid';
+import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
 import s from './Login.module.scss'
 
@@ -41,9 +41,9 @@ export const Login = () => {
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <div className={s.forgot}>
+          <Link href={'/forgot-password'} className={s.forgot}>
             <span>Forgot password</span>
-          </div>
+          </Link>
         </div>
         <Button button_name={'Sign in'}/>
       </form>

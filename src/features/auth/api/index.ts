@@ -1,5 +1,6 @@
 import { instance } from '@/constants/instance';
 import { AuthDataType, RegistrationConfirmationType } from '@/features/auth/types';
+import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 
 export const AuthAPI = {
   me() {
@@ -20,4 +21,10 @@ export const AuthAPI = {
   refreshToken() {
     return instance.post('auth/refresh-token', {}, { withCredentials: true });
   },
+  forgotPassword(data: ForgotField) {
+    return instance.post('auth/password-recovery', data);
+  },
+  newPassword(data:any) {
+    return instance.post('auth/new-password', data)
+  }
 }

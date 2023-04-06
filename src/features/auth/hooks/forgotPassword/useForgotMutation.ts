@@ -1,15 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
+
 import { useRouter } from 'next/router';
 
 import { AuthAPI } from '@/features/auth/api';
 
-export const useRegisterMutation = () => {
+export const useForgotMutation = () => {
   const { push } = useRouter();
   return useMutation({
-    mutationFn: AuthAPI.register,
-    retry: false,
+    mutationFn: AuthAPI.forgotPassword,
     onSuccess: () => {
-      push('registration/sent');
-    }
+      push('/confirm-message');
+    },
   });
 };
