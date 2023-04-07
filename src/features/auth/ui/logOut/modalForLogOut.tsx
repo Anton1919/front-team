@@ -5,8 +5,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
 import { selectEmail, selectIsAuth, useAuthStore } from '@/features/auth/store';
-import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
+import { ModalWindow } from '@/shared/modalWindow/modalWindow';
 
 type ModalLogOutProps = {
     isActiveModal: boolean
