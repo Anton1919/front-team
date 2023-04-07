@@ -47,10 +47,10 @@ const CreateAccount = () => {
               type="date"
               id={'date'}
               name={'date'}
-              label={'Date'}
-              register={register}
+              // label={'Date'}
+              // register={register}
               // rules={emailRules}
-              error={errors.dateOfBirth?.message}
+              // error={errors.dateOfBirth?.message}
             />
             <BaseInput
               id={'city'}
@@ -64,7 +64,7 @@ const CreateAccount = () => {
             <Textarea
               id={'about-me'}
               label={'aboutMe'}
-              register={register}
+              // register={register}
               sx={{ width: 494, height: 84 }}
               name={'About Me'}
               error={errors.aboutMe?.message}
