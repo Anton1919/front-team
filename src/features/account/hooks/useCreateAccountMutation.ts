@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { AuthAPI } from '@/features/auth/api';
+import { AccountAPI } from '@/features/account/api';
 
 export const useCreateAccountMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: AuthAPI.login,
+    mutationFn: AccountAPI.createAccount,
     onSuccess: (res) => {
       const { accessToken } = res.data
       localStorage.setItem('accessToken', accessToken);
