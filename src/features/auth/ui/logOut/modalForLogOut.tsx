@@ -4,10 +4,9 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { useRouter } from 'next/router';
 
-import { selectEmail, selectIsAuth, selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/store';
+import { selectEmail, selectIsAuth, useAuthStore } from '@/features/auth/store';
 import ModalWindow from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
-import { useMeQuery } from '@/features/auth/hooks/useMeQuery';
 
 type ModalLogOutProps = {
     isActiveModal: boolean
@@ -16,18 +15,12 @@ type ModalLogOutProps = {
 
 const ModalForLogOut: FC<ModalLogOutProps> = ({ isActiveModal, setIsActiveModal }) => {
   const email = useAuthStore(selectEmail)
-  const setEmail = useAuthStore(selectSetEmail)
-  const setIsAuth = useAuthStore(selectSetIsAuth)
   const isAuth = useAuthStore(selectIsAuth)
   const router = useRouter()
   const queryClient = useQueryClient();
-  const { isLoading } = useMeQuery()
   const logOutHandler = () => {
     localStorage.setItem('accessToken', '')
     queryClient.invalidateQueries(['me'])
-  }
-  if (isLoading) {
-    return <div>LOADING............</div>
   }
   if (!isAuth) {
     router.push('/login');
