@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from '@/features/auth/ui/create-account/CreateAccount.module.scss';
+import s from '@/features/account/ui/create-account/CreateAccount.module.scss';
 import { BaseInput } from '@/shared/input';
 import { Textarea } from '@/shared/textarea/Textarea';
 import { Button } from '@/shared/button/Button';
@@ -51,7 +51,7 @@ const CreateAccount = () => {
               // error={errors.email?.message}
             />
             <div>About Me</div>
-            <Textarea name={'About Me'} handleTextareaChange={() => {
+            <Textarea sx={{ width: 494, height: 84 }} name={'About Me'} handleTextareaChange={() => {
             }}/>
             <Button button_name={'Create Account'}/>
           </div>
