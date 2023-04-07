@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
+import { AuthState } from '@/features/auth/types';
 type AuthState = {
     email: string;
     setEmail: (email: string) => void;

@@ -7,18 +7,18 @@ import closeIcon from '../../assets/icons/close.svg'
 import s from './modalWindow.module.scss'
 
 type ModalWindowProps = {
-    isActive: boolean
-    setIsActive: (value: boolean) => void
-    title: string
-    children: ReactNode
+  isOpen: boolean
+  title: string
+  setIsOpen: (value: boolean) => void
+  children: ReactNode
 }
 
-const ModalWindow: FC<ModalWindowProps> = ({ isActive, setIsActive, children, title }) => {
-  const closeModalHandler = () => {
-    setIsActive(false)
-  }
+export const ModalWindow: FC<ModalWindowProps> = ({ isOpen, setIsOpen, children, title }) => {
+
+  const closeModalHandler = () => setIsOpen(!isOpen)
+
   return (<>
-    {isActive ? <div className={s.modalBlock} onClick={closeModalHandler}>
+    {isOpen ? <div className={s.modalBlock} onClick={closeModalHandler}>
       <div className={s.modalContent} onClick={event => event.stopPropagation()}>
         <div className={s.title}>
           {title}
@@ -32,5 +32,3 @@ const ModalWindow: FC<ModalWindowProps> = ({ isActive, setIsActive, children, ti
   </>
   );
 };
-
-export default ModalWindow;

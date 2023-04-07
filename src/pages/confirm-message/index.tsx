@@ -2,8 +2,8 @@ import React from 'react';
 
 import { EmailSent } from '@/shared/emailSent';
 
-const sent = () => {
+const ConfirmMessage = () => {
   return <EmailSent />;
 };
 
-export default sent;
+export default ConfirmMessage;
