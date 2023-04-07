@@ -4,9 +4,7 @@ import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid
 
 export const AuthAPI = {
   me() {
-    return instance.get('auth/me')
-      .then(res => res.data)
-
+    return instance.get('auth/me');
   },
   register(data: AuthDataType) {
     return instance.post('auth/registration', data);
@@ -21,10 +19,7 @@ export const AuthAPI = {
     return instance.post('auth/login', data);
   },
   refreshToken() {
-    return instance.post('auth/refresh-token',);
-  },
-  logOut() {
-    return instance.post('auth/logout')
+    return instance.post('auth/refresh-token', {}, { withCredentials: true });
   },
   forgotPassword(data: ForgotField) {
     return instance.post('auth/password-recovery', data);
