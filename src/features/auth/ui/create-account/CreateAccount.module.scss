@@ -1,9 +1,32 @@
 .createAccountBlock {
-  .title {
+  display: flex;
+  flex-direction: column;
+  height: 93vh;
+  align-items: center;
 
+  .title {
+    padding: 25px 0 17px 0;
+    border-bottom: solid 1px #333333;
+    font-size: 20px;
+    font-weight: 700;
+    width: 75vw;
   }
 
-  .form {
+}
 
+.form {
+
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 75vw;
+  height: 80vh;
+  border-bottom: solid 1px #333333;
+  margin: 23px;
+
+  .inputs {
+    width: 65%;
   }
 }
+
+//}
