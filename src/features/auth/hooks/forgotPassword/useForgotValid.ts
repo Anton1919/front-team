@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { AxiosError } from 'axios';
 
 import { selectSetEmail, useAuthStore } from '@/features/auth/store';
 import { useForgotMutation } from '@/features/auth/hooks/forgotPassword/useForgotMutation';
@@ -15,7 +14,7 @@ const emailPattern = {
 
 export const useForgotValid = () => {
   const setEmail = useAuthStore(selectSetEmail)
-  const { mutate: forgotPass, error, isError, isLoading } = useForgotMutation()
+  const { mutate: forgotPass, isError, isLoading } = useForgotMutation()
 
   const {
     register,
@@ -30,7 +29,7 @@ export const useForgotValid = () => {
 
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
 
-  const serverErrorMessage = error instanceof AxiosError && isError && error.response?.data?.errorsMessages[0].message
+  const serverErrorMessage = isError ? 'Something went wrong try again later' : null
 
   return { onSubmit, handleSubmit, register, emailRules, errors, serverErrorMessage, isLoading }
 };
