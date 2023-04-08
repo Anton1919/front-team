@@ -26,5 +26,8 @@ export const AuthAPI = {
   },
   newPassword(data: NewPasswordType) {
     return instance.post('auth/new-password', data)
+  },
+  logout(){
+    return instance.post('auth/logout')
   }
 }

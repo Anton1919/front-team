@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-import { useQueryClient } from '@tanstack/react-query';
-
 import logOutSvg from '@/assets/icons/logOut.svg'
 import { ModalWindow } from '@/shared/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
 import { selectEmail, useAuthStore } from '@/features/auth/store';
+
+import { useLogout } from '@/features/auth/hooks/logout/useLogout';
 
 import s from './LogOut.module.scss'
 
@@ -15,12 +15,9 @@ export const LogOut = () => {
   const email = useAuthStore(selectEmail)
   const onClick = () => setOpenModal(!openModal)
 
-  const queryClient = useQueryClient();
+  const { mutate: logout } = useLogout()
 
-  const logOutHandler = () => {
-    localStorage.setItem('accessToken', '')
-    queryClient.invalidateQueries(['me'])
-  }
+  const logOutHandler = () => logout()
 
   return (
     <>
