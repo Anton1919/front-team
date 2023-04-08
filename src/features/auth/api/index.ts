@@ -1,5 +1,5 @@
 import { instance } from '@/constants/instance';
-import { AuthDataType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
+import { AuthDataType, LoginType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
 import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 
 export const AuthAPI = {
@@ -15,7 +15,7 @@ export const AuthAPI = {
   resendRegistration() {
     return instance.post('auth/registration-email-resending', {});
   },
-  login(data: AuthDataType) {
+  login(data: LoginType) {
     return instance.post('auth/login', data);
   },
   refreshToken() {

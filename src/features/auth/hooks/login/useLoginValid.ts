@@ -1,16 +1,10 @@
 import { useForm } from 'react-hook-form';
 
 import { useLoginMutation } from '@/features/auth/hooks/login/useLoginMutation';
-import { AuthDataType } from '@/features/auth/types';
 
 export type LoginFormFields = {
   email: string;
   password: string;
-};
-
-const emailPattern = {
-  value: new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$', 'ig'),
-  message: 'Enter a valid email address.',
 };
 
 export const useLoginValid = () => {
@@ -22,13 +16,17 @@ export const useLoginValid = () => {
 
   const { mutate: login, isError, isLoading } = useLoginMutation()
 
-  const onSubmit = (data: AuthDataType) => {
+  const onSubmit = (data: LoginFormFields) => {
     login(data)
   };
 
-  const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
+  const usernameRules = {
+    required: 'You must enter your email or username.',
+    minLength: { value: 3, message: 'Field must be more than 3 characters' }
+  }
+
   const passwordRules = { required: 'You must enter your password.' }
   const errorServer = isError ? 'Incorrect login or password' : null
 
-  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, errorServer, isLoading }
+  return { onSubmit, handleSubmit, register, usernameRules, errors, passwordRules, errorServer, isLoading }
 };

@@ -24,6 +24,7 @@ export const Registration = () => {
     handleSubmit,
     onSubmit,
     serverErrorMessage,
+    userNameRules,
     isLoading } = useRegisterValid()
 
   return (
@@ -34,6 +35,13 @@ export const Registration = () => {
         <Image src={facebook} alt={'facebook'} />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <BaseInput
+          name={'username'}
+          label={'username'}
+          register={register}
+          rules={userNameRules}
+          error={errors.username?.message}
+        />
         <BaseInput
           id={'e-mail'}
           name={'email'}

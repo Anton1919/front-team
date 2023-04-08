@@ -5,6 +5,7 @@ import { selectSetEmail, useAuthStore } from '@/features/auth/store';
 import { useRegisterMutation } from '@/features/auth/hooks/registration/useRegisterMutation';
 
 export type LoginFormFields = {
+  username: string;
   email: string;
   password: string;
   cpassword?: string
@@ -28,11 +29,12 @@ export const useRegisterValid = () => {
   const { mutate: registration,  isError, error, isLoading } = useRegisterMutation()
 
   const onSubmit = (data: LoginFormFields) => {
-    const { email, password } = data
-    registration({ email, password })
+    const { username, email, password } = data
+    registration({ username, email, password })
     setEmail(email)
   };
 
+  const userNameRules = { required: 'You must enter your username.' }
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = {
     required: 'You must enter your password.',
@@ -50,5 +52,15 @@ export const useRegisterValid = () => {
 
   const serverErrorMessage = error instanceof AxiosError && isError && error.response?.data?.errorsMessages[0].message
 
-  return { onSubmit, handleSubmit, register, emailRules, errors, passwordRules, cPasswordRules, serverErrorMessage, isLoading }
+  return {
+    onSubmit,
+    handleSubmit,
+    register,
+    userNameRules,
+    emailRules,
+    errors,
+    passwordRules,
+    cPasswordRules,
+    serverErrorMessage,
+    isLoading }
 };

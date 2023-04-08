@@ -14,7 +14,7 @@ import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit, errorServer, isLoading } = useLoginValid()
+  const { register, errors, usernameRules, passwordRules, handleSubmit, onSubmit, errorServer, isLoading } = useLoginValid()
 
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
@@ -25,16 +25,14 @@ export const Login = () => {
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
-          id={'e-mail'}
           name={'email'}
-          label={'Email'}
+          label={'Email or username'}
           register={register}
-          rules={emailRules}
+          rules={usernameRules}
           error={errors.email?.message}
         />
         <div>
           <PasswordInput
-            id={'password'}
             name={'password'}
             label={'Password'}
             register={register}
