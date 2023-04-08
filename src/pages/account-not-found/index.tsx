@@ -1,14 +1,12 @@
 import React from 'react';
-
 import Head from 'next/head';
-
 import { useRouter } from 'next/router';
 
 import { Button } from '@/shared/button/Button';
 
 import s from './AccountNotFound.module.scss'
 
-export const NotFoundAccount = () => {
+const NotFoundAccount = () => {
 
   const { push } = useRouter()
 
@@ -30,3 +28,5 @@ export const NotFoundAccount = () => {
     </>
   );
 };
+
+export default NotFoundAccount
