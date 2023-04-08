@@ -13,7 +13,7 @@ export const EmailSent = () => {
   const router = useRouter();
   const email = useAuthStore(selectEmail)
 
-  const toLogin = () => router.push('/login')
+  const toLogin = () => router.push('/auth')
 
   return (
     <Card >

@@ -9,7 +9,7 @@ export const useRegisterMutation = () => {
     mutationFn: AuthAPI.register,
     retry: false,
     onSuccess: () => {
-      push('/confirm-message');
+      push('/auth/confirm-message');
     }
   });
 };

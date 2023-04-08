@@ -9,7 +9,7 @@ export const useForgotMutation = () => {
   return useMutation({
     mutationFn: AuthAPI.forgotPassword,
     onSuccess: () => {
-      push('/confirm-message');
+      push('/auth/confirm-message');
     },
   });
 };
