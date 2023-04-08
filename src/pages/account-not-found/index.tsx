@@ -8,7 +8,7 @@ import { Button } from '@/shared/button/Button';
 
 import s from './AccountNotFound.module.scss'
 
-const Index = () => {
+export const NotFoundAccount = () => {
 
   const { push } = useRouter()
 
@@ -30,5 +30,3 @@ const Index = () => {
     </>
   );
 };
-
-export default Index;
