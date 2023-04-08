@@ -41,7 +41,7 @@ export const Login = () => {
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <Link href={'/forgot-password'} className={s.forgot}>
+          <Link href={'/auth/forgot-password'} className={s.forgot}>
             <span>Forgot password</span>
           </Link>
           <div className={s.serverErrorMessage}>{errorServer}</div>
@@ -50,6 +50,6 @@ export const Login = () => {
         <Button button_name={'Sign in'} disabled={isLoading}/>
       </form>
       <p className={s.text}>Don’t have an account?</p>
-      <Link className={s.link} href={'/registration'}>Sign up</Link>
+      <Link className={s.link} href={'/auth/registration'}>Sign up</Link>
     </Card>)
 };

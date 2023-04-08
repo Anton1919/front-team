@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import CreateAccount from '@/features/account/ui/create-account';
 
-const Index = () => {
+const AccountCreate = () => {
   return (
     <>
       <Head>
@@ -14,4 +14,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default AccountCreate;

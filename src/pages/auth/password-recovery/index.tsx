@@ -1,13 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import s from 'src/pages/auth/password-recovery/Password-recovery.module.scss'
+
 import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 import { Card } from '@/shared/card';
 import { PasswordInput } from '@/shared/input';
 import { useNewPassValid } from '@/features/auth/hooks/forgotPassword/useNewPassValid';
 import { Button } from '@/shared/button/Button';
-
-import s from './Password-recovery.module.scss'
 
 const PasswordRecovery = () => {
   const { query, push } = useRouter()

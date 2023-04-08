@@ -62,7 +62,7 @@ export const Registration = () => {
       </form>
       <div className={s.serverError}>{serverErrorMessage}</div>
       <p className={s.text}>Do you have an account?</p>
-      <Link className={s.link} href={'/login'}>Sign In</Link>
+      <Link className={s.link} href={'/auth'}>Sign In</Link>
     </Card>
   );
 };

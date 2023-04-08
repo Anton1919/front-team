@@ -17,7 +17,7 @@ export const Confirmed = () => {
     <Container className={s.container}>
       <h2>Congratulations!</h2>
       <p>Your email has been confirmed</p>
-      <Button button_name={'Sign In'} button_handler={() => router.push('/login')} />
+      <Button button_name={'Sign In'} button_handler={() => router.push('/auth')} />
       <Image className={s.img} src={img} alt={'Congratulations'}/>
     </Container>
   );

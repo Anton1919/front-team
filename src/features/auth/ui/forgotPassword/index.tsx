@@ -25,7 +25,7 @@ export const ForgotPassword = () => {
           <Button button_name={'Send Instructions'} button_handler={() => {
           }}/>
 
-          <Link className={s.link} href={'/login'}>Back to Sing In</Link>
+          <Link className={s.link} href={'/auth'}>Back to Sing In</Link>
         </div>
       </form>
     </Card>

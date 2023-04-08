@@ -7,7 +7,7 @@ import { Button } from '@/shared/button/Button';
 import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
 
 const CreateAccount = () => {
-  const { register, errors, onSubmit, handleSubmit, userNameRules } = useCreateAccountValid()
+  const { register, errors, onSubmit, handleSubmit } = useCreateAccountValid()
   return (
 
     <div className={s.createAccountBlock}>

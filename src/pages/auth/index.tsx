@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-
 import { useRouter } from 'next/router';
 
 import { Login } from '@/features/auth/ui/login';
@@ -10,6 +9,7 @@ const LoginPage = () => {
   const { push } = useRouter()
 
   const isAuth = useAuthStore(selectIsAuth)
+
   if (isAuth) {
     push('/account-not-found')
     return
