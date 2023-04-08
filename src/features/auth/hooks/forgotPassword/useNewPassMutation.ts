@@ -9,7 +9,7 @@ export const useNewPassMutation = () => {
   return useMutation({
     mutationFn: AuthAPI.newPassword,
     onSuccess: () => {
-      push('/confirm-message/confirmed');
+      push('/auth/confirm-message/confirmed');
     },
   });
 };

@@ -34,7 +34,10 @@ export const useRegisterValid = () => {
     setEmail(email)
   };
 
-  const userNameRules = { required: 'You must enter your username.' }
+  const userNameRules = {
+    required: 'You must enter your username.',
+    minLength: { value: 3, message: 'Username must be more than 3 characters' }
+  }
   const emailRules = { required: 'You must enter your email.', pattern: emailPattern }
   const passwordRules = {
     required: 'You must enter your password.',

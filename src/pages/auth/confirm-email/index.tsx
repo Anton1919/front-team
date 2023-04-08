@@ -10,14 +10,14 @@ import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 const ConfirmEmail = () => {
 
   const { query, push } = useRouter()
-  const verifyCode = query.code;
+  const verifyCode = query.code as string;
 
   const { isLoading, isSuccess, mutate: sendVerifyCode } = useConfrimRegistration()
 
   const isAuth = useAuthStore(selectIsAuth)
 
   useEffect(() => {
-    if (verifyCode) sendVerifyCode({ code: `${verifyCode}` })
+    if (verifyCode) sendVerifyCode({ code: verifyCode })
   }, [verifyCode, sendVerifyCode])
 
   if (isAuth) {
