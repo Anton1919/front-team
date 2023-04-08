@@ -8,6 +8,7 @@ import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccount
 
 const CreateAccount = () => {
   const { register, errors, onSubmit, handleSubmit, userNameRules } = useCreateAccountValid()
+  console.log(errors)
   return (
 
     <div className={s.createAccountBlock}>
@@ -20,18 +21,22 @@ const CreateAccount = () => {
           <div>ADDDD PPPHOOTTOO</div>
           <div className={s.inputs}>
             <BaseInput
+              required={true}
+              minLength={6}
+              maxLength={30}
               id={'userName'}
               name={'userName'}
               label={'UserName'}
-              register={register}
+              // register={register}
               // rules={userNameRules}
               error={errors.userName?.message}
             />
+            {errors.name && errors.name.type === 'required' && <span>This is required</span>}
             <BaseInput
               id={'name'}
               name={'name'}
               label={'Name'}
-              register={register}
+              // register={register}
               // rules={emailRules}
               error={errors.name?.message}
             />
@@ -39,7 +44,7 @@ const CreateAccount = () => {
               id={'surName'}
               name={'surName'}
               label={'SurName'}
-              register={register}
+              // register={register}
               // rules={emailRules}
               error={errors.surName?.message}
             />
@@ -47,7 +52,7 @@ const CreateAccount = () => {
               type="date"
               id={'date'}
               name={'date'}
-              // label={'Date'}
+              label={'Date'}
               // register={register}
               // rules={emailRules}
               // error={errors.dateOfBirth?.message}
@@ -56,17 +61,16 @@ const CreateAccount = () => {
               id={'city'}
               name={'city'}
               label={'City'}
-              register={register}
+              // register={register}
               // rules={emailRules}
               error={errors.city?.message}
             />
-            <div>About Me</div>
+            {/*<div>About Me</div>*/}
             <Textarea
               id={'about-me'}
-              label={'aboutMe'}
+              name={'About Me'}
               // register={register}
               sx={{ width: 494, height: 84 }}
-              name={'About Me'}
               error={errors.aboutMe?.message}
               handleTextareaChange={() => {
               }}

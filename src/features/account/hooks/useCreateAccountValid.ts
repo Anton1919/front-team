@@ -18,7 +18,7 @@ export const useCreateAccountValid = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<CreateAccountFields>();
-
+  const res = useForm()
   const { mutate: createAccount } = useCreateAccountMutation()
 
   const onSubmit = (data: CreateAccountDataType) => {
