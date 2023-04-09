@@ -1,10 +1,10 @@
-import { useMutation } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { AuthAPI } from '@/features/auth/api';
 
-export const useConfrimRegistration = () => {
-  return useMutation({
-    mutationFn: AuthAPI.confirm,
+export const useConfrimRegistration = (code: string) => {
+  return useQuery({
+    queryFn: () => AuthAPI.confirm({ code }),
     retry: false,
   });
 }

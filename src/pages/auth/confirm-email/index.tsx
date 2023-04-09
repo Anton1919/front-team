@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -11,22 +11,19 @@ import { Spinner } from '@/shared/spinner';
 const ConfirmEmail = () => {
 
   const { query, push } = useRouter()
+
   const code = query.code as string;
 
-  const { isLoading, isSuccess, mutate: sendVerifyCode } = useConfrimRegistration()
+  const { isSuccess, isLoading } = useConfrimRegistration(code)
 
   const isAuth = useAuthStore(selectIsAuth)
-
-  useEffect(() => {
-    if (code) sendVerifyCode({ code })
-  }, [code, sendVerifyCode])
 
   if (isAuth) {
     push('/')
     return
   }
 
-  return (isLoading ? <Spinner /> : isSuccess ? <Confirmed/> : <ConfirmExpired/>);
+  return (isLoading ? <Spinner /> : isSuccess ? <Confirmed/> : <ConfirmExpired />);
 };
 
 export default ConfirmEmail;
