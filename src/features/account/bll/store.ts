@@ -17,6 +17,9 @@ export const useAuthStore = create(immer<AccountState>((set) => ({
   dateOfBirth: '',
   city: '',
   aboutMe: '',
+
+  // profilePhoto: '',
+
   setUserName: (userName: string) => set(state => {
     state.userName = userName
   }),
@@ -35,5 +38,9 @@ export const useAuthStore = create(immer<AccountState>((set) => ({
   setAboutMe: (aboutMe: string) => set(state => {
     state.aboutMe = aboutMe
   }),
+
+  // setProfilePhoto: (file: string) => set( state  => {
+  //   state.profilePhoto = file
+  // })
 
 })))
