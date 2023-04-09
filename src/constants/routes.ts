@@ -1,6 +1,6 @@
 export const PATHS = {
   PUBLIC: {
-    LOGIN: '/auth/login',
+    LOGIN: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_MAIL: '/auth/confirm-email',
     PASSWORD_RECOVERY: '/auth/password-recovery',
