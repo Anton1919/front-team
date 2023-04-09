@@ -31,7 +31,7 @@ const CreateAccount = () => {
               // rules={userNameRules}
               error={errors.userName?.message}
             />
-            {errors.name && errors.name.type === 'required' && <span>This is required</span>}
+            {/*{errors.userName && errors.userName.type === 'required' && <span>This is required</span>}*/}
             <BaseInput
               id={'name'}
               name={'name'}
