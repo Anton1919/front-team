@@ -1,24 +1,18 @@
 import { useForm } from 'react-hook-form';
 
 import { useLoginMutation } from '@/features/auth/hooks/login/useLoginMutation';
-
-export type LoginFormFields = {
-  email: string;
-  password: string;
-};
+import { LoginDataType } from '@/features/auth/types';
 
 export const useLoginValid = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormFields>();
+  } = useForm<LoginDataType>();
 
   const { mutate: login, isError, isLoading } = useLoginMutation()
 
-  const onSubmit = (data: LoginFormFields) => {
-    login(data)
-  };
+  const onSubmit = (data: LoginDataType) => login(data);
 
   const usernameRules = {
     required: 'You must enter your email or username.',

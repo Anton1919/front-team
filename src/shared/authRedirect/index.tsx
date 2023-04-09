@@ -7,7 +7,6 @@ import { Spinner } from '@/shared/spinner';
 export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   const { isError, isLoading } = useMeQuery();
   const { push, pathname } = useRouter();
-
   const isAuthPage = !pathname.includes('/auth')
 
   if(isLoading) {

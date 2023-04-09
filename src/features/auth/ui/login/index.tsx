@@ -25,11 +25,11 @@ export const Login = () => {
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
-          name={'email'}
+          name={'emailOrUsername'}
           label={'Email or username'}
           register={register}
           rules={usernameRules}
-          error={errors.email?.message}
+          error={errors.emailOrUsername?.message}
         />
         <div>
           <PasswordInput

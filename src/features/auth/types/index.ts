@@ -4,7 +4,10 @@ export type AuthDataType = {
   password: string
 }
 
-export type LoginType = Omit<AuthDataType, 'username'>
+export type LoginDataType = {
+  emailOrUsername: string;
+  password: string;
+}
 
 export type RegistrationConfirmationType = {
   code: string
