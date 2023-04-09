@@ -1,0 +1,12 @@
+@import './src/styles/constants';
+
+.logOut {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent-color_100;
+  }
+}

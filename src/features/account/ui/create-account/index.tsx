@@ -8,7 +8,6 @@ import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccount
 
 const CreateAccount = () => {
   const { register, errors, onSubmit, handleSubmit, userNameRules } = useCreateAccountValid()
-  console.log(errors)
   return (
 
     <div className={s.createAccountBlock}>
@@ -31,7 +30,6 @@ const CreateAccount = () => {
               // rules={userNameRules}
               error={errors.userName?.message}
             />
-            {/*{errors.userName && errors.userName.type === 'required' && <span>This is required</span>}*/}
             <BaseInput
               id={'name'}
               name={'name'}
@@ -71,6 +69,7 @@ const CreateAccount = () => {
               name={'About Me'}
               // register={register}
               sx={{ width: 494, height: 84 }}
+              name={'About Me'}
               error={errors.aboutMe?.message}
               handleTextareaChange={() => {
               }}

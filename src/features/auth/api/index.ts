@@ -1,11 +1,10 @@
 import { instance } from '@/constants/instance';
-import { AuthDataType, RegistrationConfirmationType } from '@/features/auth/types';
+import { AuthDataType, LoginDataType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
+import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 
 export const AuthAPI = {
   me() {
-    return instance.get('auth/me')
-      .then(res => res.data)
-
+    return instance.get('auth/me');
   },
   register(data: AuthDataType) {
     return instance.post('auth/registration', data);
@@ -16,13 +15,19 @@ export const AuthAPI = {
   resendRegistration() {
     return instance.post('auth/registration-email-resending', {});
   },
-  login(data: AuthDataType) {
+  login(data: LoginDataType) {
     return instance.post('auth/login', data);
   },
   refreshToken() {
     return instance.post('auth/refresh-token', {}, { withCredentials: true });
   },
-  logOut() {
-    return instance.post('auth/logout')
+  forgotPassword(data: ForgotField) {
+    return instance.post('auth/password-recovery', data);
   },
+  newPassword(data: NewPasswordType) {
+    return instance.post('auth/new-password', data)
+  },
+  logout(){
+    return instance.post('auth/logout')
+  }
 }

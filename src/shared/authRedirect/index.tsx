@@ -1,24 +1,21 @@
 import { useRouter } from 'next/router';
 import { FC, PropsWithChildren } from 'react';
 
-import { useMeQuery } from '@/features/auth/hooks/useMeQuery';
+import { useMeQuery } from '@/features/auth/hooks/login/useMeQuery';
+import { Spinner } from '@/shared/spinner';
+import { PATHS } from '@/constants/routes';
 
 export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
-  const { isLoading, isError } = useMeQuery();
-  const router = useRouter();
+  const { isError, isLoading } = useMeQuery();
+  const { push, pathname } = useRouter();
+  const isAuthPage = !pathname.includes(PATHS.PUBLIC.LOGIN)
 
-  const isAuthPage =
-        router.pathname === '/login' ||
-        router.pathname === '/registration' ||
-        router.pathname === '/confirm-email' ||
-        router.pathname === '/registration/sent';
-
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if(isLoading) {
+    return <Spinner/>
   }
 
-  if (isError && !isAuthPage) {
-    router.push('/login');
+  if (isError && isAuthPage) {
+    push(PATHS.PUBLIC.LOGIN);
   } else {
     return <>{children}</>
   }

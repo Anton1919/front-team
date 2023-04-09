@@ -8,6 +8,8 @@ import { Button } from '@/shared/button/Button';
 import img from '@/assets/images/confirmed.png';
 import { Container } from '@/shared/container';
 
+import { PATHS } from '@/constants/routes';
+
 import s from './Confirmed.module.scss'
 
 export const Confirmed = () => {
@@ -17,7 +19,7 @@ export const Confirmed = () => {
     <Container className={s.container}>
       <h2>Congratulations!</h2>
       <p>Your email has been confirmed</p>
-      <Button button_name={'Sign In'} button_handler={() => router.push('/login')} />
+      <Button button_name={'Sign In'} button_handler={() => router.push(PATHS.PUBLIC.LOGIN)} />
       <Image className={s.img} src={img} alt={'Congratulations'}/>
     </Container>
   );

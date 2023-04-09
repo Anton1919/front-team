@@ -8,13 +8,15 @@ import { BaseInput } from '@/shared/input/'
 import { PasswordInput } from '@/shared/input/'
 import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
-import { useLoginValid } from '@/features/auth/hooks/useLoginValid';
+import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
+
+import { PATHS } from '@/constants/routes';
 
 import s from './Login.module.scss'
 
 export const Login = () => {
 
-  const { register, errors, emailRules, passwordRules, handleSubmit, onSubmit } = useLoginValid()
+  const { register, errors, usernameRules, passwordRules, handleSubmit, onSubmit, errorServer, isLoading } = useLoginValid()
 
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
@@ -25,29 +27,29 @@ export const Login = () => {
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
-          id={'e-mail'}
-          name={'email'}
-          label={'Email'}
+          name={'emailOrUsername'}
+          label={'Email or username'}
           register={register}
-          rules={emailRules}
-          error={errors.email?.message}
+          rules={usernameRules}
+          error={errors.emailOrUsername?.message}
         />
         <div>
           <PasswordInput
-            id={'password'}
             name={'password'}
             label={'Password'}
             register={register}
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <div className={s.forgot}>
+          <Link href={PATHS.PUBLIC.FORGOT_PASSWORD} className={s.forgot}>
             <span>Forgot password</span>
-          </div>
+          </Link>
+          <div className={s.serverErrorMessage}>{errorServer}</div>
         </div>
-        <Button button_name={'Sign in'}/>
+
+        <Button button_name={'Sign in'} disabled={isLoading}/>
       </form>
       <p className={s.text}>Don’t have an account?</p>
-      <Link className={s.link} href={'/registration'}>Sign up</Link>
+      <Link className={s.link} href={PATHS.PUBLIC.REGISTER}>Sign up</Link>
     </Card>)
 };

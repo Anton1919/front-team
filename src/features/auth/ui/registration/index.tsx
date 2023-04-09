@@ -9,7 +9,7 @@ import { PasswordInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { Card } from '@/shared/card';
 
-import { useRegister } from '../../hooks/useRegister';
+import { useRegisterValid } from '@/features/auth/hooks/registration/useRegisterValid';
 
 import s from './Registration.module.scss';
 
@@ -24,7 +24,8 @@ export const Registration = () => {
     handleSubmit,
     onSubmit,
     serverErrorMessage,
-    isLoading } = useRegister()
+    userNameRules,
+    isLoading } = useRegisterValid()
 
   return (
     <Card maxWidth={'378px'} className={s.container}>
@@ -34,6 +35,13 @@ export const Registration = () => {
         <Image src={facebook} alt={'facebook'} />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <BaseInput
+          name={'username'}
+          label={'username'}
+          register={register}
+          rules={userNameRules}
+          error={errors.username?.message}
+        />
         <BaseInput
           id={'e-mail'}
           name={'email'}
@@ -62,7 +70,7 @@ export const Registration = () => {
       </form>
       <div className={s.serverError}>{serverErrorMessage}</div>
       <p className={s.text}>Do you have an account?</p>
-      <Link className={s.link} href={'/login'}>Sign In</Link>
+      <Link className={s.link} href={'/auth'}>Sign In</Link>
     </Card>
   );
 };

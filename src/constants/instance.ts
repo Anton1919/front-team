@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://photostockmy.vercel.app/',
+  baseURL: 'https://photostock-wine.vercel.app/',
   withCredentials: true
 });
 
