@@ -8,6 +8,8 @@ import { Container } from '@/shared/container';
 
 import { Button } from '@/shared/button/Button';
 
+import { PATHS } from '@/constants/routes';
+
 import s from './ConfirmExpired.module.scss'
 
 export const ConfirmExpired = () => {
@@ -18,7 +20,7 @@ export const ConfirmExpired = () => {
     <Container className={s.container}>
       <h2>Email verification link expired</h2>
       <p>Looks like the verification link has expired. Not to worry, we can send the link again</p>
-      <Button button_name={'Resend the code'} button_handler={() => push('/auth/forgot-password')} />
+      <Button button_name={'Resend the code'} button_handler={() => push(PATHS.PUBLIC.FORGOT_PASSWORD)} />
       <Image className={s.img} src={img} alt={'expired'}/>
     </Container>
   );

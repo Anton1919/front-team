@@ -1,9 +1,11 @@
-export const publicPaths = {
-  login: '/login',
-  register: '/registration',
-  confirmMail: '/confirm-email',
-  passRecovery: '/password-recovery',
-  forgotPass: '/forgot-password',
-  mailSent: '/confirm-message',
-  confirmed: '/confirm-message/confirmed'
+export const PATHS = {
+  PUBLIC: {
+    LOGIN: '/auth/login',
+    REGISTER: '/auth/registration',
+    CONFIRM_MAIL: '/auth/confirm-email',
+    PASSWORD_RECOVERY: '/auth/password-recovery',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    CONFIRM_MESSAGE: '/auth/confirm-message',
+    CONFIRMED: 'auth/confirm-message/confirmed'
+  }
 } as const

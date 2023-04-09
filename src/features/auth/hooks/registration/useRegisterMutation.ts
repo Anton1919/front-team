@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
 import { AuthAPI } from '@/features/auth/api';
+import { PATHS } from '@/constants/routes';
 
 export const useRegisterMutation = () => {
   const { push } = useRouter();
@@ -9,7 +10,7 @@ export const useRegisterMutation = () => {
     mutationFn: AuthAPI.register,
     retry: false,
     onSuccess: () => {
-      push('/auth/confirm-message');
+      push(PATHS.PUBLIC.CONFIRM_MESSAGE);
     }
   });
 };

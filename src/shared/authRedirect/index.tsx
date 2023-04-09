@@ -3,18 +3,19 @@ import { FC, PropsWithChildren } from 'react';
 
 import { useMeQuery } from '@/features/auth/hooks/login/useMeQuery';
 import { Spinner } from '@/shared/spinner';
+import { PATHS } from '@/constants/routes';
 
 export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   const { isError, isLoading } = useMeQuery();
   const { push, pathname } = useRouter();
-  const isAuthPage = !pathname.includes('/auth')
+  const isAuthPage = !pathname.includes(PATHS.PUBLIC.LOGIN)
 
   if(isLoading) {
     return <Spinner/>
   }
 
   if (isError && isAuthPage) {
-    push('/auth');
+    push(PATHS.PUBLIC.LOGIN);
   } else {
     return <>{children}</>
   }

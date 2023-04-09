@@ -10,6 +10,8 @@ import facebook from '@/assets/icons/facebook.svg'
 import { Button } from '@/shared/button/Button'
 import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
+import { PATHS } from '@/constants/routes';
+
 import s from './Login.module.scss'
 
 export const Login = () => {
@@ -39,7 +41,7 @@ export const Login = () => {
             rules={passwordRules}
             error={errors.password?.message}
           />
-          <Link href={'/auth/forgot-password'} className={s.forgot}>
+          <Link href={PATHS.PUBLIC.FORGOT_PASSWORD} className={s.forgot}>
             <span>Forgot password</span>
           </Link>
           <div className={s.serverErrorMessage}>{errorServer}</div>
@@ -48,6 +50,6 @@ export const Login = () => {
         <Button button_name={'Sign in'} disabled={isLoading}/>
       </form>
       <p className={s.text}>Don’t have an account?</p>
-      <Link className={s.link} href={'/auth/registration'}>Sign up</Link>
+      <Link className={s.link} href={PATHS.PUBLIC.REGISTER}>Sign up</Link>
     </Card>)
 };
