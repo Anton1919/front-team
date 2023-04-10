@@ -16,14 +16,13 @@ const ProfilePhoto = () => {
   const [img, setImg] = useState(null);
 
   const [selectedFile, setSelectedFile] = useState<>(null);
-
   const onButtonHandler = () => {
     setCloseModal(true);
     setToggleModal(false);
   };
 
   const onMainPhotoSelected = (e: any) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     setToggleModal(true);
     setSelectedFile(e.target.files[0]);
 
@@ -37,7 +36,7 @@ const ProfilePhoto = () => {
 
       // setImg(data)
     } catch (e: any) {
-      console.log(e.response?.data);
+      // console.log(e.response?.data);
     }
   };
 
