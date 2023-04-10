@@ -1,94 +1,136 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import FormData from 'form-data';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
-import { Button } from '@/shared/button/Button';
-import { ModalWindow } from '@/shared/modalWindow/modalWindow';
+import { Button } from "@/shared/button/Button";
+import { ModalWindow } from "@/shared/modalWindow/modalWindow";
 
-import svg from './image.svg';
-import s from './ProfilePhoto.module.scss';
+import svg from "./image.svg";
+import deleteSvg from "./delete.svg";
+
+import s from "./ProfilePhoto.module.scss";
 
 const ProfilePhoto = () => {
   const [closeModal, setCloseModal] = useState(false);
-
   const [toggleModal, setToggleModal] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [fileDataURL, setFileDataURL] = useState(undefined);
+  const [savePhoto, setSavePhoto] = useState(false);
 
-  const [img, setImg] = useState(null);
-
-  const [selectedFile, setSelectedFile] = useState<>(null);
+  console.log(imageFile);
+  console.log(fileDataURL);
 
   const onButtonHandler = () => {
     setCloseModal(true);
     setToggleModal(false);
   };
-
-  const onMainPhotoSelected = (e: any) => {
-    console.log(e.target.files[0]);
+  const onPhotoSelected = (e) => {
     setToggleModal(true);
-    setSelectedFile(e.target.files[0]);
+    setImageFile(e.target?.files[0]);
+  };
+  const onSavePhotoHandler = () => {
+    setSavePhoto(true);
+    setCloseModal(false);
+  };
+  const onDeletePhotoHandler = () => {
+    setImageFile(null);
+    setFileDataURL(undefined);
+    setSavePhoto(false);
+  };
 
-    try {
-      if (!selectedFile) return;
+  useEffect(() => {
+    let fileReader,
+      isCancel = false;
 
-      const formData = new FormData();
-      formData.append('profilePhoto', selectedFile);
-
-      // const { data } = await axios.post('', formData)
-
-      // setImg(data)
-    } catch (e: any) {
-      console.log(e.response?.data);
+    if (imageFile) {
+      fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const { result } = e.target;
+        if (result && !isCancel) {
+          setFileDataURL(result);
+        }
+      };
+      fileReader.readAsDataURL(imageFile);
     }
-  };
-
-  const handleUpload = async () => {
-    // preLoader TRUE
-    // preLoader FALSE
-  };
+    return () => {
+      isCancel = true;
+      if (fileReader && fileReader.readyState === 1) {
+        fileReader.abort();
+      }
+    };
+  }, [imageFile]);
 
   return (
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
-        <div className={s.photo}>
-          <Image src={svg} alt={'profile photo'} width={46} height={46} />
+        <div className={savePhoto ? s.fileDataURL : s.photo}>
+          <Image
+            src={savePhoto ? fileDataURL : svg}
+            alt={"profile photo"}
+            width={46}
+            height={46}
+          />
+          {savePhoto && (
+            <button className={s.deletePhoto} onClick={onDeletePhotoHandler}>
+              <Image src={deleteSvg} alt={"delete"} width={15} height={15} />
+            </button>
+          )}
         </div>
       </div>
 
       <div className={s.addPhoto}>
         <Button
-          button_name={'Add a Profile Photo'}
-          variant={'transparent'}
+          button_name={"Add a Profile Photo"}
+          variant={"transparent"}
           button_handler={onButtonHandler}
         />
       </div>
 
       <ModalWindow
         isOpen={closeModal}
-        title={'Add a Profile Photo'}
+        title={"Add a Profile Photo"}
         setIsOpen={setCloseModal}
+        clearStateInProfilePhoto={onDeletePhotoHandler}
       >
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={svg} alt={'profile photo'} width={46} height={46} />
+              <Image src={svg} alt={"profile photo"} width={46} height={46} />
             </div>
             <label className={s.selectPhotoFromComputer}>
-              <input type="file" onChange={onMainPhotoSelected} />
+              <input type="file" onChange={onPhotoSelected} />
               Select from computer
             </label>
           </>
         ) : (
           <>
             <div className={s.modalSave}>
+              <Image
+                className={s.img1}
+                src={fileDataURL}
+                alt={"profile photo"}
+                fill
+                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              />
+
               <div className={s.modalImage}>
-                <Image src={''} alt={'profile photo'} width={46} height={46} />
+                <Image
+                  className={s.img2}
+                  src={fileDataURL}
+                  alt={"profile photo"}
+                  fill
+                  sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+                />
               </div>
             </div>
             <div className={s.saveButton}>
               <Button
-                button_name={'Save'}
-                variant={'primary'}
-                button_handler={handleUpload}
+                button_name={"Save"}
+                variant={"primary"}
+                button_handler={onSavePhotoHandler}
               />
             </div>
           </>

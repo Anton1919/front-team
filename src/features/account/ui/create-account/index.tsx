@@ -11,13 +11,12 @@ const CreateAccount = () => {
   const { register, errors, onSubmit, handleSubmit } = useCreateAccountValid();
   return (
     <div className={s.createAccountBlock}>
-      <div className={s.title}>
-        Create profile
-        <ProfilePhoto />
-      </div>
+      <div className={s.title}>Create profile</div>
       <div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <div>ADDDD PPPHOOTTOO</div>
+          <div>
+            <ProfilePhoto />
+          </div>
           <div className={s.inputs}>
             <BaseInput
               id={"userName"}
