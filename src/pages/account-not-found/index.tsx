@@ -3,12 +3,21 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { Button } from '@/shared/button/Button';
+import { selectIsAuth, useAuthStore } from '@/features/auth/store';
+import { PATHS } from '@/constants/routes';
 
 import s from './AccountNotFound.module.scss'
 
 const NotFoundAccount = () => {
 
   const { push } = useRouter()
+
+  const isAuth = useAuthStore(selectIsAuth)
+
+  if (!isAuth) {
+    push(PATHS.PUBLIC.LOGIN)
+    return
+  }
 
   const toCreateProfilePage = () => {
     push('/create-account')
