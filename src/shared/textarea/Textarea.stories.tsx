@@ -50,7 +50,7 @@ export const Default: Story = {
     id: '1',
     disabled: false,
     label: 'Default',
-    sx: { width: 300, height: 100 },
+    style: { width: 300, height: 100 },
     name: 'Default',
     placeholder: 'Default placeholder'
   }
@@ -60,7 +60,7 @@ export const Error: Story = {
     id: '2',
     disabled: false,
     label: 'Error',
-    sx: { width: 300, height: 100 },
+    style: { width: 300, height: 100 },
     name: 'Default',
     placeholder: 'Error placeholder',
     error: 'New error message'
@@ -71,7 +71,7 @@ export const Disable: Story = {
     id: '3',
     disabled: true,
     label: 'Disable',
-    sx: { width: 300, height: 100 },
+    style: { width: 300, height: 100 },
     name: 'Disable',
     placeholder: 'Disable placeholder'
   }

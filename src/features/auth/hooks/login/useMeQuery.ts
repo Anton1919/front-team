@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { AuthAPI } from '@/features/auth/api';
 import { selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/store';
@@ -6,6 +6,7 @@ import { selectSetEmail, selectSetIsAuth, useAuthStore } from '@/features/auth/s
 export const useMeQuery = () => {
   const setEmail = useAuthStore(selectSetEmail)
   const setIsAuth = useAuthStore(selectSetIsAuth)
+  const { mutate: refreshToken } = useRefreshToken()
   return useQuery({
     queryFn: AuthAPI.me,
     queryKey: ['me'],
@@ -20,8 +21,18 @@ export const useMeQuery = () => {
       setIsAuth(true)
     },
     onError: () => {
-      setIsAuth(false)
-      setEmail('')
+      refreshToken()
     }
+  });
+};
+
+export const useRefreshToken = () => {
+  return useMutation({
+    mutationFn: AuthAPI.refreshToken,
+    retry: false,
+    onSuccess: (data: any) => {
+      const { accessToken } = data
+      localStorage.setItem('accessToken', accessToken);
+    },
   });
 };

@@ -19,7 +19,7 @@ export const AuthAPI = {
     return instance.post('auth/login', data);
   },
   refreshToken() {
-    return instance.post('auth/refresh-token', {}, { withCredentials: true });
+    return instance.post('auth/refresh-token').then(res => res.data);
   },
   forgotPassword(data: ForgotField) {
     return instance.post('auth/password-recovery', data);
