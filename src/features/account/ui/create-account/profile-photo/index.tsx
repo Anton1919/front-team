@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import { Button } from "@/shared/button/Button";
-import { ModalWindow } from "@/shared/modalWindow/modalWindow";
+import { Button } from '@/shared/button/Button';
+import { ModalWindow } from '@/shared/modalWindow/modalWindow';
 
-import svg from "./image.svg";
-import deleteSvg from "./delete.svg";
+import svg from './image.svg';
+import deleteSvg from './delete.svg';
 
-import s from "./ProfilePhoto.module.scss";
+import s from './ProfilePhoto.module.scss';
 
 const ProfilePhoto = () => {
   const [closeModal, setCloseModal] = useState(false);
@@ -65,13 +65,13 @@ const ProfilePhoto = () => {
         <div className={savePhoto ? s.fileDataURL : s.photo}>
           <Image
             src={savePhoto ? fileDataURL : svg}
-            alt={"profile photo"}
+            alt={'profile photo'}
             width={46}
             height={46}
           />
           {savePhoto && (
             <button className={s.deletePhoto} onClick={onDeletePhotoHandler}>
-              <Image src={deleteSvg} alt={"delete"} width={15} height={15} />
+              <Image src={deleteSvg} alt={'delete'} width={15} height={15}/>
             </button>
           )}
         </div>
@@ -79,26 +79,26 @@ const ProfilePhoto = () => {
 
       <div className={s.addPhoto}>
         <Button
-          button_name={"Add a Profile Photo"}
-          variant={"transparent"}
+          button_name={'Add a Profile Photo'}
+          variant={'transparent'}
           button_handler={onButtonHandler}
         />
       </div>
 
       <ModalWindow
         isOpen={closeModal}
-        title={"Add a Profile Photo"}
+        title={'Add a Profile Photo'}
         setIsOpen={setCloseModal}
         clearStateInProfilePhoto={onDeletePhotoHandler}
       >
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={svg} alt={"profile photo"} width={46} height={46} />
+              <Image src={svg} alt={'profile photo'} width={46} height={46}/>
             </div>
             <label className={s.selectPhotoFromComputer}>
-              <input type="file" onChange={onPhotoSelected} />
-              Select from computer
+              <input type="file" onChange={onPhotoSelected}/>
+                            Select from computer
             </label>
           </>
         ) : (
@@ -107,7 +107,7 @@ const ProfilePhoto = () => {
               <Image
                 className={s.img1}
                 src={fileDataURL}
-                alt={"profile photo"}
+                alt={'profile photo'}
                 fill
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -118,7 +118,7 @@ const ProfilePhoto = () => {
                 <Image
                   className={s.img2}
                   src={fileDataURL}
-                  alt={"profile photo"}
+                  alt={'profile photo'}
                   fill
                   sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -128,8 +128,8 @@ const ProfilePhoto = () => {
             </div>
             <div className={s.saveButton}>
               <Button
-                button_name={"Save"}
-                variant={"primary"}
+                button_name={'Save'}
+                variant={'primary'}
                 button_handler={onSavePhotoHandler}
               />
             </div>
