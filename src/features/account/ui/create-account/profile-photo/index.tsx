@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/shared/button/Button';
@@ -12,7 +12,7 @@ import s from './ProfilePhoto.module.scss';
 const ProfilePhoto = () => {
   const [closeModal, setCloseModal] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFile, setImageFile] = useState<File>(null);
   const [fileDataURL, setFileDataURL] = useState(undefined);
   const [savePhoto, setSavePhoto] = useState(false);
 
@@ -20,7 +20,7 @@ const ProfilePhoto = () => {
     setCloseModal(true);
     setToggleModal(false);
   };
-  const onPhotoSelected = (e) => {
+  const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     setToggleModal(true);
     setImageFile(e.target?.files[0]);
   };
