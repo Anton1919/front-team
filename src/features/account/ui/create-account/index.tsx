@@ -2,10 +2,10 @@ import React from 'react';
 
 import s from '@/features/account/ui/create-account/CreateAccount.module.scss';
 import { BaseInput } from '@/shared/input';
-import { Textarea } from '@/shared/textarea/Textarea';
 import { Button } from '@/shared/button/Button';
 import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
 import ProfilePhoto from '@/features/account/ui/create-account/profile-photo';
+import { Textarea } from '@/shared/textarea/Textarea';
 
 const CreateAccount = () => {
   const { register, errors, onSubmit, isLoading, handleSubmit, userNameRules } = useCreateAccountValid()
@@ -17,60 +17,57 @@ const CreateAccount = () => {
       </div>
       <div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <ProfilePhoto />
+          <div className={s.profilePhoto}>
+            <ProfilePhoto />
+          </div>
           <div className={s.inputs}>
             <BaseInput
+              required={true}
               id={'userName'}
-              name={'userName'}
+              name={'username'}
               label={'UserName'}
               register={register}
-              // rules={userNameRules}
-              error={errors.userName?.message}
+              // error={errors.userName?.message}
             />
             <BaseInput
               id={'name'}
               name={'name'}
               label={'Name'}
               register={register}
-              // rules={emailRules}
-              error={errors.name?.message}
+              // error={errors.name?.message}
             />
             <BaseInput
               id={'surName'}
               name={'surName'}
               label={'SurName'}
               register={register}
-              // rules={emailRules}
-              error={errors.surName?.message}
-            />
-            <input
-              type="date"
-              id={'date'}
-              name={'date'}
-              // label={'Date'}
-              // register={register}
-              // rules={emailRules}
-              // error={errors.dateOfBirth?.message}
+              // error={errors.surName?.message}
             />
             <BaseInput
-              id={'city'}
-              name={'city'}
-              label={'City'}
+
+              label={'Date of birthday'}
+              type="date"
+              name={'birthday'}
               register={register}
-              // rules={emailRules}
-              error={errors.city?.message}
+              // error={errors.dateOfBirth?.message}
+            />
+
+            <BaseInput
+              label={'City'}
+              name={'city'}
+              register={register}
+              // error={errors.city?.message}
             />
             <div>About Me</div>
+
             <Textarea
-              id={'about-me'}
-              label={'aboutMe'}
-              // register={register}
-              sx={{ width: 494, height: 84 }}
-              name={'About Me'}
-              error={errors.aboutMe?.message}
-              handleTextareaChange={() => {
-              }}
+              className={s.textArea}
+              register={register}
+              // sx={{ width:94, height: 84 }}
+              name={'aboutMe'}
+              // error={errors.aboutMe?.message}
             />
+
             <Button button_name={'Create Account'}/>
           </div>
         </form>
