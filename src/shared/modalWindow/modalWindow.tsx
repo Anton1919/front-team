@@ -1,16 +1,16 @@
-import React, { FC, ReactNode } from "react";
-import Image from "next/image";
+import React, { FC, ReactNode } from 'react';
+import Image from 'next/image';
 
-import closeIcon from "../../assets/icons/close.svg";
+import closeIcon from '../../assets/icons/close.svg';
 
-import s from "./modalWindow.module.scss";
+import s from './modalWindow.module.scss';
 
 type ModalWindowProps = {
-  isOpen: boolean;
-  title: string;
-  setIsOpen: (value: boolean) => void;
-  children: ReactNode;
-  clearStateInProfilePhoto?: () => void;
+    isOpen: boolean;
+    title: string;
+    setIsOpen: (value: boolean) => void;
+    children: ReactNode;
+    clearStateInProfilePhoto?: () => void;
 };
 
 export const ModalWindow: FC<ModalWindowProps> = ({
@@ -37,7 +37,7 @@ export const ModalWindow: FC<ModalWindowProps> = ({
               {title}
               <Image
                 src={closeIcon}
-                alt={"close"}
+                alt={'close'}
                 className={s.closeModal}
                 onClick={closeModalHandler}
               />
