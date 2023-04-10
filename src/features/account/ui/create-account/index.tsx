@@ -65,11 +65,9 @@ const CreateAccount = () => {
               id={'about-me'}
               label={'aboutMe'}
               // register={register}
-              sx={{ width: 494, height: 84 }}
+              style={{ width: 494, height: 84 }}
               name={'About Me'}
               error={errors.aboutMe?.message}
-              handleTextareaChange={() => {
-              }}
             />
             <Button button_name={'Create Account'}/>
           </div>
