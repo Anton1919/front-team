@@ -49,15 +49,15 @@ export const useCreateAccountStore = create(immer<AccountState>((set) => ({
 
 })))
 
-export const selectSetName = (state: CreateAccountState) => state.setName
-export const selectSetUserName = (state: CreateAccountState) => state.setUserName
-export const selectSetSurName = (state: CreateAccountState) => state.setSurName
-export const selectSetDateOfBirth = (state: CreateAccountState) => state.setDateOfBirth
-export const selectSetCity = (state: CreateAccountState) => state.setCity
-export const selectSetAboutMe = (state: CreateAccountState) => state.setAboutMe
-export const selectName = (state: CreateAccountState): string => state.name
-export const selectUserName = (state: CreateAccountState): string => state.userName
-export const selectSurName = (state: CreateAccountState): string => state.surName
-export const selectDateOfBirth = (state: CreateAccountState): string => state.dateOfBirth
-export const selectCity = (state: CreateAccountState): string => state.city
-export const selectAboutMe = (state: CreateAccountState): string => state.aboutMe
+export const selectSetName = (state: AccountState) => state.setName
+export const selectSetUserName = (state: AccountState) => state.setUserName
+export const selectSetSurName = (state: AccountState) => state.setSurName
+export const selectSetDateOfBirth = (state: AccountState) => state.setDateOfBirth
+export const selectSetCity = (state: AccountState) => state.setCity
+export const selectSetAboutMe = (state: AccountState) => state.setAboutMe
+export const selectName = (state: AccountState): string => state.name
+export const selectUserName = (state: AccountState): string => state.userName
+export const selectSurName = (state: AccountState): string => state.surName
+export const selectDateOfBirth = (state: AccountState): string => state.dateOfBirth
+export const selectCity = (state: AccountState): string => state.city
+export const selectAboutMe = (state: AccountState): string => state.aboutMe

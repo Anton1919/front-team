@@ -32,7 +32,7 @@ export const useCreateAccountValid = () => {
     setName(data.name)
     setUserName(data.userName)
     setCity(data.city)
-    setDateOfBirth(data.dateOfBirth)
+    setDateOfBirth(data.birthday)
     setAboutMe(data.aboutMe)
     setSurName(data.surName)
   }

@@ -2,7 +2,7 @@ export type CreateAccountDataType = {
     userName: string
     name: string
     surName: string
-    dateOfBirth: string
+    birthday: string
     city: string
     aboutMe: string
 

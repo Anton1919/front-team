@@ -11,21 +11,25 @@ import { Spinner } from '@/shared/spinner';
 const CreateAccount = () => {
   const { register, errors, onSubmit, isLoading, handleSubmit } = useCreateAccountValid()
   const buttonName=isLoading?<Spinner size={20}/>: 'Create account'
+  // const form1 = document.querySelector('#fff-form')
+  // const data = new FormData(form1)
+  // console.log('data',data)
   return (
     <div className={s.createAccountBlock}>
       <div className={s.title}>
         Create profile
       </div>
       <div>
-        <form id={'fff'} className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.profilePhoto}>
-            <ProfilePhoto name={'accountProfile'} />
+            <ProfilePhoto  />
           </div>
           <div className={s.inputs}>
             <BaseInput
+              id={'fff-form'}
               required={true}
-              id={'userName'}
-              name={'username'}
+              // id={'userName'}
+              name={'userName'}
               label={'UserName'}
               register={register}
               error={errors.userName?.message}
@@ -51,7 +55,7 @@ const CreateAccount = () => {
               type="date"
               name={'birthday'}
               register={register}
-              error={errors.dateOfBirth?.message}
+              error={errors.birthday?.message}
             />
 
             <BaseInput
