@@ -1,0 +1,98 @@
+@import "src/styles/constants";
+
+.wrapper {
+  width: 188px;
+  min-height: 247px;
+  background-color: $dark-color_900;
+}
+
+.photoWrapper {
+  height: 189px;
+  width: 189px;
+}
+
+.photo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 189px;
+  border-radius: 50%;
+  background-color: $dark-color_500;
+  cursor: pointer;
+}
+
+.addPhoto {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 36px;
+  width: 189px;
+  border: 1px solid $accent-color_500;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $accent-color_500;
+  border-radius: 2px;
+  margin-top: 24px;
+  cursor: pointer;
+
+  & input[type="file"] {
+    display: none;
+  }
+}
+
+.modalPhoto {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: 72px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 222px;
+  height: 228px;
+  background-color: $dark-color_500;
+}
+
+.selectPhotoFromComputer {
+  margin: 80px auto 108px auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 36px;
+  width: 219px;
+  background-color: $accent-color_500;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $light-color_100;
+  border-radius: 2px;
+  cursor: pointer;
+
+  & input[type="file"] {
+    display: none;
+  }
+}
+
+.modalSave {
+  margin: 0 auto;
+  width: 332px;
+  height: 340px;
+  background-color: #0a6638;
+}
+
+.modalImage {
+  width: 332px;
+  height: 340px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.saveButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 36px;
+}

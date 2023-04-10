@@ -1,4 +1,4 @@
-@import '../../styles/constants';
+@import "../../styles/constants";
 
 .modalBlock {
   height: 100vh;
@@ -10,20 +10,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 
   .modalContent {
-    width: 438px;
+    min-width: 438px;
     background: $dark-color_300;
 
     .title {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       height: 59px;
       width: 100%;
       font-size: 20px;
       font-weight: 700;
       border-bottom: 1px solid $dark-color_100;
-      padding-left: 24px;
+      padding: 0px 29px 0px 24px;
 
       .closeModal {
         height: 14px;

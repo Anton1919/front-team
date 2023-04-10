@@ -1,24 +1,23 @@
 import React from 'react';
 
 import s from '@/features/account/ui/create-account/CreateAccount.module.scss';
-import {BaseInput} from '@/shared/input';
-import {Textarea} from '@/shared/textarea/Textarea';
-import {Button} from '@/shared/button/Button';
-import {useCreateAccountValid} from '@/features/account/hooks/useCreateAccountValid';
+import { BaseInput } from '@/shared/input';
+import { Textarea } from '@/shared/textarea/Textarea';
+import { Button } from '@/shared/button/Button';
+import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
+import ProfilePhoto from '@/features/account/ui/create-account/profile-photo';
 
 const CreateAccount = () => {
-  const {register, errors, onSubmit, isLoading, handleSubmit, userNameRules} = useCreateAccountValid()
+  const { register, errors, onSubmit, isLoading, handleSubmit, userNameRules } = useCreateAccountValid()
 
   return (
-
-      <div className={s.createAccountBlock}>
-        <div className={s.title}>
-          Create profile
-        </div>
-        <div>
-
+    <div className={s.createAccountBlock}>
+      <div className={s.title}>
+        Create profile
+      </div>
+      <div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <div>ADDDD PPPHOOTTOO</div>
+          <ProfilePhoto />
           <div className={s.inputs}>
             <BaseInput
               id={'userName'}
