@@ -110,7 +110,6 @@ const ProfilePhoto = () => {
               (max-width: 1200px) 50vw,
               33vw"
               />
-
               <div className={s.modalImage}>
                 <Image
                   className={s.img2}
