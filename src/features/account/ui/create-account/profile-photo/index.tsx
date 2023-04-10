@@ -13,7 +13,7 @@ const ProfilePhoto = () => {
   const [closeModal, setCloseModal] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
   const [imageFile, setImageFile] = useState<File>();
-  const [fileDataURL, setFileDataURL] = useState(undefined);
+  const [fileDataURL, setFileDataURL] = useState<string>('');
   const [savePhoto, setSavePhoto] = useState(false);
 
   const onButtonHandler = () => {
@@ -31,21 +31,21 @@ const ProfilePhoto = () => {
     setCloseModal(false);
   };
   const onDeletePhotoHandler = () => {
-    setImageFile(null);
-    setFileDataURL(undefined);
+    setImageFile(undefined);
+    setFileDataURL('');
     setSavePhoto(false);
   };
 
   useEffect(() => {
-    let fileReader,
+    let fileReader: FileReader,
       isCancel = false;
 
     if (imageFile) {
       fileReader = new FileReader();
       fileReader.onload = (e) => {
-        const { result } = e.target;
+        const { result } = e.target as FileReader;
         if (result && !isCancel) {
-          setFileDataURL(result);
+          setFileDataURL(result as string);
         }
       };
       fileReader.readAsDataURL(imageFile);
