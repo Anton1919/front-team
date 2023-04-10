@@ -1,18 +1,14 @@
 .headerBlock{
-  color:#FFFFFF;
+  color: #FFFFFF;
   height: 60px;
-  display: flex;
-  border-bottom:solid 1px #333333;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
+  border-bottom: solid 1px #333333;
 
   .title{
     font-size: 26px;
     font-style: normal;
     font-weight: 600;
     height: 60px;
-    padding-top:12px;
+    padding-top: 12px;
   }
 }
 
@@ -20,4 +16,9 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
 }
