@@ -23,7 +23,7 @@ const ProfilePhoto = () => {
   const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     setToggleModal(true);
     if (e) {
-      setImageFile(e.target?.files[0]);
+      setImageFile(e?.target?.files[0]);
     }
   };
   const onSavePhotoHandler = () => {
