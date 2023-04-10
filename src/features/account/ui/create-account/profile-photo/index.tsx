@@ -12,7 +12,7 @@ import s from './ProfilePhoto.module.scss';
 const ProfilePhoto = () => {
   const [closeModal, setCloseModal] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
-  const [imageFile, setImageFile] = useState<File>(null);
+  const [imageFile, setImageFile] = useState<File>();
   const [fileDataURL, setFileDataURL] = useState(undefined);
   const [savePhoto, setSavePhoto] = useState(false);
 
