@@ -16,9 +16,6 @@ const ProfilePhoto = () => {
   const [fileDataURL, setFileDataURL] = useState(undefined);
   const [savePhoto, setSavePhoto] = useState(false);
 
-  console.log(imageFile);
-  console.log(fileDataURL);
-
   const onButtonHandler = () => {
     setCloseModal(true);
     setToggleModal(false);
