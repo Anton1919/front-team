@@ -1,5 +1,5 @@
 export type CreateAccountDataType = {
-    userName: string
+    username: string
     name: string
     surName: string
     birthday: string

@@ -11,7 +11,7 @@ export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   const isAuthPage = !pathname.includes(PATHS.PUBLIC.LOGIN)
 
   if(isLoading) {
-    return <Spinner size={100}/>
+    return <Spinner />
   }
 
   if (isError && isAuthPage) {

@@ -1,42 +1,36 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Image from 'next/image';
-import FormData from 'form-data';
 
 import { Button } from '@/shared/button/Button';
 import { ModalWindow } from '@/shared/modalWindow/modalWindow';
 
 import svg from './image.svg';
 import s from './ProfilePhoto.module.scss';
-
-const ProfilePhoto = () => {
+type Props = {
+  setImgFile: (data: File) => void
+}
+const ProfilePhoto:FC<Props> = ({ setImgFile }) => {
   const [closeModal, setCloseModal] = useState(false);
 
   const [toggleModal, setToggleModal] = useState(false);
 
-  const [img, setImg] = useState(null);
-
-  const [selectedFile, setSelectedFile] = useState<>(null);
+  const [selectedFile, setSelectedFile] = useState<string>();
   const onButtonHandler = () => {
     setCloseModal(true);
     setToggleModal(false);
   };
 
   const onMainPhotoSelected = (e: any) => {
-    // console.log(e.target.files[0]);
     setToggleModal(true);
-    setSelectedFile(e.target.files[0]);
 
+    setImgFile(e.target.files[0])
+    const objectUrl = URL.createObjectURL(e.target.files[0])
+    setSelectedFile(objectUrl)
     try {
       if (!selectedFile) return;
 
-      const formData = new FormData();
-      formData.append('profilePhoto', selectedFile);
-
-      // const { data } = await axios.post('', formData)
-
-      // setImg(data)
     } catch (e: any) {
-      // console.log(e.response?.data);
+
     }
   };
 
@@ -49,7 +43,7 @@ const ProfilePhoto = () => {
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
         <div className={s.photo}>
-          <Image src={svg} alt={'profile photo'} width={46} height={46} />
+          <Image src={selectedFile ? selectedFile : svg} alt={'profile photo'} width={46} height={46} />
         </div>
       </div>
 
@@ -69,7 +63,7 @@ const ProfilePhoto = () => {
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={svg} alt={'profile photo'} width={46} height={46} />
+              <Image src={selectedFile ? selectedFile : svg} alt={'profile photo'} width={46} height={46} />
             </div>
             <label className={s.selectPhotoFromComputer}>
               <input type="file" onChange={onMainPhotoSelected} />
@@ -80,7 +74,7 @@ const ProfilePhoto = () => {
           <>
             <div className={s.modalSave}>
               <div className={s.modalImage}>
-                <Image src={''} alt={'profile photo'} width={46} height={46} />
+                <Image src={selectedFile as string} alt={'profile photo'} width={46} height={46} />
               </div>
             </div>
             <div className={s.saveButton}>

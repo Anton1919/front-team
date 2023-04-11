@@ -2,39 +2,27 @@ import { useForm } from 'react-hook-form';
 
 import { useCreateAccountMutation } from '@/features/account/hooks/useCreateAccountMutation';
 import { CreateAccountDataType } from '@/features/account/types';
-import {
-  selectSetAboutMe,
-  selectSetCity,
-  selectSetDateOfBirth,
-  selectSetName, selectSetSurName,
-  selectSetUserName,
-  useCreateAccountStore
-} from '@/features/account/bll/store';
 
-export const useCreateAccountValid = () => {
-
-  const setName = useCreateAccountStore(selectSetName)
-  const setUserName = useCreateAccountStore(selectSetUserName)
-  const setDateOfBirth = useCreateAccountStore(selectSetDateOfBirth)
-  const setCity = useCreateAccountStore(selectSetCity)
-  const setSurName = useCreateAccountStore(selectSetSurName)
-  const setAboutMe = useCreateAccountStore(selectSetAboutMe)
-
+export const useCreateAccountValid = (imgFile: File) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CreateAccountDataType>();
-  const { mutate: createAccount, isError, isLoading } = useCreateAccountMutation()
+
+  const { mutate: createAccount, isLoading } = useCreateAccountMutation()
 
   const onSubmit = (data: CreateAccountDataType) => {
-    createAccount(data)
-    setName(data.name)
-    setUserName(data.userName)
-    setCity(data.city)
-    setDateOfBirth(data.birthday)
-    setAboutMe(data.aboutMe)
-    setSurName(data.surName)
+    const formData = new FormData()
+    formData.append('avatar', imgFile)
+    formData.append('username', data.username)
+    formData.append('surName', data.surName)
+    formData.append('birthday', data.birthday)
+    formData.append('city', data.city)
+    formData.append('aboutMe', data.aboutMe)
+    formData.append('name', data.name)
+
+    createAccount(formData)
   }
 
   const userNameRules = { required: 'You must enter your user name.' }
