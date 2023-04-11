@@ -1,49 +1,58 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/shared/button/Button';
 import { ModalWindow } from '@/shared/modalWindow/modalWindow';
 
 import svg from './image.svg';
+import deleteSvg from './delete.svg';
+
 import s from './ProfilePhoto.module.scss';
-type Props = {
-  setImgFile: (data: File) => void
+
+type PropsType = {
+  setImgFile: (img: File) => void
 }
-const ProfilePhoto:FC<Props> = ({ setImgFile }) => {
+
+const ProfilePhoto = ({ setImgFile }: PropsType) => {
   const [closeModal, setCloseModal] = useState(false);
-
   const [toggleModal, setToggleModal] = useState(false);
+  const [avatarURL, setAvatarURL] = useState<string>();
 
-  const [selectedFile, setSelectedFile] = useState<string>();
   const onButtonHandler = () => {
     setCloseModal(true);
     setToggleModal(false);
   };
-
-  const onMainPhotoSelected = (e: any) => {
+  const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     setToggleModal(true);
-
-    setImgFile(e.target.files[0])
-    const objectUrl = URL.createObjectURL(e.target.files[0])
-    setSelectedFile(objectUrl)
-    try {
-      if (!selectedFile) return;
-
-    } catch (e: any) {
-
+    if (e.target.files && e.target.files.length) {
+      const objectUrl = URL.createObjectURL(e.target?.files[0] as File)
+      setAvatarURL(objectUrl);
+      setImgFile(e.target?.files[0])
     }
   };
+  const onSavePhotoHandler = () => {
+    setCloseModal(false);
 
-  const handleUpload = async () => {
-    // preLoader TRUE
-    // preLoader FALSE
+  };
+  const onDeletePhotoHandler = () => {
+    setAvatarURL(undefined);
   };
 
   return (
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
-        <div className={s.photo}>
-          <Image src={selectedFile ? selectedFile : svg} alt={'profile photo'} width={46} height={46} />
+        <div className={avatarURL ? s.fileDataURL : s.photo}>
+          <Image
+            src={avatarURL ? avatarURL : svg}
+            alt={'profile photo'}
+            width={46}
+            height={46}
+          />
+          {avatarURL && (
+            <button className={s.deletePhoto} onClick={onDeletePhotoHandler}>
+              <Image src={deleteSvg} alt={'delete'} width={15} height={15}/>
+            </button>
+          )}
         </div>
       </div>
 
@@ -59,29 +68,47 @@ const ProfilePhoto:FC<Props> = ({ setImgFile }) => {
         isOpen={closeModal}
         title={'Add a Profile Photo'}
         setIsOpen={setCloseModal}
+        clearStateInProfilePhoto={onDeletePhotoHandler}
       >
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={selectedFile ? selectedFile : svg} alt={'profile photo'} width={46} height={46} />
+              <Image src={svg} alt={'profile photo'} width={46} height={46}/>
             </div>
             <label className={s.selectPhotoFromComputer}>
-              <input type="file" onChange={onMainPhotoSelected} />
-              Select from computer
+              <input type="file" onChange={onPhotoSelected}/>
+                  Select from computer
             </label>
           </>
         ) : (
           <>
             <div className={s.modalSave}>
+              <Image
+                className={s.img1}
+                src={avatarURL ? avatarURL : svg }
+                alt={'profile photo'}
+                fill
+                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              />
               <div className={s.modalImage}>
-                <Image src={selectedFile as string} alt={'profile photo'} width={46} height={46} />
+                <Image
+                  className={s.img2}
+                  src={avatarURL ? avatarURL : svg }
+                  alt={'profile photo'}
+                  fill
+                  sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+                />
               </div>
             </div>
             <div className={s.saveButton}>
               <Button
                 button_name={'Save'}
                 variant={'primary'}
-                button_handler={handleUpload}
+                button_handler={onSavePhotoHandler}
               />
             </div>
           </>

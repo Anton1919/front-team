@@ -15,7 +15,7 @@ const CreateAccount = () => {
   return (
     <div className={s.createAccountBlock}>
       <div className={s.title}>
-        Create profile
+                Create profile
       </div>
       <div>
         <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
