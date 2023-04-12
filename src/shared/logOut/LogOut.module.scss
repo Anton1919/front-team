@@ -7,6 +7,7 @@
   cursor: pointer;
 
   &:hover {
-    color: $accent-color_100;
+    filter: invert(54%) sepia(75%) saturate(385%) hue-rotate(184deg) brightness(102%) contrast(101%);
+
   }
 }

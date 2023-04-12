@@ -79,7 +79,6 @@ const CreateAccount = () => {
               name={'aboutMe'}
               error={errors.aboutMe?.message}
             />
-
             <Button disabled={isLoading} button_name={'Create account'}/>
           </div>
         </form>

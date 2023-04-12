@@ -18,7 +18,7 @@ export const SharedLink: FC<LinkPropsType> = ({ text, href, icon, }) => {
   return (
     <Link className={style.link} href={href}>
 
-      <Image className={style.icon} alt={'icon'} src={icon}/>
+      <Image className={pathname == href ? style.active :style.icon} alt={'icon'} src={icon}/>
 
       <span className={pathname == href ? style.active : style.link}>{text}</span>
 
