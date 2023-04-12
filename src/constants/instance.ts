@@ -6,6 +6,8 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
+  if (typeof window !== 'undefined') {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
+  }
   return config
 })

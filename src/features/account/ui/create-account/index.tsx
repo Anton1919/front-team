@@ -24,7 +24,6 @@ const CreateAccount = () => {
           </div>
           <div className={s.inputs}>
             <BaseInput
-
               required={true}
               name={'username'}
               label={'username'}

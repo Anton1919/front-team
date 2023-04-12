@@ -11,7 +11,7 @@ const LoginPage = () => {
   const isAuth = useAuthStore(selectIsAuth)
 
   if (isAuth) {
-    push('/account-not-found')
+    push('/profile')
     return
   }
 

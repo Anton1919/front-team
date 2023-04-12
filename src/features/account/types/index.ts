@@ -5,5 +5,6 @@ export type CreateAccountDataType = {
     birthday: string
     city: string
     aboutMe: string
-
 }
+
+export type ProfileType = Partial<CreateAccountDataType>
