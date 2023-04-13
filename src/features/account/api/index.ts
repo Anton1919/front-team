@@ -8,9 +8,9 @@ export const AccountAPI = {
       .then(res => res.data)
   },
 
-  async getProfile(): CreateAccountDataType {
-    return await instance
-      .get<CreateAccountDataType>('user/profile')
+  getProfile(): Promise<CreateAccountDataType> {
+    return instance
+      .get('user/profile')
       .then(res => res.data)
   }
 }

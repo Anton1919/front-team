@@ -44,7 +44,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
         <div className={avatarURL ? s.fileDataURL : s.photo}>
           <Image
             src={avatarURL ? avatarURL : svg}
-            alt={'profile photo'}
+            alt={'my-profile photo'}
             width={46}
             height={46}
           />
@@ -73,7 +73,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={svg} alt={'profile photo'} width={46} height={46}/>
+              <Image src={svg} alt={'my-profile photo'} width={46} height={46}/>
             </div>
             <label className={s.selectPhotoFromComputer}>
               <input type="file" onChange={onPhotoSelected}/>
@@ -86,7 +86,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
               <Image
                 className={s.img1}
                 src={avatarURL ? avatarURL : svg }
-                alt={'profile photo'}
+                alt={'my-profile photo'}
                 fill
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -96,7 +96,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
                 <Image
                   className={s.img2}
                   src={avatarURL ? avatarURL : svg }
-                  alt={'profile photo'}
+                  alt={'my-profile photo'}
                   fill
                   sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,

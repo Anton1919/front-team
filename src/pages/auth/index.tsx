@@ -11,7 +11,7 @@ const LoginPage = () => {
   const isAuth = useAuthStore(selectIsAuth)
 
   if (isAuth) {
-    push('/profile')
+    push('/my-profile')
     return
   }
 

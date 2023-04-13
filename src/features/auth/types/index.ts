@@ -17,3 +17,9 @@ export type NewPasswordType = {
   newPassword: string,
   recoveryCode: string
 }
+
+export type MeResponseType = {
+  userId: number,
+  email: string,
+  username: string
+}

@@ -7,5 +7,10 @@ export const useGetProfile = () => {
     queryFn: AccountAPI.getProfile,
     queryKey: ['getProfile'],
     retry: false,
+    refetchInterval: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchIntervalInBackground: false,
   });
 };

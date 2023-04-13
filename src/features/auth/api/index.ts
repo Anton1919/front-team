@@ -1,10 +1,10 @@
 import { instance } from '@/constants/instance';
-import { AuthDataType, LoginDataType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
+import { AuthDataType, LoginDataType, MeResponseType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
 import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 
 export const AuthAPI = {
-  me() {
-    return instance.get('auth/me');
+  me(): Promise<MeResponseType> {
+    return instance.get('auth/me').then(res => res.data);
   },
   register(data: AuthDataType) {
     return instance.post('auth/registration', data);
