@@ -9,7 +9,8 @@
 }
 
 .trigger {
-  width: 85px;
+  min-width: 85px;
+  padding: 0 35px;
   height: 36px;
   background-color: $dark-color_900;
 
@@ -62,5 +63,6 @@
 
 
 .content {
+
 
 }

@@ -7,7 +7,12 @@ import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccount
 import ProfilePhoto from '@/features/account/ui/create-account/profile-photo';
 import { Textarea } from '@/shared/textarea/Textarea';
 
-const CreateAccount = () => {
+type PropsType = {
+  title?: string
+  buttonText: string
+}
+
+const CreateAccount = ({ title, buttonText }: PropsType) => {
   const [imgFile, setImgFile] = useState<File>();
 
   const {
@@ -25,9 +30,7 @@ const CreateAccount = () => {
 
   return (
     <div className={s.createAccountBlock}>
-      <div className={s.title}>
-                Create profile
-      </div>
+      {title && <div className={s.title}>{title}</div>}
       <div>
         <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.profilePhoto}>
@@ -80,7 +83,7 @@ const CreateAccount = () => {
               error={errors.aboutMe?.message}
             />
             <div className={s.buttonContainer}>
-              <Button disabled={isLoading} button_name={'Create account'}/>
+              <Button disabled={isLoading} button_name={buttonText}/>
             </div>
           </div>
         </form>

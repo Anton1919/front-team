@@ -23,7 +23,7 @@ const AccountCreate = () => {
       <Head>
         <title>Create Account</title>
       </Head>
-      <CreateAccount/>
+      <CreateAccount title={'Create Account'} buttonText={'Create Account'}/>
     </>
   );
 };

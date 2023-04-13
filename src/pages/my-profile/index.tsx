@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useGetProfile } from '@/features/account/hooks/useGetProfile';
 import { Spinner } from '@/shared/spinner';
+import Profile from '@/features/account/ui/my-profile';
 
 const ProfilePage = () => {
   const { push } = useRouter();
@@ -16,7 +17,15 @@ const ProfilePage = () => {
     return
   }
 
-  return (isLoading ? <Spinner/> : 'Сюда вставить компоненту profile из features с пропсами из data'
+  return (
+    <>
+      {isLoading
+        ? <Spinner/>
+        : <Profile data={data}/>}
+      {/*'Сюда вставить компоненту profile из features с пропсами из data'*/}
+
+    </>
+
   );
 };
 

@@ -1,0 +1,111 @@
+@import "src/styles/constants";
+
+.profile {
+  width: 1060px;
+  padding: 24px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profilePhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 204px;
+  height: 204px;
+  margin-right: 38px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid red;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.descriptionHeader {
+  margin-top: 9px;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 36px;
+    color: $light-color_100;
+  }
+}
+
+.subscribers {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 19px;
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3px 0;
+    margin-right: 72px;
+    min-width: 79px;
+    height: 48px;
+
+    & span {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+      color: $light-color_100;
+    }
+
+    & p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: $light-color_100;
+    }
+  }
+}
+
+.textDescriptions {
+  margin-top: 23px;
+  width: 100%;
+  min-height: 73px;
+  padding: 3px 0;
+
+  & p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: $light-color_100;
+  }
+}
+
+.photoContent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.photo {
+  min-width: 234px;
+  height: 228px;
+  & img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+  }
+}

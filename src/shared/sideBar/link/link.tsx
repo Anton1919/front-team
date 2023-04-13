@@ -15,6 +15,7 @@ type LinkPropsType = {
 }
 export const SharedLink: FC<LinkPropsType> = ({ text, href, icon, }) => {
   const { pathname } = useRouter()
+  console.log(pathname)
   return (
     <Link className={style.link} href={href}>
 
