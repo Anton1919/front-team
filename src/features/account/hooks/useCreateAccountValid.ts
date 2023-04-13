@@ -25,6 +25,13 @@ export const useCreateAccountValid = (imgFile: File) => {
     createAccount(formData)
   }
 
-  const userNameRules = { required: 'You must enter your user name.' }
-  return { onSubmit, handleSubmit, register, userNameRules, isLoading, errors }
+  const userNameRules = { required: 'You must enter your username.',
+    minLength: { value: 6, message: 'Username must be more than 6 characters.' },
+    maxLength: { value: 30, message: 'Username must be shorted than 30 characters.' }
+  }
+  const surNameRules = { required: 'You must enter your username.' }
+  const birthdayRules = { required: 'You must enter your date of birthday.' }
+  const nameRules = { required: 'You must enter your name.' }
+  const cityRules = { required: 'You must enter your city.' }
+  return { cityRules,nameRules,birthdayRules, surNameRules, onSubmit, handleSubmit, register, userNameRules, isLoading, errors }
 }

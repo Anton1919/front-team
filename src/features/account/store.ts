@@ -43,10 +43,6 @@ export const useCreateAccountStore = create(immer<AccountState>((set) => ({
     state.aboutMe = aboutMe
   }),
 
-  // setProfilePhoto: (file: string) => set( state  => {
-  //   state.profilePhoto = file
-  // })
-
 })))
 
 export const selectSetName = (state: AccountState) => state.setName

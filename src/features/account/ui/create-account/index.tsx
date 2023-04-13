@@ -10,7 +10,18 @@ import { Textarea } from '@/shared/textarea/Textarea';
 const CreateAccount = () => {
   const [imgFile, setImgFile] = useState<File>();
 
-  const { register, errors, onSubmit, isLoading, handleSubmit } = useCreateAccountValid(imgFile as File)
+  const {
+    register,
+    errors,
+    onSubmit,
+    isLoading,
+    handleSubmit,
+    userNameRules,
+    surNameRules,
+    nameRules,
+    cityRules,
+    birthdayRules
+  } = useCreateAccountValid(imgFile as File)
 
   return (
     <div className={s.createAccountBlock}>
@@ -24,27 +35,28 @@ const CreateAccount = () => {
           </div>
           <div className={s.inputs}>
             <BaseInput
-              required={true}
               name={'username'}
               label={'username'}
               register={register}
+              rules={userNameRules}
               error={errors.username?.message}
             />
             <BaseInput
-              required={true}
+              rules={nameRules}
               name={'name'}
               label={'Name'}
               register={register}
               error={errors.name?.message}
             />
             <BaseInput
-              required={true}
+              rules={surNameRules}
               name={'surName'}
               label={'SurName'}
               register={register}
               error={errors.surName?.message}
             />
             <BaseInput
+              rules={birthdayRules}
               label={'Date of birthday'}
               placeholder={'01.02.2023'}
               name={'birthday'}
@@ -53,7 +65,7 @@ const CreateAccount = () => {
             />
 
             <BaseInput
-              required={true}
+              rules={cityRules}
               label={'City'}
               name={'city'}
               register={register}
@@ -67,8 +79,9 @@ const CreateAccount = () => {
               name={'aboutMe'}
               error={errors.aboutMe?.message}
             />
-
-            <Button disabled={isLoading} button_name={'Create account'}/>
+            <div className={s.buttonContainer}>
+              <Button disabled={isLoading} button_name={'Create account'}/>
+            </div>
           </div>
         </form>
       </div>
