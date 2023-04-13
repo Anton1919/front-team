@@ -10,12 +10,13 @@ const ProfilePage = () => {
 
   const { data, isLoading, error } = useGetProfile()
   console.log(data)
+
   if (error?.response.data.statusCode === 404) {
-    push('/account-not-found')
+    push('/my-profile/profile-not-found')
     return
   }
 
-  return (isLoading ? <Spinner/> : 'Сюда вставить компоненту my-profile с пропсами из data'
+  return (isLoading ? <Spinner/> : 'Сюда вставить компоненту profile из features с пропсами из data'
   );
 };
 

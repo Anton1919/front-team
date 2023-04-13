@@ -20,8 +20,9 @@ const NotFoundAccount = () => {
   }
 
   const toCreateProfilePage = () => {
-    push('/create-account')
+    push('profile-settings')
   }
+
   return (
     <>
       <Head>
@@ -31,8 +32,8 @@ const NotFoundAccount = () => {
         <div className={s.title}>Oops This place looks empty</div>
         <div className={s.text}>You do not an account to create one, click below and then fill in all the fields
         </div>
-        <div className={s.button}><Button button_handler={toCreateProfilePage} button_name={'Create Account'}/>
-        </div>
+        <divx><Button button_handler={toCreateProfilePage} button_name={'Create Account'}/>
+        </divx>
       </div>
     </>
   );
