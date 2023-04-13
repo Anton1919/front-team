@@ -8,7 +8,7 @@ import logOutI from '@/assets/icons/logOut.svg';
 export const linksData = [
   { title: 'Home', path: '/', icon: homeI },
   { title: 'Create', path: '/bla1', icon: createI },
-  { title: 'My profile', path: '/bla2', icon: MyProfileI },
+  { title: 'My profile', path: '/my-profile', icon: MyProfileI },
   { title: 'Statistics', path: '/bla3', icon: statisticsI },
   { title: 'Favorites', path: '/bla4', icon: FavoritesI },
   { title: 'Log Out', path: '/bla5', icon: logOutI },
