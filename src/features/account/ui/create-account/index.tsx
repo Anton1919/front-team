@@ -34,17 +34,17 @@ const CreateAccount = () => {
             />
             <BaseInput
               required={true}
-              name={'name'}
+              name={'firstName'}
               label={'Name'}
               register={register}
-              error={errors.name?.message}
+              error={errors.firstName?.message}
             />
             <BaseInput
               required={true}
-              name={'surName'}
+              name={'lastName'}
               label={'SurName'}
               register={register}
-              error={errors.surName?.message}
+              error={errors.lastName?.message}
             />
             <BaseInput
               label={'Date of birthday'}

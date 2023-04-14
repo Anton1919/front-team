@@ -3,7 +3,7 @@ import { CreateAccountDataType } from '@/features/account/types';
 
 export const AccountAPI = {
   createAccount(data: CreateAccountDataType) {
-    return instance.post('user/profile', data)
+    return instance.put('user/profile', data)
       .then(res => res.data)
   }
 }
