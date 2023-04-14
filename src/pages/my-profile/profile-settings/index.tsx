@@ -7,6 +7,7 @@ import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 import { PATHS } from '@/constants/routes';
 
 import ProfileSettings from '@/features/account/ui/profile-settings';
+import ProfileSettingsContainer from '@/features/account/ui/profile-settings-container';
 
 const AccountCreate = () => {
 
@@ -24,7 +25,8 @@ const AccountCreate = () => {
       <Head>
         <title>Create Account</title>
       </Head>
-      <ProfileSettings title={'Create Account'} buttonText={'Create Account'}/>
+      <ProfileSettingsContainer/>
+      {/*<ProfileSettings title={'Create Account'} buttonText={'Create Account'}/>*/}
     </>
   );
 };

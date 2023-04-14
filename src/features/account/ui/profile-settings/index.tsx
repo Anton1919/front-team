@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import s from '@/features/account/ui/profile-settings/ProfileSettings.module.scss';
 import { BaseInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
-import ProfilePhoto from '@/features/account/ui/profile-settings/profile-photo';
 import { Textarea } from '@/shared/textarea/Textarea';
 
 type PropsType = {
-  title?: string
+
   buttonText: string
+  imgFile:any
 }
 
-const ProfileSettings = ({ title, buttonText }: PropsType) => {
-  const [imgFile, setImgFile] = useState<File>();
+const ProfileSettings = ({  buttonText ,imgFile }: PropsType) => {
 
   const {
     register,
@@ -30,11 +29,10 @@ const ProfileSettings = ({ title, buttonText }: PropsType) => {
 
   return (
     <div className={s.createAccountBlock}>
-      {title && <div className={s.title}>{title}</div>}
       <div>
         <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.profilePhoto}>
-            <ProfilePhoto setImgFile={setImgFile} />
+            {/*<ProfilePhoto setImgFile={setImgFile} />*/}
           </div>
           <div className={s.inputs}>
             <BaseInput
@@ -82,7 +80,8 @@ const ProfileSettings = ({ title, buttonText }: PropsType) => {
               name={'aboutMe'}
               error={errors.aboutMe?.message}
             />
-            <div className={s.buttonContainer}>
+            {/*<div className={s.buttonContainer}>*/}
+            <div>
               <Button disabled={isLoading} button_name={buttonText}/>
             </div>
           </div>
