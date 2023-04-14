@@ -3,12 +3,16 @@ import * as Tabs from '@radix-ui/react-tabs';
 
 import s from './Tab.module.scss'
 
-export type TabList = {
+type PropsType = {
     value: string
     component: JSX.Element
 }
 
-const Tab = ({ tabList }: TabList[]) => {
+export type TabList = {
+    tabList: PropsType[]
+}
+
+const Tab = ({ tabList }: TabList) => {
   const disabled = false
 
   const [tabValue, setTabValue] = useState<string>(tabList[0].value)

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Tab, { TabList } from '@/shared/tab';
 import ProfileSettings from '@/features/account/ui/profile-settings';
 import DevicesTab from '@/features/account/ui/my-profile/DevicesTab';
+import Tab from '@/shared/tab';
 
 const EditProfile = () => {
 
-  const tabListsArray: TabList[] = [
+  const tabListsArray = [
     { value: 'General information', component: <ProfileSettings buttonText={'Save Changes'}/> },
     { value: 'Devices', component: <DevicesTab/> }
   ]
