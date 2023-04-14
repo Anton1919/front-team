@@ -32,8 +32,8 @@ const NotFoundAccount = () => {
         <div className={s.title}>Oops This place looks empty</div>
         <div className={s.text}>You do not an account to create one, click below and then fill in all the fields
         </div>
-        <divx><Button button_handler={toCreateProfilePage} button_name={'Create Account'}/>
-        </divx>
+        <div><Button button_handler={toCreateProfilePage} button_name={'Create Account'}/>
+        </div>
       </div>
     </>
   );
