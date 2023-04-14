@@ -1,9 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
-import google from '@/assets/icons/google.svg';
-import facebook from '@/assets/icons/facebook.svg';
 import { BaseInput } from '@/shared/input';
 import { PasswordInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
@@ -31,8 +28,6 @@ export const Registration = () => {
     <Card maxWidth={'378px'} className={s.container}>
       <h2 className={s.title}>Sign Up</h2>
       <div className={s.icons}>
-        <Image src={google} alt={'google'} />
-        <Image src={facebook} alt={'facebook'} />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
