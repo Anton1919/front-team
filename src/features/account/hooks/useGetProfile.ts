@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { AccountAPI } from '@/features/account/api';
+import { selectSetUser, useCreateAccountStore } from '@/features/account/store';
 
 export const useGetProfile = () => {
+  const setUser = useCreateAccountStore(selectSetUser)
   return useQuery({
     queryFn: AccountAPI.getProfile,
     queryKey: ['getProfile'],
@@ -12,5 +14,8 @@ export const useGetProfile = () => {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchIntervalInBackground: false,
+    onSuccess: (data) => {
+      setUser(data)
+    }
   });
 };

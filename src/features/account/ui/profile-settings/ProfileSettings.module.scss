@@ -1,13 +1,5 @@
-.createAccountBlock {
-  display: flex;
-  flex-direction: column;
-  height: 93vh;
-  align-items: center;
-
-}
 
 .form {
-
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -15,9 +7,7 @@
   height: 80vh;
   border-bottom: solid 1px #333333;
   margin: 23px;
-  .profilePhoto{
 
-  }
   .inputs {
     width: 65%;
     .textArea{

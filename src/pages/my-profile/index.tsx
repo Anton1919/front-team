@@ -19,12 +19,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      {/*{isLoading*/}
-      {/*  ? <Spinner/>*/}
-      {/*  : */}
       <Profile />
-      {/*'Сюда вставить компоненту profile из features с пропсами из data'*/}
-
     </>
 
   );

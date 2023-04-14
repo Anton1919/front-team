@@ -3,7 +3,7 @@ import React from 'react';
 import s from '@/features/account/ui/profile-settings/ProfileSettings.module.scss';
 import { BaseInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
-import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
+import { useChangeSettings } from '@/features/account/hooks/useChangeSettings';
 import { Textarea } from '@/shared/textarea/Textarea';
 
 type PropsType = {
@@ -12,7 +12,7 @@ type PropsType = {
   imgFile:any
 }
 
-const ProfileSettings = ({  buttonText ,imgFile }: PropsType) => {
+const ProfileSettings = ({  buttonText, imgFile }: PropsType) => {
 
   const {
     register,
@@ -21,11 +21,11 @@ const ProfileSettings = ({  buttonText ,imgFile }: PropsType) => {
     isLoading,
     handleSubmit,
     userNameRules,
-  } = useCreateAccountValid(imgFile as File)
+  } = useChangeSettings()
 
   return (
-    <div className={s.createAccountBlock}>
-      <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <form  className={s.form} onSubmit={handleSubmit(data => onSubmit({ ...data, avatar: imgFile as File }))}>
         <div className={s.inputs}>
           <BaseInput
             name={'username'}
@@ -35,12 +35,12 @@ const ProfileSettings = ({  buttonText ,imgFile }: PropsType) => {
             error={errors.username?.message}
           />
           <BaseInput
-            name={'name'}
+            name={'firstName'}
             label={'First name'}
             register={register}
           />
           <BaseInput
-            name={'surName'}
+            name={'lastName'}
             label={'Second name'}
             register={register}
           />

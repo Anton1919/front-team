@@ -1,10 +1,11 @@
 export type CreateAccountDataType = {
     username: string
-    name: string
-    surName: string
+    firstName: string
+    lastName: string
     birthday: string
     city: string
-    aboutMe: string
+    aboutMe: string,
+    avatar: File
 }
 
-export type ProfileType = Partial<CreateAccountDataType>
+export type ProfileType = Partial<CreateAccountDataType> & { profilePhotoLink?: string}

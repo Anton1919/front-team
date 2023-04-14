@@ -1,23 +1,19 @@
 import React from 'react';
-
 import { NextPage } from 'next';
-
 import Image from 'next/image';
-
 import { useRouter } from 'next/router';
 
 import { Button } from '@/shared/button/Button';
+
+import { useGetProfile } from '@/features/account/hooks/useGetProfile';
 
 import svg from '../profile-settings/profile-photo/image.svg'
 
 import s from './profile.module.scss'
 
-// type PropsType = {
-//     data?: string | undefined
-// }
-
 const Profile: NextPage = () => {
   const { push } = useRouter();
+  const { data: user  } = useGetProfile();
 
   const testArrayWithPhotoContent = [
     { id: 1, photo: svg },
@@ -43,12 +39,12 @@ const Profile: NextPage = () => {
     <div className={s.profile}>
       <div className={s.about}>
         <div className={s.profilePhoto}>
-          <Image src={svg} alt={'profile photo'} width={204} height={204}/>
+          <Image src={user?.profilePhotoLink || svg} alt={'profile photo'} width={204} height={204}/>
         </div>
 
         <div className={s.description}>
           <div className={s.descriptionHeader}>
-            <h1 className={s.title}>URLProfile</h1>
+            <h1 className={s.title}>{user?.username}</h1>
             <Button button_name={'Profile Settings'} variant={'white'} button_handler={onClickHandler}/>
           </div>
 
@@ -68,9 +64,7 @@ const Profile: NextPage = () => {
           </div>
 
           <div className={s.textDescriptions}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>About me: {user?.aboutMe}</p>
           </div>
 
         </div>
