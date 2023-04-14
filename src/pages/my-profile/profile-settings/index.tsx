@@ -3,9 +3,10 @@ import Head from 'next/head';
 
 import { useRouter } from 'next/router';
 
-import CreateAccount from '@/features/account/ui/create-account';
 import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 import { PATHS } from '@/constants/routes';
+
+import ProfileSettings from '@/features/account/ui/profile-settings';
 
 const AccountCreate = () => {
 
@@ -23,7 +24,7 @@ const AccountCreate = () => {
       <Head>
         <title>Create Account</title>
       </Head>
-      <CreateAccount title={'Create Account'} buttonText={'Create Account'}/>
+      <ProfileSettings title={'Create Account'} buttonText={'Create Account'}/>
     </>
   );
 };

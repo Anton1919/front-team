@@ -3,7 +3,7 @@ import React from 'react';
 // import { useRouter } from 'next/router';
 
 // import { useGetProfile } from '@/features/account/hooks/useGetProfile';
-import { Spinner } from '@/shared/spinner';
+// import { Spinner } from '@/shared/spinner';
 import Profile from '@/features/account/ui/my-profile';
 
 const ProfilePage = () => {
@@ -20,8 +20,9 @@ const ProfilePage = () => {
   return (
     <>
       {/*{isLoading*/}
-        ? <Spinner/>
-        : <Profile />
+      {/*  ? <Spinner/>*/}
+      {/*  : */}
+      <Profile />
       {/*'Сюда вставить компоненту profile из features с пропсами из data'*/}
 
     </>

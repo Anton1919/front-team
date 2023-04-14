@@ -1,46 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
-
-import CreateAccount from '@/features/account/ui/create-account';
-
-import DevicesTab from '@/features/account/ui/my-profile/DevicesTab';
 
 import s from './Tab.module.scss'
 
-type PropsType = {
-  titleForFirstTab: string
-  titleForSecondTab: string
+export type TabList = {
+    value: string
+    component: JSX.Element
 }
 
-const Tab = ({ titleForSecondTab, titleForFirstTab }: PropsType) => {
+const Tab = ({ tabList }: TabList[]) => {
   const disabled = false
+
+  const [tabValue, setTabValue] = useState<string>(tabList[0].value)
+
+  const onChangeHandler = (value: string) => {
+    setTabValue(value)
+  }
 
   return (
     <>
-      <Tabs.Root className={s.root} defaultValue="tab1">
+      <Tabs.Root className={s.root} defaultValue={tabList[0].value} value={tabValue} onValueChange={onChangeHandler}>
         <Tabs.List className={s.list} aria-label="Manage your account">
-          <Tabs.Trigger disabled={disabled} className={s.trigger} value="tab1">
-            {titleForFirstTab}
-          </Tabs.Trigger>
-          <Tabs.Trigger disabled={disabled} className={s.trigger} value="tab2">
-            {titleForSecondTab}
-          </Tabs.Trigger>
+          {tabList.map((el) => (
+            <Tabs.Trigger  key={el.value} disabled={disabled} className={s.trigger} value={el.value}>
+              {el.value}
+            </Tabs.Trigger>
+          ))}
         </Tabs.List>
-
-        <Tabs.Content className={s.content} value="tab1">
-          <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-start' }}>
-            <CreateAccount buttonText={'Save Changes'} />
-          </div>
-        </Tabs.Content>
-
-        <Tabs.Content className={s.content} value="tab2">
-          <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-start' }}>
-            <DevicesTab />
-          </div>
-        </Tabs.Content>
-
+        {tabList.map(el => (
+          <Tabs.Content key={el.value} className={s.content} value={el.value}>
+            <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-start' }}>
+              {el.component}
+            </div>
+          </Tabs.Content>
+        ))}
       </Tabs.Root>
-
     </>
   );
 };

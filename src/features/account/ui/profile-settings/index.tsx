@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import s from '@/features/account/ui/create-account/CreateAccount.module.scss';
+import s from '@/features/account/ui/profile-settings/ProfileSettings.module.scss';
 import { BaseInput } from '@/shared/input';
 import { Button } from '@/shared/button/Button';
 import { useCreateAccountValid } from '@/features/account/hooks/useCreateAccountValid';
-import ProfilePhoto from '@/features/account/ui/create-account/profile-photo';
+import ProfilePhoto from '@/features/account/ui/profile-settings/profile-photo';
 import { Textarea } from '@/shared/textarea/Textarea';
 
 type PropsType = {
@@ -12,7 +12,7 @@ type PropsType = {
   buttonText: string
 }
 
-const CreateAccount = ({ title, buttonText }: PropsType) => {
+const ProfileSettings = ({ title, buttonText }: PropsType) => {
   const [imgFile, setImgFile] = useState<File>();
 
   const {
@@ -93,4 +93,4 @@ const CreateAccount = ({ title, buttonText }: PropsType) => {
   );
 };
 
-export default CreateAccount;
+export default ProfileSettings;

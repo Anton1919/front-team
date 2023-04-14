@@ -8,15 +8,15 @@ import { useRouter } from 'next/router';
 
 import { Button } from '@/shared/button/Button';
 
-import svg from '../create-account/profile-photo/image.svg'
+import svg from '../profile-settings/profile-photo/image.svg'
 
 import s from './profile.module.scss'
 
-type PropsType = {
-    data?: string | undefined
-}
+// type PropsType = {
+//     data?: string | undefined
+// }
 
-const Profile: NextPage = ({}: PropsType) => {
+const Profile: NextPage = () => {
   const { push } = useRouter();
 
   const testArrayWithPhotoContent = [
