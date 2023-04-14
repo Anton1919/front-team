@@ -12,15 +12,8 @@ const ProfileSettingsContainer = () => {
   return (
 
     <div className={s.block}>
-
-      <div className={s.a}>
-        <div >
-          <ProfilePhoto setImgFile={setImgFile}/>
-        </div>
-        <div>
-          <ProfileSettings imgFile={imgFile} buttonText={'Edit profile'}/>
-        </div>
-      </div>
+      <ProfilePhoto setImgFile={setImgFile}/>
+      <ProfileSettings imgFile={imgFile} buttonText={'Edit profile'}/>
     </div>
   );
 };
