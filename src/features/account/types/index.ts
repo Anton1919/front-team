@@ -5,5 +5,5 @@ export type CreateAccountDataType = {
     birthday: string
     city: string
     aboutMe: string
-
+    avatar:File
 }

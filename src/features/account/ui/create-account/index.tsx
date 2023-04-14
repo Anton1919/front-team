@@ -10,17 +10,18 @@ import { Textarea } from '@/shared/textarea/Textarea';
 const CreateAccount = () => {
   const [imgFile, setImgFile] = useState<File>();
 
-  const { register, errors, onSubmit, isLoading, handleSubmit } = useCreateAccountValid(imgFile as File)
+  const { register, errors, onSubmit, isLoading, handleSubmit } = useCreateAccountValid()
 
   return (
     <div className={s.createAccountBlock}>
       <div className={s.title}>
-                Create profile
+        Create profile
       </div>
       <div>
-        <form  className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={s.form}
+          onSubmit={handleSubmit(data => onSubmit({ ...data, avatar: imgFile as File }))}>
           <div className={s.profilePhoto}>
-            <ProfilePhoto setImgFile={setImgFile} />
+            <ProfilePhoto setImgFile={setImgFile}/>
           </div>
           <div className={s.inputs}>
             <BaseInput
