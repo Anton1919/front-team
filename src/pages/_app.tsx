@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <AuthRedirect>
         <Layout>
+          <div id="modals" />
           <Component {...pageProps} />
         </Layout>
       </AuthRedirect>

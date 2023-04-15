@@ -1,41 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
-import logOutSvg from '@/assets/icons/logOut.svg'
-import { ModalWindow } from '@/shared/modalWindow/modalWindow';
+import logOutSvg from '@/assets/icons/logOut.svg';
 import { Button } from '@/shared/button/Button';
 import { selectEmail, useAuthStore } from '@/features/auth/store';
 
 import { useLogout } from '@/features/auth/hooks/logout/useLogout';
 
-import s from './LogOut.module.scss'
+import { useModal } from '@/shared/modalWindow/useModal';
+import { ModalLayout } from '@/shared/modalWindow/modalLayout';
+
+import s from './LogOut.module.scss';
 
 export const LogOut = () => {
-  const [openModal, setOpenModal] = useState<boolean>(false)
-  const email = useAuthStore(selectEmail)
+  const { isOpen, openModal, closeModal } = useModal();
+  const email = useAuthStore(selectEmail);
 
-  const { mutate: logout } = useLogout()
+  const { mutateAsync: logout } = useLogout();
 
-  const onClick = () => {
-    setOpenModal(!openModal)
-  }
-
-  const logOutHandler = () => logout()
+  const logOutHandler = async () => {
+    await logout();
+    closeModal();
+  };
 
   return (
     <>
-      <div className={s.logOut} onClick={onClick}>
-        <Image src={logOutSvg} alt={'log out icon'}/>
+      <div className={s.logOut} onClick={openModal}>
+        <Image src={logOutSvg} alt={'log out icon'} />
         <span>Log out</span>
       </div>
-      <ModalWindow isOpen={openModal} setIsOpen={setOpenModal} title={'Log out'}>
-        <div>{`Are you really want to log out of your account ${email} ?`}
+      <ModalLayout isOpen={isOpen} closeModal={closeModal} title={'Log out'}>
+        <div>Are you really want to log out of your account {email} ?
           <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
-            <Button button_name={'Yes'} variant={'transparent'} button_handler={logOutHandler}/>
-            <Button button_name={'No'} button_handler={onClick} /> 
+            <Button button_name={'Yes'} variant={'transparent'} button_handler={logOutHandler} />
+            <Button button_name={'No'} button_handler={closeModal} />
           </div>
         </div>
-      </ModalWindow>
+      </ModalLayout>
     </>
   );
 };
