@@ -8,4 +8,4 @@ export type CreateAccountDataType = {
     avatar: File
 }
 
-export type ProfileType = Partial<CreateAccountDataType> & { profilePhotoLink?: string}
+export type ProfileType = Partial<Omit<CreateAccountDataType, 'avatar'>> & { profilePhotoLink?: string}

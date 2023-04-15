@@ -6,6 +6,10 @@ import { useCreateAccountMutation } from '@/features/account/hooks/useCreateAcco
 import { CreateAccountDataType } from '@/features/account/types';
 import { useGetProfile } from '@/features/account/hooks/useGetProfile';
 
+const birthdayPattern = {
+  value: new RegExp('(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)\\d\\d'),
+  message: 'Enter the date in the format 01.08.1998' }
+
 export const useChangeSettings = () => {
   const { data } = useGetProfile()
 
@@ -39,7 +43,7 @@ export const useChangeSettings = () => {
     maxLength: { value: 30, message: 'Username must be shorted than 30 characters.' }
   }
   const surNameRules = { required: 'You must enter your username.' }
-  const birthdayRules = { required: 'You must enter your date of birthday.' }
+  const birthdayRules = { required: 'You must enter your date of birthday.', pattern: birthdayPattern }
   const nameRules = { required: 'You must enter your name.' }
   const cityRules = { required: 'You must enter your city.' }
   return { cityRules,nameRules,birthdayRules, surNameRules, onSubmit, handleSubmit, register, userNameRules, isLoading, errors }

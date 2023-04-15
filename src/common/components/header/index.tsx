@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 
 import { LogOut } from '@/common/components/logOut';
-import { selectIsAuth, useAuthStore } from '@/features/auth/store';
+import { selectAccessToken, useAuthStore } from '@/features/auth/store';
 
 import style from './Header.module.scss'
 
@@ -10,7 +10,7 @@ type HeaderPropsType = {
 }
 
 export const Header: FC<HeaderPropsType> = ({ children }) => {
-  const isAuth = useAuthStore(selectIsAuth)
+  const accessToken = useAuthStore(selectAccessToken)
 
   return (
     <header className={style.headerBlock}>
@@ -18,7 +18,7 @@ export const Header: FC<HeaderPropsType> = ({ children }) => {
         <div className={style.title}>INCtagram</div>
         {children}
 
-        {isAuth && <LogOut/>}
+        {accessToken && <LogOut/>}
       </div>
     </header>
   );
