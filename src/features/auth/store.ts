@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 type AuthState = {
     email: string;
@@ -10,7 +11,7 @@ type AuthState = {
     setIsAuth: (isAuth: boolean) => void;
 }
 
-export const useAuthStore = create(immer<AuthState>((set) => ({
+export const useAuthStore = create(persist(immer<AuthState>((set) => ({
   email: '',
   isAuth: false,
   username: '',
@@ -23,7 +24,12 @@ export const useAuthStore = create(immer<AuthState>((set) => ({
   setIsAuth: (isAuth: boolean) => set(state => {
     state.isAuth = isAuth
   })
-})))
+}
+)),
+{
+  name: 'auth',
+  storage: createJSONStorage(() => sessionStorage)
+}))
 
 export const selectEmail = (state: AuthState): string => state.email
 export const selectSetEmail = (state: AuthState) => state.setEmail
