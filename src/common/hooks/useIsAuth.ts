@@ -5,16 +5,20 @@ import { useEffect } from 'react';
 import { selectIsAuth, useAuthStore } from '@/features/auth/store';
 
 export const useIsAuth = () => {
-  const { push } = useRouter()
+  const { push, pathname } = useRouter()
 
   const isAuth = useAuthStore(selectIsAuth)
+  const paths = pathname.includes('/auth')
 
   useEffect(() => {
     if (!isAuth) {
       push('/auth')
       return
-    } else {
-      push('/')
     }
-  },[push, isAuth])
+
+    if (isAuth && paths) {
+      push('/')
+      return
+    }
+  },[isAuth])
 }
