@@ -2,7 +2,7 @@ import { FC, KeyboardEvent, MouseEvent, ReactNode, useCallback, useEffect, useRe
 
 import ReactDOM from 'react-dom';
 
-import s from '@/shared/modalWindow/modalWindow.module.scss';
+import s from './modalWindow.module.scss';
 
 type PropsType = {
   isOpen: boolean

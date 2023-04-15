@@ -1,17 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
-import logOutSvg from '@/assets/icons/logOut.svg';
-import { Button } from '@/shared/button/Button';
-import logOutSvg from '@/common/assets/icons/logOut.svg'
-import { ModalWindow } from '@/common/components/modalWindow/modalWindow';
+import logOutSvg from '@/common/assets/icons/logOut.svg';
 import { Button } from '@/common/components/button/Button';
 import { selectEmail, useAuthStore } from '@/features/auth/store';
 
 import { useLogout } from '@/features/auth/hooks/logout/useLogout';
 
-import { useModal } from '@/shared/modalWindow/useModal';
-import { ModalLayout } from '@/shared/modalWindow/modalLayout';
+import { useModal } from '@/common/components/modalWindow/useModal';
+import { ModalLayout } from '@/common/components/modalWindow/modalLayout';
 
 import s from './LogOut.module.scss';
 

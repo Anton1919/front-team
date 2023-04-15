@@ -2,9 +2,11 @@ import React, { FC, ReactNode } from 'react';
 
 import Image from 'next/image';
 
-import { ModalOverlay } from '@/shared/modalWindow/modalOverlay';
-import s from '@/shared/modalWindow/modalWindow.module.scss';
-import closeIcon from '@/assets/icons/close.svg';
+import closeIcon from 'src/common/assets/icons/close.svg';
+
+import { ModalOverlay } from '@/common/components/modalWindow/modalOverlay';
+
+import s from './modalWindow.module.scss';
 
 type PropsType = {
   title: string
