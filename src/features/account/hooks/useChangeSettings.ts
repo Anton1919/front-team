@@ -28,13 +28,9 @@ export const useChangeSettings = () => {
 
   const onSubmit = async (data: CreateAccountDataType) => {
     const formData = new FormData()
-    formData.append('avatar', data.avatar)
-    formData.append('username', data.username)
-    formData.append('lastName', data.lastName)
-    formData.append('birthday', data.birthday)
-    formData.append('city', data.city)
-    formData.append('aboutMe', data.aboutMe)
-    formData.append('firstName', data.firstName)
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value)
+    })
     await createAccount(formData)
   }
 
