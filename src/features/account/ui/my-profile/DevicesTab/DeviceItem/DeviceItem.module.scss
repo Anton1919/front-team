@@ -1,0 +1,73 @@
+@import "src/styles/constants";
+
+.aboutDeviceBlock {
+  display: flex;
+  flex-direction: column;
+  width: 726px;
+
+  & h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: $light-color_100;
+  }
+}
+
+.description {
+  margin-top: 12px;
+  padding: 18px;
+  display: flex;
+  justify-content: flex-start;
+  background: $dark-color_500;
+
+  & img {
+    margin-right: 12px;
+  }
+}
+
+.info {
+  margin-right: 55%;
+
+  & span {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $light-color_100;
+  }
+
+  .IP {
+    margin-top: 13px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $light-color_100;
+  }
+
+  .lastVisit {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $light-color_100;
+  }
+
+  .active {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: $accent-color_500;
+  }
+
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
