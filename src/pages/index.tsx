@@ -1,15 +1,19 @@
 import Head from 'next/head'
 import React from 'react';
 
-import SideBar from '@/common/components/sideBar/sideBar';
+import { getLayout } from '@/common/components/layout/BaseLayout';
+import { NextPageWithLayout } from '@/pages/_app';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <SideBar/>
     </>
   )
 }
+
+Home.getLayout = getLayout
+
+export default Home
