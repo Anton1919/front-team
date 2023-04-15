@@ -20,7 +20,6 @@ export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
         <SideBar/>
         <main>{children}</main>
       </div>
-
     </>
   );
 };
