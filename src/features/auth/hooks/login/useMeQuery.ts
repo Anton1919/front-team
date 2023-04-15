@@ -32,6 +32,7 @@ export const useRefreshToken = () => {
   const setAccessToken = useAuthStore(selectSetAccessToken);
 
   return useQuery({
+    queryKey:['refresh-token'],
     queryFn: AuthAPI.refreshToken,
     retry: false,
     enabled: false,
