@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { Button } from '@/shared/button/Button';
+import { Button } from '@/common/components/button/Button';
 
 import { useGetProfile } from '@/features/account/hooks/useGetProfile';
 

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
 
-import SideBar from '@/shared/sideBar/sideBar';
+import SideBar from '@/common/components/sideBar/sideBar';
 
 export default function Home() {
   return (

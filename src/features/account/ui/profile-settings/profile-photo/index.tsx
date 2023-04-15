@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 
-import { Button } from '@/shared/button/Button';
-import { ModalWindow } from '@/shared/modalWindow/modalWindow';
+import { Button } from '@/common/components/button/Button';
+import { ModalWindow } from '@/common/components/modalWindow/modalWindow';
 
 import svg from './image.svg';
 import deleteSvg from './delete.svg';

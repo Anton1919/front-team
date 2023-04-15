@@ -1,0 +1,38 @@
+@import '../../../../styles/constants';
+
+
+.link {
+  color: $light-color_100;
+  font-weight: 500;
+
+  &:hover {
+    font-weight: 500;
+    filter: invert(54%) sepia(75%) saturate(385%) hue-rotate(184deg) brightness(102%) contrast(101%);
+
+  }
+
+  &:active {
+    color: $accent-color_500;
+    font-weight: 500;
+
+  }
+
+  .icon {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+
+  }
+}
+
+.active {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  color: $accent-color_500;
+  font-weight: 500;
+  filter: invert(51%) sepia(81%) saturate(4127%) hue-rotate(204deg) brightness(98%) contrast(98%);
+}
+

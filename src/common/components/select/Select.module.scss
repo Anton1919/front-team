@@ -1,0 +1,62 @@
+@import "../../../styles/constants";
+
+.trigger {
+  position: relative;
+  width: 210px;
+  height: 36px;
+  background-color: $dark-color_900;
+  border: 1px solid $dark-color_100;
+  border-radius: 2px;
+
+  color: $light-color_900;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:focus {
+    border: 2px solid $accent-color_500;
+  }
+
+  &:disabled {
+    border: 1px solid $dark-color_100;
+    color: $dark-color_100;
+  }
+}
+
+.trigger[data-state = 'open'] {
+  border: 1px solid $light-color_100;
+  background-color: $dark-color_100;
+  color: $light-color_100;
+
+  .icon {
+    transform: rotate(180deg);
+  }
+}
+
+.value {
+  position: absolute;
+  top: 5px;
+  left: 12px;
+}
+
+.icon {
+  position: absolute;
+  top: 14px;
+  left: 180px;
+  fill: red;
+
+  &:disabled {
+    display: none;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 210px;
+  min-height: 109px;
+  border: 1px solid $light-color_100;
+  background-color: $dark-color_100;
+  color: $light-color_100;
+}

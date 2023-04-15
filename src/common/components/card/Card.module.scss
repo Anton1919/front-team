@@ -1,0 +1,12 @@
+@import "../../../styles/constants";
+
+.card {
+  width: 100%;
+  background-color: $dark-color_500;
+  border-radius: 5px;
+  border: 1px solid $dark-color_300;
+  padding: 20px;
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,55 @@
+@import '../../../styles/mixins';
+@import '../../../styles/constants';
+.my_textarea_style {
+    @include textarea($dark-color_300, $light-color_900);
+    &:hover {
+        transition: all 0.2s;
+        border: 1px solid $dark-color_100;
+    }
+    &:focus {
+        transition: all 0.2s;
+        border: 1px solid $accent-color_700;
+    }
+    &:active {
+        transition: all 0.2s;
+        color: $light-color_100;
+        border: 1px solid $light-color_100;
+    }
+}
+
+.my_textarea_error {
+    transition: all 0.2s;
+    @include textarea($danger-color_500, $light-color_100);
+}
+
+.error_text {
+    color: $danger-color_500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.label_text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: flex-end;
+    color: $light-color_900;
+}
+
+.my_disabled_textarea {
+    @include textarea($dark-color_100, $dark-color_100);
+}
+
+.label_text_disabled {
+    transition: all 0.2s;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: flex-end;
+    color: $dark-color_100;
+}

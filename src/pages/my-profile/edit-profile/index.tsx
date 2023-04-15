@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DevicesTab from '@/features/account/ui/my-profile/DevicesTab';
-import Tab from '@/shared/tab';
+import Tab from '@/common/components/tab';
 import ProfileSettingsContainer from '@/features/account/ui/profile-settings-container';
 
 const EditProfile = () => {

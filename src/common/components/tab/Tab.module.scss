@@ -1,0 +1,68 @@
+@import "../../../styles/constants";
+
+.root {
+
+}
+
+.list {
+
+}
+
+.trigger {
+  min-width: 85px;
+  padding: 0 35px;
+  height: 36px;
+  background-color: $dark-color_900;
+
+  color: $dark-color_100;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  border-bottom: 2px solid $dark-color_100;
+}
+
+.trigger[data-state = 'active'] {
+  color: $accent-color_500;
+  border-bottom: 2px solid $accent-color_500;
+  transition: .2s;
+
+  &:disabled {
+    color: $accent-color_900;
+    border-bottom: 2px solid $accent-color_900;
+  }
+
+  &:focus {
+    border: 2px solid $accent-color_500;
+    border-radius: 2px;
+
+  }
+
+  &:hover {
+    background-color: #1C2431;
+    color: $accent-color_500;
+  }
+}
+
+.trigger[data-state = 'inactive'] {
+  transition: .2s;
+  &:disabled {
+    color: $dark-color_300;
+    border-bottom: 2px solid $dark-color_300;
+  }
+
+  &:focus {
+    border: 2px solid $accent-color_700;
+    border-radius: 2px;
+  }
+
+  &:hover {
+    background-color: #1c2431;
+  }
+}
+
+
+.content {
+
+
+}
