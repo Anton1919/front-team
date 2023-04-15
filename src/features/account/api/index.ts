@@ -1,4 +1,4 @@
-import { instance } from '@/constants/instance';
+import { instance } from '@/common/constants/instance';
 import { ProfileType } from '@/features/account/types';
 
 export const AccountAPI = {

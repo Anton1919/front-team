@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Confirmed } from '@/shared/confirmed';
+import { Confirmed } from '@/common/components/confirmed';
 
 const ConfirmedPage = () => {
   return <Confirmed />;

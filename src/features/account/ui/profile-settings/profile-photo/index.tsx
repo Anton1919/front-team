@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 
+import { Button } from '@/common/components/button/Button';
+import { ModalWindow } from '@/common/components/modalWindow/modalWindow';
 import { Button } from '@/shared/button/Button';
 import { ModalLayout } from '@/shared/modalWindow/modalLayout';
 import { useModal } from '@/shared/modalWindow/useModal';

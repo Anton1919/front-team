@@ -3,7 +3,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image'
 
-import { Button } from '@/shared/button/Button';
+import { Button } from '@/common/components/button/Button';
 
 import s from './DevicesTab.module.scss'
 

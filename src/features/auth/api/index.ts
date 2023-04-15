@@ -1,4 +1,4 @@
-import { instance } from '@/constants/instance';
+import { instance } from '@/common/constants/instance';
 import { AuthDataType, LoginDataType, MeResponseType, NewPasswordType, RegistrationConfirmationType } from '@/features/auth/types';
 import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 

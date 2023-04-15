@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { BaseInput } from '@/shared/input';
-import { PasswordInput } from '@/shared/input';
-import { Button } from '@/shared/button/Button';
-import { Card } from '@/shared/card';
+import { BaseInput } from '@/common/components/input';
+import { PasswordInput } from '@/common/components/input';
+import { Button } from '@/common/components/button/Button';
+import { Card } from '@/common/components/card';
 
 import { useRegisterValid } from '@/features/auth/hooks/registration/useRegisterValid';
 

@@ -1,16 +1,14 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link';
 
-import google from '@/assets/icons/google.svg'
-import { Card } from '@/shared/card'
-import { BaseInput } from '@/shared/input/'
-import { PasswordInput } from '@/shared/input/'
-import facebook from '@/assets/icons/facebook.svg'
-import { Button } from '@/shared/button/Button'
+import { Card } from '@/common/components/card'
+import { BaseInput } from '@/common/components/input/'
+import { PasswordInput } from '@/common/components/input/'
+
+import { Button } from '@/common/components/button/Button'
 import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
-import { PATHS } from '@/constants/routes';
+import { PATHS } from '@/common/constants/routes';
 
 import s from './Login.module.scss'
 
@@ -21,10 +19,6 @@ export const Login = () => {
   return (
     <Card maxWidth={'378px'} className={s.loginContainer}>
       <h2 className={s.title}>Sign In</h2>
-      <div className={s.icons}>
-        <Image src={google} alt={'google'}/>
-        <Image src={facebook} alt={'facebook'}/>
-      </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <BaseInput
           name={'emailOrUsername'}

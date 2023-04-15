@@ -3,24 +3,16 @@ import { useRouter } from 'next/router';
 
 import s from 'src/pages/auth/password-recovery/Password-recovery.module.scss'
 
-import { selectIsAuth, useAuthStore } from '@/features/auth/store';
-import { Card } from '@/shared/card';
-import { PasswordInput } from '@/shared/input';
+import { Card } from '@/common/components/card';
+import { PasswordInput } from '@/common/components/input';
 import { useNewPassValid } from '@/features/auth/hooks/forgotPassword/useNewPassValid';
-import { Button } from '@/shared/button/Button';
+import { Button } from '@/common/components/button/Button';
 
 const PasswordRecovery = () => {
-  const { query, push } = useRouter()
+  const { query } = useRouter()
   const recoveryCode = query.recoveryCode;
 
   const { register, errors, passwordRules, cPasswordRules, handleSubmit, onSubmit } = useNewPassValid(`${recoveryCode}`)
-
-  const isAuth = useAuthStore(selectIsAuth)
-
-  if (isAuth) {
-    push('/')
-    return
-  }
 
   return (
     <Card maxWidth={'378px'}>

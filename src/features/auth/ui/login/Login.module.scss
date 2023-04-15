@@ -2,7 +2,8 @@
 @import "src/styles/constants";
 
 .title {
-  @include text-h2()
+  @include text-h2();
+  margin-bottom: 30px;
 }
 
 .form {
@@ -24,11 +25,6 @@
   padding: 10px 0;
   cursor: pointer;
   color: #FFFFFF;
-}
-
-.icons {
-  display: flex;
-  column-gap: 50px;
 }
 
 .text {
