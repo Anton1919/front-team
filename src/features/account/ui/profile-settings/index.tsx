@@ -21,6 +21,7 @@ const ProfileSettings = ({  buttonText, imgFile }: PropsType) => {
     isLoading,
     handleSubmit,
     userNameRules,
+    birthdayRules
   } = useChangeSettings()
 
   return (
@@ -47,8 +48,10 @@ const ProfileSettings = ({  buttonText, imgFile }: PropsType) => {
           <BaseInput
             label={'Date of birthday'}
             placeholder={'01.02.2023'}
+            rules={birthdayRules}
             name={'birthday'}
             register={register}
+            error={errors.birthday?.message}
           />
 
           <BaseInput

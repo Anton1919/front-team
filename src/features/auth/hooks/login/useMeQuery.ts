@@ -34,6 +34,7 @@ export const useRefreshToken = () => {
   return useQuery({
     queryFn: AuthAPI.refreshToken,
     retry: false,
+    enabled: false,
     onSuccess: (data: any) => {
       const { accessToken } = data;
       setAccessToken(accessToken);
