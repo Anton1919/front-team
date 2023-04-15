@@ -2,38 +2,37 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-type AuthState = {
-    email: string;
-    setEmail: (email: string) => void;
-    isAuth: boolean,
-    username: string
-    setUsername: (username: string) => void
-    setIsAuth: (isAuth: boolean) => void;
+export type AuthState = {
+  email: string;
+  accessToken: string,
+  username: string
 }
+type AuthActions = {
+  setEmail: (email: string) => void;
+  setUsername: (username: string) => void
+  setAccessToken: (accessToken: string) => void;
+  clearState: () => void;
+}
+type AuthStore = AuthActions & AuthState
 
-export const useAuthStore = create(persist(immer<AuthState>((set) => ({
+const initialValue: AuthState = {
   email: '',
-  isAuth: false,
-  username: '',
-  setUsername: (username: string) => set(state => {
-    state.username = username
-  }),
-  setEmail: (email: string) => set(state => {
-    state.email = email
-  } ),
-  setIsAuth: (isAuth: boolean) => set(state => {
-    state.isAuth = isAuth
-  })
-}
-)),
-{
-  name: 'auth',
-  storage: createJSONStorage(() => sessionStorage)
-}))
+  accessToken: '',
+  username: ''
+};
 
-export const selectEmail = (state: AuthState): string => state.email
-export const selectSetEmail = (state: AuthState) => state.setEmail
-export const selectIsAuth = (state: AuthState): boolean => state.isAuth
-export const selectSetIsAuth = (state: AuthState) => state.setIsAuth
-export const selectUsername = (state: AuthState) => state.username
-export const selectSetUsername = (state: AuthState) => state.setUsername
+export const useAuthStore = create(persist(immer<AuthStore>((set) => ({
+  ...initialValue,
+  setUsername: username => set({ username }),
+  setEmail: email => set({ email }),
+  setAccessToken: accessToken => set({ accessToken }),
+  clearState: () => set(initialValue)
+})), { name: 'auth' }));
+
+export const selectEmail = (state: AuthStore): string => state.email;
+export const selectSetEmail = (state: AuthStore) => state.setEmail;
+export const selectAccessToken = (state: AuthStore): string => state.accessToken;
+export const selectSetAccessToken = (state: AuthStore) => state.setAccessToken;
+export const selectUsername = (state: AuthStore) => state.username;
+export const selectSetUsername = (state: AuthStore) => state.setUsername;
+export const selectClearState = (state: AuthStore) => state.clearState;

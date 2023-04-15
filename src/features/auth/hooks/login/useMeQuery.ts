@@ -1,13 +1,13 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { AuthAPI } from '@/features/auth/api';
-import { selectSetEmail, selectSetIsAuth, selectSetUsername, useAuthStore } from '@/features/auth/store';
+import { selectClearState, selectSetAccessToken, selectSetEmail, selectSetUsername, useAuthStore } from '@/features/auth/store';
 import { MeResponseType } from '@/features/auth/types';
 
 export const useMeQuery = () => {
-  const setEmail = useAuthStore(selectSetEmail)
-  const setIsAuth = useAuthStore(selectSetIsAuth)
-  const setUsername = useAuthStore(selectSetUsername)
+  const setEmail = useAuthStore(selectSetEmail);
+  const setUsername = useAuthStore(selectSetUsername);
+  const clearState = useAuthStore(selectClearState);
 
   return useQuery({
     queryFn: AuthAPI.me,
@@ -19,24 +19,24 @@ export const useMeQuery = () => {
     refetchOnMount: false,
     refetchOnReconnect: false,
     onSuccess: (data: MeResponseType) => {
-      setEmail(data.email)
-      setIsAuth(true)
-      setUsername(data.username)
+      setEmail(data.email);
+      setUsername(data.username);
     },
-    onError: () => {
-      setEmail('')
-      setIsAuth(false)
+    onError: async () => {
+      clearState()
     }
   });
 };
 
 export const useRefreshToken = () => {
-  return useMutation({
-    mutationFn: AuthAPI.refreshToken,
+  const setAccessToken = useAuthStore(selectSetAccessToken);
+
+  return useQuery({
+    queryFn: AuthAPI.refreshToken,
     retry: false,
     onSuccess: (data: any) => {
-      const { accessToken } = data
-      localStorage.setItem('accessToken', accessToken);
-    },
+      const { accessToken } = data;
+      setAccessToken(accessToken);
+    }
   });
 };
