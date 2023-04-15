@@ -1,11 +1,11 @@
 export type CreateAccountDataType = {
-    username: string
-    firstName: string
-    lastName: string
-    birthday: string
-    city: string
-    aboutMe: string,
-    avatar: File
+  username: string
+  firstName: string
+  lastName: string
+  birthday: string
+  city: string
+  aboutMe: string,
+  avatar: File
 }
 
-export type ProfileType = Partial<Omit<CreateAccountDataType, 'avatar'>> & { profilePhotoLink?: string}
+export type ProfileType = Partial<CreateAccountDataType & { avatar: string }>

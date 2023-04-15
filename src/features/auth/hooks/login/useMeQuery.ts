@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { AxiosError } from 'axios';
+
 import { AuthAPI } from '@/features/auth/api';
 import { selectClearState, selectSetAccessToken, selectSetEmail, selectSetUsername, useAuthStore } from '@/features/auth/store';
 import { MeResponseType } from '@/features/auth/types';
@@ -30,6 +32,7 @@ export const useMeQuery = () => {
 
 export const useRefreshToken = () => {
   const setAccessToken = useAuthStore(selectSetAccessToken);
+  const clearState = useAuthStore(selectClearState);
 
   return useQuery({
     queryKey:['refresh-token'],
@@ -39,6 +42,11 @@ export const useRefreshToken = () => {
     onSuccess: (data: any) => {
       const { accessToken } = data;
       setAccessToken(accessToken);
+    },
+    onError: (error: AxiosError) => {
+      if (error.response?.status === 401){
+        clearState()
+      }
     }
   });
 };

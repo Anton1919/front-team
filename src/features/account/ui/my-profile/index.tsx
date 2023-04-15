@@ -39,7 +39,7 @@ const Profile: NextPage = () => {
     <div className={s.profile}>
       <div className={s.about}>
         <div className={s.profilePhoto}>
-          <Image src={user?.profilePhotoLink || svg} alt={'profile photo'} width={204} height={204}/>
+          <Image src={user?.avatar || svg} alt={'profile photo'} width={204} height={204}/>
         </div>
 
         <div className={s.description}>

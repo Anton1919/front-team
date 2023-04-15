@@ -8,8 +8,7 @@ export const AccountAPI = {
   },
 
   getProfile(): Promise<ProfileType> {
-    return instance
-      .get('user/profile')
+    return instance.get('user/profile')
       .then(res => res.data)
   }
 }
