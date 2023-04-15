@@ -1,9 +1,11 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/common/components/button/Button';
 import { useModal } from '@/common/components/modalWindow/useModal';
 import { ModalLayout } from '@/common/components/modalWindow/modalLayout';
+
+import { useGetProfile } from '@/features/account/hooks/useGetProfile';
 
 import svg from './image.svg';
 import deleteSvg from './delete.svg';
@@ -15,9 +17,10 @@ type PropsType = {
 }
 
 const ProfilePhoto = ({ setImgFile }: PropsType) => {
+  const { data } = useGetProfile();
   const { isOpen, openModal, closeModal } = useModal();
   const [toggleModal, setToggleModal] = useState(false);
-  const [avatarURL, setAvatarURL] = useState<string>();
+  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.profilePhotoLink);
   const [modalPhoto, setModalPhoto] = useState<string>();
   const [file, setFile] = useState<File | undefined>();
 
@@ -49,6 +52,10 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
     setFile(undefined);
     setImgFile(undefined);
   };
+
+  useEffect(() => {
+    setAvatarURL(data?.profilePhotoLink);
+  }, [data]);
 
   return (
     <div className={s.wrapper}>
