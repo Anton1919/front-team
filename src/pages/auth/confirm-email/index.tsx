@@ -3,9 +3,9 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { useConfrimRegistration } from '@/features/auth/hooks/registration/useConfrimRegistration';
-import { Confirmed } from '@/shared/confirmed';
-import { ConfirmExpired } from '@/shared/confirmExpired';
-import { Spinner } from '@/shared/spinner';
+import { Confirmed } from '@/common/components/confirmed';
+import { ConfirmExpired } from '@/common/components/confirmExpired';
+import { Spinner } from '@/common/components/spinner';
 
 const ConfirmEmail = () => {
 

@@ -1,8 +1,8 @@
 import '@/styles/globals.scss'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { Layout } from '@/shared/layout';
-import { AuthRedirect } from '@/shared/authRedirect';
+import { Layout } from '@/common/components/layout';
+import { AuthRedirect } from '@/common/components/authRedirect';
 
 import { useIsAuth } from '@/common/hooks/useIsAuth';
 

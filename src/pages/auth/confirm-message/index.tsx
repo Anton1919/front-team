@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { EmailSent } from '@/shared/emailSent';
+import { EmailSent } from '@/common/components/emailSent';
 
 const ConfirmMessage = () => {
   return <EmailSent />;

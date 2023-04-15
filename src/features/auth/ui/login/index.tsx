@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from 'next/link';
 
-import { Card } from '@/shared/card'
-import { BaseInput } from '@/shared/input/'
-import { PasswordInput } from '@/shared/input/'
+import { Card } from '@/common/components/card'
+import { BaseInput } from '@/common/components/input/'
+import { PasswordInput } from '@/common/components/input/'
 
-import { Button } from '@/shared/button/Button'
+import { Button } from '@/common/components/button/Button'
 import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid';
 
-import { PATHS } from '@/constants/routes';
+import { PATHS } from '@/common/constants/routes';
 
 import s from './Login.module.scss'
 

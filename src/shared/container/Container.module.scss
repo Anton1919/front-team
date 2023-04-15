@@ -1,6 +1,0 @@
-@import "src/styles/mixins";
-
-.container {
-  @include flex-center();
-  flex-direction: column;
-}

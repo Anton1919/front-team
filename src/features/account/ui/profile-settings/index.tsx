@@ -1,10 +1,10 @@
 import React from 'react';
 
 import s from '@/features/account/ui/profile-settings/ProfileSettings.module.scss';
-import { BaseInput } from '@/shared/input';
-import { Button } from '@/shared/button/Button';
+import { BaseInput } from '@/common/components/input';
+import { Button } from '@/common/components/button/Button';
 import { useChangeSettings } from '@/features/account/hooks/useChangeSettings';
-import { Textarea } from '@/shared/textarea/Textarea';
+import { Textarea } from '@/common/components/textarea/Textarea';
 
 type PropsType = {
 

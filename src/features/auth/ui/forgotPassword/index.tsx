@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Card } from '@/shared/card';
-import { BaseInput } from '@/shared/input';
-import { Button } from '@/shared/button/Button';
+import { Card } from '@/common/components/card';
+import { BaseInput } from '@/common/components/input';
+import { Button } from '@/common/components/button/Button';
 import { useForgotValid } from '@/features/auth/hooks/forgotPassword/useForgotValid';
 
 import s from './ForgotPassword.module.scss'
