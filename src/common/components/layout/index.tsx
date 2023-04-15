@@ -7,10 +7,6 @@ import SideBar from '@/common/components/sideBar/sideBar';
 
 import { Header } from '../header';
 
-// type Props = {
-//     children: ReactNode;
-// };
-
 export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <>

@@ -19,18 +19,18 @@ type AppPropsWithLayout = AppProps & {
 
 const queryClient = new QueryClient();
 
-export default function App({Component, pageProps}: AppPropsWithLayout) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
-    useIsAuth()
+  useIsAuth()
 
-    const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page)
 
-    return (
-        <QueryClientProvider client={queryClient}>
-            <AuthRedirect>
-                <div id="modals"/>
-                {getLayout(<Component {...pageProps} />)}
-            </AuthRedirect>
-        </QueryClientProvider>
-    )
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthRedirect>
+        <div id="modals"/>
+        {getLayout(<Component {...pageProps} />)}
+      </AuthRedirect>
+    </QueryClientProvider>
+  )
 }

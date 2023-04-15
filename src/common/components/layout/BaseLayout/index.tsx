@@ -3,10 +3,6 @@ import { NextPage } from 'next';
 
 import { Layout } from '@/common/components/layout';
 
-// type Props = {
-//     children: ReactNode;
-// };
-
 const BaseLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <Layout>{children}</Layout>
