@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 import classNames from 'classnames';
 import { FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form';
 
-import s from 'src/common/shared/textarea/Textarea.module.scss';
+import s from './Textarea.module.scss';
 
 export type TextareaTypes<TFormValues extends FieldValues> = {
   error?: string
