@@ -1,16 +1,23 @@
 import { useMutation } from '@tanstack/react-query';
 
+import { AxiosError } from 'axios';
+
 import { AccountAPI } from '@/features/account/api';
-import { AuthAPI } from '@/features/auth/api';
+import { useRefreshToken } from '@/features/auth/hooks/login/useMeQuery';
 
 export const useCreateAccountMutation = () => {
-  return useMutation({
+  const { refetch } = useRefreshToken();
+  const createAccount = useMutation({
     mutationFn: AccountAPI.createAccount,
     onSuccess: () => {
       alert('Аккаунт успешно изменен')
     },
-    onError: async ()=>{
-      const token = await AuthAPI.refreshToken()
+    onError: async (error: AxiosError, data) => {
+      if (error.response?.status === 401){
+        await refetch();
+        await createAccount.mutateAsync(data)
+      }
     }
   });
+  return createAccount
 };

@@ -19,15 +19,16 @@ export const AuthAPI = {
     return instance.post('auth/login', data);
   },
   refreshToken() {
-    return instance.post<{ accessToken: string }>('auth/refresh-token').then(res => res.data);
+    return instance.post<{ accessToken: string }>('auth/refresh-token')
+      .then(res => res.data).catch(res => res);
   },
   forgotPassword(data: ForgotField) {
     return instance.post('auth/password-recovery', data);
   },
   newPassword(data: NewPasswordType) {
-    return instance.post('auth/new-password', data)
+    return instance.post('auth/new-password', data);
   },
-  logout(){
-    return instance.post('auth/logout')
+  logout() {
+    return instance.post('auth/logout');
   }
-}
+};

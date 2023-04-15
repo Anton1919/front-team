@@ -20,7 +20,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
   const { data } = useGetProfile();
   const { isOpen, openModal, closeModal } = useModal();
   const [toggleModal, setToggleModal] = useState(false);
-  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.profilePhotoLink);
+  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.avatar);
   const [modalPhoto, setModalPhoto] = useState<string>();
   const [file, setFile] = useState<File | undefined>();
 
@@ -54,7 +54,7 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
   };
 
   useEffect(() => {
-    setAvatarURL(data?.profilePhotoLink);
+    setAvatarURL(data?.avatar);
   }, [data]);
 
   return (
