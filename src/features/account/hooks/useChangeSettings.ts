@@ -38,13 +38,17 @@ export const useChangeSettings = () => {
     await createAccount(formData)
   }
 
-  const userNameRules = { required: 'You must enter your username.',
+  const username = { required: 'You must enter your username.',
     minLength: { value: 3, message: 'Username must be more than 3 characters.' },
     maxLength: { value: 30, message: 'Username must be shorted than 30 characters.' }
   }
-  const surNameRules = { required: 'You must enter your username.' }
-  const birthdayRules = { required: 'You must enter your date of birthday.', pattern: birthdayPattern }
-  const nameRules = { required: 'You must enter your name.' }
-  const cityRules = { required: 'You must enter your city.' }
-  return { cityRules,nameRules,birthdayRules, surNameRules, onSubmit, handleSubmit, register, userNameRules, isLoading, errors }
+  const firstName = { required: 'You must enter your name.' }
+  const lastName = { required: 'You must enter your username.' }
+  const birthday = { required: 'You must enter your date of birthday.', pattern: birthdayPattern }
+  const city = { required: 'You must enter your city.' }
+  const aboutMe = { required: 'Required field', maxLength: { value: 200, message: 'About me must be shorted than 200 characters.' } }
+
+  const rules = { username, firstName, lastName, birthday, city, aboutMe }
+
+  return { onSubmit, handleSubmit, register, isLoading, errors, rules }
 }
