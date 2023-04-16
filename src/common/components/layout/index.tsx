@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from 'react';
 import Head from 'next/head';
-
 import { NextPage } from 'next';
 
 import SideBar from '@/common/components/sideBar/sideBar';
+import { Container } from '@/common/components/container';
 
 import { Header } from '../header';
 
@@ -16,10 +16,10 @@ export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
         <title>My profile</title>
       </Head>
       <Header/>
-      <div style={{ display: 'flex' }}>
+      <Container type={'shared'} style={{ display: 'flex' }}>
         <SideBar/>
         <main>{children}</main>
-      </div>
+      </Container>
     </>
   );
 };

@@ -1,6 +1,15 @@
 @import "../../../styles/mixins";
 
-.container {
+.flexCenter {
   @include flex-center();
   flex-direction: column;
 }
+
+.container1440 {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+

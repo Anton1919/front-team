@@ -3,10 +3,12 @@ import React, { FC, ReactNode } from 'react';
 import { LogOut } from '@/common/components/logOut';
 import { selectAccessToken, useAuthStore } from '@/features/auth/store';
 
+import { Container } from '@/common/components/container';
+
 import style from './Header.module.scss'
 
 type HeaderPropsType = {
-    children?: ReactNode
+  children?: ReactNode
 }
 
 export const Header: FC<HeaderPropsType> = ({ children }) => {
@@ -14,12 +16,11 @@ export const Header: FC<HeaderPropsType> = ({ children }) => {
 
   return (
     <header className={style.headerBlock}>
-      <div className={style.container}>
+      <Container className={style.container} type={'shared'}>
         <div className={style.title}>INCtagram</div>
         {children}
-
         {accessToken && <LogOut/>}
-      </div>
+      </Container>
     </header>
   );
 };

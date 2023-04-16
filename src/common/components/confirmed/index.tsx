@@ -17,7 +17,7 @@ export const Confirmed = () => {
   const router = useRouter();
 
   return (
-    <Container className={s.container}>
+    <Container type={'flex-center'} className={s.container}>
       <h2>Congratulations!</h2>
       <p>Your email has been confirmed</p>
       <Button button_name={'Sign In'} button_handler={() => router.push(PATHS.PUBLIC.LOGIN)} />

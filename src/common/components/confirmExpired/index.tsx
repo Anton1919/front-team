@@ -15,7 +15,7 @@ export const ConfirmExpired = () => {
   const { push } = useRouter()
 
   return (
-    <Container className={s.container}>
+    <Container type={'flex-center'} className={s.container}>
       <h2>Email verification link expired</h2>
       <p>Looks like the verification link has expired. Not to worry, we can send the link again</p>
       <Button button_name={'Resend the code'} button_handler={() => push(PATHS.PUBLIC.FORGOT_PASSWORD)} />

@@ -4,8 +4,15 @@ import classNames from 'classnames';
 
 import s from './Container.module.scss'
 
-export const Container:FC<ComponentProps<'div'>> = ({ className, ...rest }) => {
+type Props = {
+  type: 'flex-center' | 'shared'
+} & ComponentProps<'div'>
+
+export const Container:FC<Props> = ({ className, type, ...rest }) => {
+
+  const finalClass = type === 'flex-center' ? s.flexCenter : s.container1440
+
   return (
-    <div className={classNames(s.container, className)} {...rest} />
+    <div className={classNames(className, finalClass)} {...rest} />
   );
 };
