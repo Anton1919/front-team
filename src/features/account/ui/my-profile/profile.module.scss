@@ -1,6 +1,7 @@
 @import "src/styles/constants";
 
 .profile {
+  max-width: 1080px;
   padding: 24px;
 }
 
@@ -86,11 +87,10 @@
 }
 
 .photoContent {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
-  gap: 12px;
-  margin-top: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  justify-content: space-between;
 }
 
 .photo {

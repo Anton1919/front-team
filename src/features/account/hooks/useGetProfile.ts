@@ -20,7 +20,6 @@ export const useGetProfile = (): UseQueryResult<ProfileType> => {
     refetchInterval: false,
     refetchOnReconnect: false,
     refetchOnMount: false,
-    refetchOnWindowFocus: false,
     refetchIntervalInBackground: false,
     onSuccess: (data) => {
       setUser(data);
