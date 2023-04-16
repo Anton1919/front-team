@@ -34,7 +34,6 @@ const Profile: NextPage = () => {
   const onClickHandler = () => {
     push('/my-profile/edit-profile')
   }
-
   return (
     <div className={s.profile}>
       <div className={s.about}>
