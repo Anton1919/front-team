@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from 'react';
 
-import { getLayout } from '@/common/components/layout/BaseLayout';
 import { NextPageWithLayout } from '@/pages/_app';
+import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar';
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -14,6 +14,6 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-Home.getLayout = getLayout
+Home.getLayout = getLayoutSideBar
 
 export default Home

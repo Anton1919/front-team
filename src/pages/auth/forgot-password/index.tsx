@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import { ForgotPassword } from '@/features/auth/ui/forgotPassword';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
 
 const Forgot = () => {
   return (
@@ -13,5 +14,7 @@ const Forgot = () => {
     </>
   );
 };
+
+Forgot.getLayout = getLayoutHeader
 
 export default Forgot;

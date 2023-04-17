@@ -1,13 +1,13 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactElement } from 'react';
 import Head from 'next/head';
 import { NextPage } from 'next';
 
 import SideBar from '@/common/components/sideBar/sideBar';
 import { Container } from '@/common/components/container';
 
-import { Header } from '../header';
+import { Header } from '../../header';
 
-export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
+export const LayoutWithSideBar: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Head>
@@ -23,3 +23,13 @@ export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
     </>
   );
 };
+
+const LayoutSideBar: NextPage<PropsWithChildren> = ({ children }) => {
+  return (
+    <LayoutWithSideBar>{children}</LayoutWithSideBar>
+  );
+};
+
+export function getLayoutSideBar(page: ReactElement) {
+  return <LayoutSideBar>{page}</LayoutSideBar>
+}

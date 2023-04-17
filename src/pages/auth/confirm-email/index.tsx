@@ -6,6 +6,7 @@ import { useConfrimRegistration } from '@/features/auth/hooks/registration/useCo
 import { Confirmed } from '@/common/components/confirmed';
 import { ConfirmExpired } from '@/common/components/confirmExpired';
 import { Spinner } from '@/common/components/spinner';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
 
 const ConfirmEmail = () => {
 
@@ -17,5 +18,7 @@ const ConfirmEmail = () => {
 
   return (isLoading ? <Spinner /> : isSuccess ? <Confirmed/> : <ConfirmExpired />);
 };
+
+ConfirmEmail.getLayout = getLayoutHeader
 
 export default ConfirmEmail;

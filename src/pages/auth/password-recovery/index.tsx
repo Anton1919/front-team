@@ -7,6 +7,7 @@ import { Card } from '@/common/components/card';
 import { PasswordInput } from '@/common/components/input';
 import { useNewPassValid } from '@/features/auth/hooks/forgotPassword/useNewPassValid';
 import { Button } from '@/common/components/button/Button';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
 
 const PasswordRecovery = () => {
   const { query } = useRouter()
@@ -40,5 +41,7 @@ const PasswordRecovery = () => {
     </Card>
   );
 };
+
+PasswordRecovery.getLayout = getLayoutHeader
 
 export default PasswordRecovery;
