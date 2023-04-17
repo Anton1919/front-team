@@ -17,7 +17,7 @@ export const AuthRedirect: FC<PropsWithChildren> = ({ children }) => {
   if (isError && isAuthPage) {
     push(PATHS.PUBLIC.LOGIN);
   } else {
-    return <>{children}</>
+    return <>{children} </>
   }
 
   return null

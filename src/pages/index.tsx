@@ -3,7 +3,6 @@ import React from 'react';
 
 import { getLayout } from '@/common/components/layout/BaseLayout';
 import { NextPageWithLayout } from '@/pages/_app';
-import ProfilePage from '@/pages/my-profile';
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -11,7 +10,6 @@ const Home: NextPageWithLayout = () => {
       <Head>
         <title>Home</title>
       </Head>
-      <ProfilePage/>
     </>
   )
 }

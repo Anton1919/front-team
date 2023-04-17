@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { LogOut } from '@/common/components/logOut';
+
 import style from './SideBar.module.scss'
 import { SharedLink } from './link/link';
 import { linksData } from './linksData';
@@ -12,7 +14,7 @@ const SideBar = () => {
 
       {linksData.map(l => <SharedLink key={l.path} text={l.title} href={l.path}
         icon={l.icon}/>)}
-
+      <LogOut/>
     </div>
   );
 };

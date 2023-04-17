@@ -1,9 +1,10 @@
 .sideBarBlock {
+  position: fixed;
   border-right: 1px solid #333333;
- min-width: 220px;
+  min-width: 220px;
   display: flex;
   flex-direction: column;
-
+  height: 100vh;
   padding-top: 60px;
   padding-bottom: 36px;
 
@@ -26,6 +27,6 @@
 }
 
 .sideBarBlock :nth-child(6) {
-  margin-top: 274px;
+  margin-top: 374px;
 }
 
