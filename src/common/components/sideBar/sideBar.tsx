@@ -14,10 +14,10 @@ const SideBar = () => {
 
     <div className={style.sideBarBlock}>
 
-      {linksData.slice(0,1).map(l => <SharedLink key={l.path} text={l.title} href={l.path}
+      {linksData.slice(0,2).map(l => <SharedLink key={l.path} text={l.title} href={l.path}
         icon={l.icon}/>)}
       <CreatePostModal/>
-      {linksData.slice(2,5).map(l => <SharedLink key={l.path} text={l.title} href={l.path}
+      {linksData.slice(2,4).map(l => <SharedLink key={l.path} text={l.title} href={l.path}
         icon={l.icon}/>)}
 
       <LogOut/>
