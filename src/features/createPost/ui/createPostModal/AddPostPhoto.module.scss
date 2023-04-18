@@ -71,15 +71,15 @@
 }
 
 .modalPhoto {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  //display: flex;
+  //justify-content: center;
+  //align-content: center;
   flex-wrap: wrap;
   margin-top: 72px;
   margin-left: auto;
   margin-right: auto;
-  width: 222px;
-  height: 228px;
+  width: 100%;
+  height: 100%;
   background-color: $dark-color_500;
 }
 
@@ -119,7 +119,7 @@
 .modalImage {
   width: 492px;
   height: 504px;
-  position: relative;
+  //position: relative;
 
   .img2 {
     //border-radius: 50%;
@@ -133,3 +133,4 @@
   justify-content: flex-end;
   margin-top: 36px;
 }
+
