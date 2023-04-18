@@ -11,7 +11,7 @@ import AddPostPhoto from '@/features/createPost/ui/createPostModal/addPostPhoto'
 const CreatePostModal = () => {
   const { isOpen, openModal, closeModal } = useModal();
   const [imgFile, setImgFile] = useState<File>();
-
+  console.log(imgFile)
   return (
     <>
       <div className={style.logOut} onClick={openModal}>
@@ -19,7 +19,7 @@ const CreatePostModal = () => {
         <span>CREATEEEEE</span>
       </div>
       <ModalLayout isOpen={isOpen} closeModal={closeModal} title={'Add Photo'}>
-        <AddPostPhoto setImgFile={setImgFile}/>
+        <AddPostPhoto setImgFile={setImgFile} imgFile={imgFile}/>
 
       </ModalLayout>
     </>
