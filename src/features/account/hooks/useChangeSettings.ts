@@ -28,14 +28,14 @@ export const useChangeSettings = () => {
     }
   },[setValue, data])
 
-  const { mutateAsync: createAccount, isLoading } = useCreateAccountMutation()
+  const { mutate: createAccount, isLoading } = useCreateAccountMutation()
 
   const onSubmit = async (data: CreateAccountDataType) => {
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value)
     })
-    await createAccount(formData)
+    createAccount(formData)
   }
 
   const username = { required: 'You must enter your username.',
