@@ -13,14 +13,33 @@ import svg from '@/features/account/ui/profile-settings/profile-photo/image.svg'
 import { Button } from '@/common/components/button/Button';
 import { useModal } from '@/common/components/modalWindow/useModal';
 
+import { useCreatePostMutation } from '@/features/createPost/hooks/useCreatePostMutation';
+
+import { useCreateAccountMutation } from '@/features/account/hooks/useCreateAccountMutation';
+import { CreateAccountDataType } from '@/features/account/types';
+
 import s from './AddPostPhoto.module.scss';
 
 type PropsType={
   setImgFile: (img: File | undefined) => void
   imgFile:File
+  closeFirstModal:()=>void
 }
 
-const AddPostPhoto:FC<PropsType> = ({ setImgFile  }) => {
+const AddPostPhoto:FC<PropsType> = ({ setImgFile ,closeFirstModal }) => {
+
+  // const { mutate: createAccount, isLoading } = useCreateAccountMutation()
+  //
+  // const onSubmit = async (data: CreateAccountDataType) => {
+  //   const formData = new FormData()
+  //   Object.entries(data).forEach(([key, value]) => {
+  //     formData.append(key, value)
+  //   })
+  //   createAccount(formData)
+  // }
+
+  const { mutate: createPost, isLoading }=useCreatePostMutation()
+
   const { closeModal } = useModal();
 
   const [modalPhoto, setModalPhoto] = useState([]);
@@ -28,9 +47,6 @@ const AddPostPhoto:FC<PropsType> = ({ setImgFile  }) => {
   const [file, setFile] = useState<File[] | undefined>([]);
 
   const [toggleModal, setToggleModal] = useState(false);
-
-  console.log('modalPhoto',modalPhoto)
-  console.log('file',file)
 
   const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     setToggleModal(true);
@@ -54,6 +70,12 @@ const AddPostPhoto:FC<PropsType> = ({ setImgFile  }) => {
     }
     setToggleModal(false);
     closeModal();
+    closeFirstModal()
+    const formData = new FormData()
+    Object.entries(file).forEach(([key, value]) => {
+      formData.append(key, value)
+    })
+    createPost(formData)
   };
 
   return (

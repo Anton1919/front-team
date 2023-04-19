@@ -18,8 +18,7 @@ const CreatePostModal = () => {
         <span>CREATEEEEE</span>
       </div>
       <ModalLayout isOpen={isOpen} closeModal={closeModal} title={'Add Photo'}>
-        <AddPostPhoto setImgFile={setImgFile} imgFile={imgFile}/>
-
+        <AddPostPhoto closeFirstModal={closeModal} setImgFile={setImgFile} imgFile={imgFile}/>
       </ModalLayout>
     </>
   );

@@ -1,10 +1,8 @@
-// import {MeResponseType} from "@/features/auth/types";
-// import {instance} from "@/common/constants/instance";
-// import {CreatePostDataType} from "@/features/createPost/types";
-//
-//
-// export const PostsAPI = {
-//     createPost(data: CreatePostDataType): {
-//         return instance.post('user/post').then(res => res.data);
-//     }
-// }
+import { instance } from '@/common/constants/instance';
+
+export const PostsAPI = {
+  createPost(data: FormData) {
+    return instance.post('user/post', data)
+      .then(res => res.data);
+  }
+}
