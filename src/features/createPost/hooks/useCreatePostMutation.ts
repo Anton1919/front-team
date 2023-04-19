@@ -8,7 +8,7 @@ import { PostsAPI } from '@/features/createPost/api';
 export const useCreatePostMutation = () => {
   const { refetch } = useRefreshToken();
   const createPost = useMutation({
-    queryKey:['createPost'],
+    // queryKey:['createPost'],
     mutationFn: PostsAPI.createPost,
     onSuccess: () => {
       alert('Пост опубликован')

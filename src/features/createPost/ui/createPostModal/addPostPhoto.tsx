@@ -15,34 +15,22 @@ import { useModal } from '@/common/components/modalWindow/useModal';
 
 import { useCreatePostMutation } from '@/features/createPost/hooks/useCreatePostMutation';
 
-import { useCreateAccountMutation } from '@/features/account/hooks/useCreateAccountMutation';
-import { CreateAccountDataType } from '@/features/account/types';
+import { Spinner } from '@/common/components/spinner';
 
 import s from './AddPostPhoto.module.scss';
 
 type PropsType={
   setImgFile: (img: File | undefined) => void
-  imgFile:File
   closeFirstModal:()=>void
 }
 
-const AddPostPhoto:FC<PropsType> = ({ setImgFile ,closeFirstModal }) => {
-
-  // const { mutate: createAccount, isLoading } = useCreateAccountMutation()
-  //
-  // const onSubmit = async (data: CreateAccountDataType) => {
-  //   const formData = new FormData()
-  //   Object.entries(data).forEach(([key, value]) => {
-  //     formData.append(key, value)
-  //   })
-  //   createAccount(formData)
-  // }
+const AddPostPhoto:FC<PropsType> = ({ closeFirstModal }) => {
 
   const { mutate: createPost, isLoading }=useCreatePostMutation()
 
   const { closeModal } = useModal();
 
-  const [modalPhoto, setModalPhoto] = useState([]);
+  const [modalPhoto, setModalPhoto] = useState<string[]>([]);
 
   const [file, setFile] = useState<File[] | undefined>([]);
 
@@ -50,10 +38,10 @@ const AddPostPhoto:FC<PropsType> = ({ setImgFile ,closeFirstModal }) => {
 
   const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     setToggleModal(true);
-    if (e.target.files && e.target.files.length) {
+    if (e.target?.files && e.target?.files.length) {
       const resultPhoto = []
       const resultFiles = []
-      for (const file of e.target.files) {
+      for (const file of e.target?.files) {
         const objectUrl = URL.createObjectURL(file as File);
         resultPhoto.push(objectUrl)
         resultFiles.push(file as File)
@@ -63,21 +51,25 @@ const AddPostPhoto:FC<PropsType> = ({ setImgFile ,closeFirstModal }) => {
     }
   };
   const handleSave = () => {
-    if (file) {
-      // const objectUrl = URL.createObjectURL(file);
-      // setAvatarURL(objectUrl);
-      setImgFile(file);
+    // if (file) {
+    //   const objectUrl = URL.createObjectURL(file);
+    //   setAvatarURL(objectUrl);
+    //   setImgFile(file);
+    // }
+    if(file) {
+      setToggleModal(false);
+      closeModal();
+      closeFirstModal()
+      const formData = new FormData()
+      Object.entries(file).forEach(([key, value]) => {
+        formData.append(key, value)
+      })
+      createPost(formData)
     }
-    setToggleModal(false);
-    closeModal();
-    closeFirstModal()
-    const formData = new FormData()
-    Object.entries(file).forEach(([key, value]) => {
-      formData.append(key, value)
-    })
-    createPost(formData)
   };
-
+  if(isLoading){
+    return <Spinner  />
+  }
   return (
     <div>
       {!toggleModal ? (
@@ -106,14 +98,10 @@ const AddPostPhoto:FC<PropsType> = ({ setImgFile ,closeFirstModal }) => {
                   modalPhoto.map((file, index) => {
                     return  <SwiperSlide
                       key={index}
-                      className={s.img2}
-                      src={file ? file : svg}
-                      alt={'my-profile photo'}
-                      fill
-                      sizes="(max-width: 768px) 100vw,
+                      className={s.img2}>
+                      <Image src={file ? file : svg} alt={'my-profile'} fill sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
-              33vw"
-                    > <Image src={file} alt={'post img'} width={500} height={500}/></SwiperSlide>
+              33vw" width={500} height={500}/></SwiperSlide>
                   })
                 }
 
