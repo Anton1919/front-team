@@ -2,7 +2,7 @@
 
 .card {
   width: 100%;
-  background-color: $dark-color_500;
+  background-color: var(--card-color);
   border-radius: 5px;
   border: 1px solid $dark-color_300;
   padding: 20px;
