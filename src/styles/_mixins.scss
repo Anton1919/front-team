@@ -98,12 +98,12 @@
 //Textarea
 @mixin textarea( $border-color, $text-color) {
     border: 1px solid $border-color;
-    background-color: $dark-color_500;
+    background-color: var(--bg-color);
     border-radius: 2px;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: $text-color;
+    color: inherit;
     padding: 12px;
     transition: all 0.2s;
 }

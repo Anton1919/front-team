@@ -1,30 +1,19 @@
-import React, { FC, ReactNode } from 'react';
-
-import { LogOut } from '@/common/components/logOut';
-import { selectAccessToken, useAuthStore } from '@/features/auth/store';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { Container } from '@/common/components/container';
-
-import { useTheme } from '@/common/hooks/useTheme';
+import { ToggleTheme } from '@/common/components/toggleTheme';
 
 import style from './Header.module.scss'
 
-type HeaderPropsType = {
-  children?: ReactNode
-}
-
-export const Header: FC<HeaderPropsType> = ({ children }) => {
-  const accessToken = useAuthStore(selectAccessToken);
-
-  const toggleTheme = useTheme();
+export const Header: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <header className={style.headerBlock}>
       <Container className={style.container} type={'shared'}>
         <div className={style.title}>INCtagram</div>
         {children}
-        {accessToken && <LogOut/>}
-        <button onClick={toggleTheme}>toggle theme</button>
+        <ToggleTheme/>
+
       </Container>
     </header>
   );

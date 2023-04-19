@@ -6,7 +6,6 @@ import { Button } from '@/common/components/button/Button';
 import { selectEmail, useAuthStore } from '@/features/auth/store';
 
 import { useLogout } from '@/features/auth/hooks/logout/useLogout';
-
 import { useModal } from '@/common/components/modalWindow/useModal';
 import { ModalLayout } from '@/common/components/modalWindow/modalLayout';
 
@@ -26,7 +25,7 @@ export const LogOut = () => {
   return (
     <>
       <div className={s.logOut} onClick={openModal}>
-        <Image src={logOutSvg} alt={'log out icon'} />
+        <Image className={s.logOutIcon} src={logOutSvg} alt={'log out icon'} />
         <span>Log out</span>
       </div>
       <ModalLayout isOpen={isOpen} closeModal={closeModal} title={'Log out'}>

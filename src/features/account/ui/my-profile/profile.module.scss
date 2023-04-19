@@ -1,9 +1,7 @@
 @import "src/styles/constants";
 
 .profile {
-
   padding: 24px 24px 24px 240px;
-
 }
 
 .about {
@@ -40,7 +38,6 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 36px;
-    color: $light-color_100;
   }
 }
 
@@ -62,14 +59,13 @@
       font-weight: 700;
       font-size: 14px;
       line-height: 24px;
-      color: $light-color_100;
+
     }
 
     & p {
       font-weight: 400;
       font-size: 14px;
       line-height: 24px;
-      color: $light-color_100;
     }
   }
 }
@@ -84,7 +80,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: $light-color_100;
   }
 }
 

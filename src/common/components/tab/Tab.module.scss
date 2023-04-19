@@ -1,18 +1,10 @@
 @import "../../../styles/constants";
 
-.root {
-
-}
-
-.list {
-
-}
-
 .trigger {
   min-width: 85px;
   padding: 0 35px;
   height: 36px;
-  background-color: $dark-color_900;
+  background-color: var(--bg-color);
 
   color: $dark-color_100;
   font-weight: 600;
@@ -59,10 +51,4 @@
   &:hover {
     background-color: #1c2431;
   }
-}
-
-
-.content {
-
-
 }

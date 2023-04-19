@@ -1,0 +1,9 @@
+.toggleTheme {
+  background: transparent;
+  background-image: url("../../assets/icons/moon.svg");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  filter: var(--filter-moon);
+  border: none;
+}
