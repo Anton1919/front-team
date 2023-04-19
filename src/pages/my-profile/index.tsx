@@ -1,16 +1,11 @@
-import React from 'react';
+import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar'
+import Profile from '@/features/account/ui/my-profile'
+import { NextPageWithLayout } from '@/pages/_app'
 
-import Profile from '@/features/account/ui/my-profile';
-import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar';
-
-const ProfilePage = () => {
-  return (
-    <>
-      <Profile />
-    </>
-  );
-};
+const ProfilePage: NextPageWithLayout = () => {
+  return <Profile />
+}
 
 ProfilePage.getLayout = getLayoutSideBar
 
-export default ProfilePage;
+export default ProfilePage

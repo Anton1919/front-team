@@ -1,18 +1,17 @@
-import React from 'react';
-import Head from 'next/head';
+import Head from 'next/head'
 
-import ProfileSettingsContainer from '@/features/account/ui/profile-settings-container';
+import ProfileSettingsContainer from '@/features/account/ui/profile-settings-container'
+import { NextPageWithLayout } from '@/pages/_app'
 
-const AccountCreate = () => {
-
+const AccountCreate: NextPageWithLayout = () => {
   return (
     <>
       <Head>
         <title>Create Account</title>
       </Head>
-      <ProfileSettingsContainer/>
+      <ProfileSettingsContainer />
     </>
-  );
-};
+  )
+}
 
-export default AccountCreate;
+export default AccountCreate

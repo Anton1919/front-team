@@ -1,0 +1,5 @@
+const CODE_401 = 401
+
+export enum STATUS_CODE {
+  UNAUTHORIZED = CODE_401,
+}

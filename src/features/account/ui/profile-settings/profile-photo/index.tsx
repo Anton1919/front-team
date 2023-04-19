@@ -1,75 +1,71 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import Image from 'next/image';
+import { ChangeEventHandler, FC, useEffect, useState } from 'react'
 
-import { Button } from '@/common/components/button/Button';
-import { useModal } from '@/common/components/modalWindow/useModal';
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout';
+import Image from 'next/image'
 
-import { useGetProfile } from '@/features/account/hooks/useGetProfile';
+import deleteSvg from './delete.svg'
+import svg from './image.svg'
+import s from './ProfilePhoto.module.scss'
 
-import svg from './image.svg';
-import deleteSvg from './delete.svg';
-
-import s from './ProfilePhoto.module.scss';
+import { Button } from '@/common/components/button/Button'
+import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { useModal } from '@/common/components/modalWindow/useModal'
+import { useGetProfile } from '@/features/account/hooks/useGetProfile'
 
 type PropsType = {
   setImgFile: (img: File | undefined) => void
 }
 
-const ProfilePhoto = ({ setImgFile }: PropsType) => {
-  const { data } = useGetProfile();
-  const { isOpen, openModal, closeModal } = useModal();
-  const [toggleModal, setToggleModal] = useState(false);
-  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.avatar);
-  const [modalPhoto, setModalPhoto] = useState<string>();
-  const [file, setFile] = useState<File | undefined>();
+const ProfilePhoto: FC<PropsType> = ({ setImgFile }) => {
+  const { data } = useGetProfile()
+  const { isOpen, openModal, closeModal } = useModal()
+  const [toggleModal, setToggleModal] = useState(false)
+  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.avatar)
+  const [modalPhoto, setModalPhoto] = useState<string>()
+  const [file, setFile] = useState<File | undefined>()
 
-  const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-    setToggleModal(true);
+  const onPhotoSelected: ChangeEventHandler<HTMLInputElement> = e => {
+    setToggleModal(true)
     if (e.target.files && e.target.files.length) {
-      const objectUrl = URL.createObjectURL(e.target?.files[0] as File);
-      setModalPhoto(objectUrl);
-      setFile(e.target?.files[0]);
-    }
-  };
-  const handleSave = () => {
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setAvatarURL(objectUrl);
-      setImgFile(file);
-    }
-    setToggleModal(false);
-    closeModal();
-  };
-  const closeHandler = () => {
-    setModalPhoto(undefined);
-    setToggleModal(false);
-    closeModal();
-  };
+      const objectUrl = URL.createObjectURL(e.target?.files[0] as File)
 
-  const onDeletePhotoHandler = () => {
-    setAvatarURL(undefined);
-    setFile(undefined);
-    setImgFile(undefined);
-  };
+      setModalPhoto(objectUrl)
+      setFile(e.target?.files[0])
+    }
+  }
+  const handleSave = (): void => {
+    if (file) {
+      const objectUrl = URL.createObjectURL(file)
+
+      setAvatarURL(objectUrl)
+      setImgFile(file)
+    }
+    setToggleModal(false)
+    closeModal()
+  }
+  const closeHandler = (): void => {
+    setModalPhoto(undefined)
+    setToggleModal(false)
+    closeModal()
+  }
+
+  const onDeletePhotoHandler = (): void => {
+    setAvatarURL(undefined)
+    setFile(undefined)
+    setImgFile(undefined)
+  }
 
   useEffect(() => {
-    setAvatarURL(data?.avatar);
-  }, [data]);
+    setAvatarURL(data?.avatar)
+  }, [data])
 
   return (
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
         <div className={avatarURL ? s.fileDataURL : s.photo}>
-          <Image
-            src={avatarURL ? avatarURL : svg}
-            alt={'my-profile photo'}
-            width={46}
-            height={46}
-          />
+          <Image src={avatarURL || svg} alt="my-profile photo" width={46} height={46} />
           {avatarURL && (
-            <button className={s.deletePhoto} onClick={onDeletePhotoHandler}>
-              <Image src={deleteSvg} alt={'delete'} width={15} height={15} />
+            <button type="button" className={s.deletePhoto} onClick={onDeletePhotoHandler}>
+              <Image src={deleteSvg} alt="delete" width={15} height={15} />
             </button>
           )}
         </div>
@@ -77,24 +73,20 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
 
       <div className={s.addPhoto}>
         <Button
-          button_name={avatarURL ? 'Change photo' : 'Add a Profile Photo'}
-          variant={'transparent'}
-          button_handler={openModal}
+          buttonName={avatarURL ? 'Change photo' : 'Add a Profile Photo'}
+          variant="transparent"
+          buttonHandler={openModal}
         />
       </div>
 
-      <ModalLayout
-        isOpen={isOpen}
-        title={'Add a Profile Photo'}
-        closeModal={closeHandler}
-      >
+      <ModalLayout isOpen={isOpen} title="Add a Profile Photo" closeModal={closeHandler}>
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
-              <Image src={svg} alt={'my-profile photo'} width={46} height={46} />
+              <Image src={svg} alt="my-profile photo" width={46} height={46} />
             </div>
-            <label className={s.selectPhotoFromComputer}>
-              <input type="file" onChange={onPhotoSelected} />
+            <label htmlFor="select-from-computer" className={s.selectPhotoFromComputer}>
+              <input id="select-from-computer" type="file" onChange={onPhotoSelected} />
               Select from computer
             </label>
           </>
@@ -103,8 +95,8 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
             <div className={s.modalSave}>
               <Image
                 className={s.img1}
-                src={modalPhoto ? modalPhoto : svg}
-                alt={'my-profile photo'}
+                src={modalPhoto || svg}
+                alt="my-profile photo"
                 fill
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -113,8 +105,8 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
               <div className={s.modalImage}>
                 <Image
                   className={s.img2}
-                  src={modalPhoto ? modalPhoto : svg}
-                  alt={'my-profile photo'}
+                  src={modalPhoto || svg}
+                  alt="my-profile photo"
                   fill
                   sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -123,17 +115,13 @@ const ProfilePhoto = ({ setImgFile }: PropsType) => {
               </div>
             </div>
             <div className={s.saveButton}>
-              <Button
-                button_name={'Save'}
-                variant={'primary'}
-                button_handler={handleSave}
-              />
+              <Button buttonName="Save" variant="primary" buttonHandler={handleSave} />
             </div>
           </>
         )}
       </ModalLayout>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePhoto;
+export default ProfilePhoto

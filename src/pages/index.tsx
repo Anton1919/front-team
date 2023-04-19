@@ -1,16 +1,13 @@
 import Head from 'next/head'
-import React from 'react';
 
-import { NextPageWithLayout } from '@/pages/_app';
-import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar';
+import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar'
+import { NextPageWithLayout } from '@/pages/_app'
 
 const Home: NextPageWithLayout = () => {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-    </>
+    <Head>
+      <title>Home</title>
+    </Head>
   )
 }
 

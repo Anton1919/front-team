@@ -1,19 +1,17 @@
-import React from 'react';
-import { NextPage } from 'next';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-
-import { Button } from '@/common/components/button/Button';
-
-import { useGetProfile } from '@/features/account/hooks/useGetProfile';
+import { NextPage } from 'next'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import svg from '../profile-settings/profile-photo/image.svg'
 
 import s from './profile.module.scss'
 
+import { Button } from '@/common/components/button/Button'
+import { useGetProfile } from '@/features/account/hooks/useGetProfile'
+
 const Profile: NextPage = () => {
-  const { push } = useRouter();
-  const { data: user  } = useGetProfile();
+  const { push } = useRouter()
+  const { data: user } = useGetProfile()
 
   const testArrayWithPhotoContent = [
     { id: 1, photo: svg },
@@ -31,20 +29,21 @@ const Profile: NextPage = () => {
     { id: 13, photo: svg },
   ]
 
-  const onClickHandler = () => {
-    push('/my-profile/edit-profile')
+  const onClickHandler = async (): Promise<void> => {
+    await push('/my-profile/edit-profile')
   }
+
   return (
     <div className={s.profile}>
       <div className={s.about}>
         <div className={s.profilePhoto}>
-          <Image src={user?.avatar || svg} alt={'profile photo'} width={204} height={204}/>
+          <Image src={user?.avatar || svg} alt="profile photo" width={204} height={204} />
         </div>
 
         <div className={s.description}>
           <div className={s.descriptionHeader}>
             <h1 className={s.title}>{user?.username}</h1>
-            <Button button_name={'Profile Settings'} variant={'white'} button_handler={onClickHandler}/>
+            <Button buttonName="Profile Settings" variant="white" buttonHandler={onClickHandler} />
           </div>
 
           <div className={s.subscribers}>
@@ -65,20 +64,19 @@ const Profile: NextPage = () => {
           <div className={s.textDescriptions}>
             <p>About me: {user?.aboutMe}</p>
           </div>
-
         </div>
       </div>
       <div className={s.photoContent}>
         {testArrayWithPhotoContent.map(photo => {
           return (
             <div className={s.photo} key={photo.id}>
-              <Image src={photo.photo} alt={'photo content'} width={200} height={200}/>
+              <Image src={photo.photo} alt="photo content" width={200} height={200} />
             </div>
           )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

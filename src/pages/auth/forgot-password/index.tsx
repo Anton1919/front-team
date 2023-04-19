@@ -1,10 +1,10 @@
-import React from 'react';
-import Head from 'next/head';
+import Head from 'next/head'
 
-import { ForgotPassword } from '@/features/auth/ui/forgotPassword';
-import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader'
+import { ForgotPassword } from '@/features/auth/ui/forgotPassword'
+import { NextPageWithLayout } from '@/pages/_app'
 
-const Forgot = () => {
+const Forgot: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -12,9 +12,9 @@ const Forgot = () => {
       </Head>
       <ForgotPassword />
     </>
-  );
-};
+  )
+}
 
 Forgot.getLayout = getLayoutHeader
 
-export default Forgot;
+export default Forgot

@@ -4,7 +4,7 @@ export type CreateAccountDataType = {
   lastName: string
   birthday: string
   city: string
-  aboutMe: string,
+  aboutMe: string
   avatar: File
 }
 

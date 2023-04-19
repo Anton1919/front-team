@@ -1,21 +1,21 @@
-import React from 'react';
-import Head from 'next/head';
+import Head from 'next/head'
 
-import { Registration } from '@/features/auth/ui/registration';
-import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader'
+import { Registration } from '@/features/auth/ui/registration'
+import { NextPageWithLayout } from '@/pages/_app'
 
-const Register = () => {
-
+const Register: NextPageWithLayout = () => {
   return (
     <>
       <Head>
         <title>Registration</title>
       </Head>
 
-      <Registration/>
-    </>)
-};
+      <Registration />
+    </>
+  )
+}
 
 Register.getLayout = getLayoutHeader
 
-export default Register;
+export default Register

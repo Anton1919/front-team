@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-import { Textarea } from './Textarea';
+import { Textarea } from './Textarea'
 
 export default {
   component: Textarea,
@@ -16,34 +16,34 @@ export default {
       description: 'If disabled true so class name desabled',
       options: [true, false],
       defaultValue: true,
-      control: 'boolean'
+      control: 'boolean',
     },
     error: {
       description: 'If error that text and border become red color ',
-      control: 'text'
+      control: 'text',
     },
     name: {
       description: 'This param is requared for formik for example',
-      control: 'text'
+      control: 'text',
     },
     sx: {
-      description: ' This param is waiting object {width: number, height:number}'
+      description: ' This param is waiting object {width: number, height:number}',
     },
     placeholder: {
       description: 'Placeholder for textarea',
-      control: 'text'
+      control: 'text',
     },
     cols: {
       description: 'Count columns for textarea',
-      control: 'number'
+      control: 'number',
     },
     rows: {
       description: 'Count rows for textarea',
-      control: 'number'
-    }
+      control: 'number',
+    },
   },
-} as Meta<typeof Textarea>;
-type Story = StoryObj<typeof Textarea>;
+} as Meta<typeof Textarea>
+type Story = StoryObj<typeof Textarea>
 
 export const Default: Story = {
   args: {
@@ -52,8 +52,8 @@ export const Default: Story = {
     label: 'Default',
     style: { width: 300, height: 100 },
     name: 'Default',
-    placeholder: 'Default placeholder'
-  }
+    placeholder: 'Default placeholder',
+  },
 }
 export const Error: Story = {
   args: {
@@ -63,9 +63,9 @@ export const Error: Story = {
     style: { width: 300, height: 100 },
     name: 'Default',
     placeholder: 'Error placeholder',
-    error: 'New error message'
-  }
-};
+    error: 'New error message',
+  },
+}
 export const Disable: Story = {
   args: {
     id: '3',
@@ -73,6 +73,6 @@ export const Disable: Story = {
     label: 'Disable',
     style: { width: 300, height: 100 },
     name: 'Disable',
-    placeholder: 'Disable placeholder'
-  }
-};
+    placeholder: 'Disable placeholder',
+  },
+}

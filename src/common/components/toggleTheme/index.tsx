@@ -1,12 +1,11 @@
-import React from 'react';
-
-import { useTheme } from '@/common/hooks/useTheme';
+import { FC } from 'react'
 
 import s from './ToggleTheme.module.scss'
 
-export const ToggleTheme = () => {
-  const toggleTheme = useTheme();
-  return (
-    <button className={s.toggleTheme} onClick={toggleTheme}/>
-  );
-};
+import { useTheme } from '@/common/hooks/useTheme'
+
+export const ToggleTheme: FC = () => {
+  const toggleTheme = useTheme()
+
+  return <button type="button" className={s.toggleTheme} onClick={toggleTheme} />
+}

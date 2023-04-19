@@ -1,15 +1,18 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { FC } from 'react'
 
-import React from 'react';
+import { Head, Html, Main, NextScript } from 'next/document'
 
-export default function Document() {
+const Document: FC = () => {
   return (
     <Html lang="en">
       <Head />
       <body>
+        <div id="modals" />
         <Main />
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }
+
+export default Document

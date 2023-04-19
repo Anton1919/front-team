@@ -1,16 +1,16 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, UseMutationResult } from '@tanstack/react-query'
 
-import { AuthAPI } from '@/features/auth/api';
-import { selectClearState, useAuthStore } from '@/features/auth/store';
+import { QUERY_KEY } from '@/common/constants/queryKeys'
+import { AuthAPI } from '@/features/auth/api'
+import { selectClearState, useAuthStore } from '@/features/auth/store'
 
-export const useLogout = () => {
+export const useLogout = (): UseMutationResult<{}> => {
   const clearState = useAuthStore(selectClearState)
 
-  return useMutation({
-    mutationFn: AuthAPI.logout,
+  return useMutation([QUERY_KEY.LOGOUT], AuthAPI.logout, {
     retry: false,
     onSuccess: () => {
       clearState()
-    }
-  });
-};
+    },
+  })
+}

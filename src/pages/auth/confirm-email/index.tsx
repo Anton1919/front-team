@@ -1,24 +1,29 @@
-import React from 'react';
+import { useRouter } from 'next/router'
 
-import { useRouter } from 'next/router';
+import { Confirmed } from '@/common/components/confirmed'
+import { ConfirmExpired } from '@/common/components/confirmExpired'
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader'
+import { Spinner } from '@/common/components/spinner'
+import { useConfirmRegistration } from '@/features/auth/hooks/registration/useConfirmRegistration'
+import { NextPageWithLayout } from '@/pages/_app'
 
-import { useConfrimRegistration } from '@/features/auth/hooks/registration/useConfrimRegistration';
-import { Confirmed } from '@/common/components/confirmed';
-import { ConfirmExpired } from '@/common/components/confirmExpired';
-import { Spinner } from '@/common/components/spinner';
-import { getLayoutHeader } from '@/common/components/layout/LayoutHeader';
-
-const ConfirmEmail = () => {
-
+const ConfirmEmail: NextPageWithLayout = () => {
   const { query } = useRouter()
 
-  const code = query.code as string;
+  const code = query.code as string
 
-  const { isSuccess, isLoading } = useConfrimRegistration(code)
+  const { isSuccess, isLoading } = useConfirmRegistration(code)
 
-  return (isLoading ? <Spinner /> : isSuccess ? <Confirmed/> : <ConfirmExpired />);
-};
+  if (isLoading) {
+    return <Spinner />
+  }
+  if (isSuccess) {
+    return <Confirmed />
+  }
+
+  return <ConfirmExpired />
+}
 
 ConfirmEmail.getLayout = getLayoutHeader
 
-export default ConfirmEmail;
+export default ConfirmEmail

@@ -1,3 +1,3 @@
-export * from './baseInput';
-export * from './passwordInput';
-export * from './searchInput';
+export * from './baseInput'
+export * from './passwordInput'
+export * from './searchInput'

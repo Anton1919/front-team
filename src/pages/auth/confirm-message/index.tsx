@@ -1,9 +1,8 @@
-import React from 'react';
+import { EmailSent } from '@/common/components/emailSent'
+import { NextPageWithLayout } from '@/pages/_app'
 
-import { EmailSent } from '@/common/components/emailSent';
+const ConfirmMessage: NextPageWithLayout = () => {
+  return <EmailSent />
+}
 
-const ConfirmMessage = () => {
-  return <EmailSent />;
-};
-
-export default ConfirmMessage;
+export default ConfirmMessage
