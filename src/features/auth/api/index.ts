@@ -4,6 +4,7 @@ import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid
 import {
   AuthDataType,
   LoginDataType,
+  LoginResponseType,
   MeResponseType,
   NewPasswordType,
   RegistrationConfirmationType,
@@ -22,7 +23,7 @@ export const AuthAPI = {
   resendRegistration() {
     return instance.post('auth/registration-email-resending', {})
   },
-  login(data: LoginDataType) {
+  login(data: LoginDataType): Promise<LoginResponseType> {
     return instance.post('auth/login', data)
   },
   refreshToken() {

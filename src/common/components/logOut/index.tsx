@@ -9,11 +9,11 @@ import { Button } from '@/common/components/button/Button'
 import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { useLogout } from '@/features/auth/hooks/logout/useLogout'
-import { selectEmail, useAuthStore } from '@/features/auth/store'
+import { selectEmail, useProfileStore } from '@/features/auth/store'
 
 export const LogOut: FC = () => {
   const { isOpen, openModal, closeModal } = useModal()
-  const email = useAuthStore(selectEmail)
+  const email = useProfileStore(selectEmail)
 
   const { mutateAsync: logout } = useLogout()
 

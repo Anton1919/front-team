@@ -2,16 +2,16 @@ import { useEffect } from 'react'
 
 import { useRouter } from 'next/router'
 
-import { selectAccessToken, useAuthStore } from '@/features/auth/store'
+import { selectAccessToken, useProfileStore } from '@/features/auth/store'
 
 export const useIsAuth = (): void => {
   const { push, pathname } = useRouter()
 
-  const accessToken = useAuthStore(selectAccessToken)
+  const accessToken = useProfileStore(selectAccessToken)
   const paths = pathname.includes('/auth')
 
   useEffect(() => {
-    if (!accessToken) {
+    if (!accessToken && !paths) {
       push('/auth')
 
       return

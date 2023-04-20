@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 
 // eslint-disable-next-line import/no-cycle
 import { useForgotMutation } from '@/features/auth/hooks/forgotPassword/useForgotMutation'
-import { selectSetEmail, useAuthStore } from '@/features/auth/store'
+import { selectSetEmail, useProfileStore } from '@/features/auth/store'
 
 export type ForgotField = {
   email: string
@@ -14,7 +14,7 @@ const emailPattern = {
 }
 
 export const useForgotValid = (): any => {
-  const setEmail = useAuthStore(selectSetEmail)
+  const setEmail = useProfileStore(selectSetEmail)
   const { mutate: forgotPass, isError, isLoading } = useForgotMutation()
 
   const {

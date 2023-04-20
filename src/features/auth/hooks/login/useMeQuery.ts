@@ -6,14 +6,14 @@ import {
   selectClearState,
   selectSetEmail,
   selectSetUsername,
-  useAuthStore,
+  useProfileStore,
 } from '@/features/auth/store'
 import { MeResponseType } from '@/features/auth/types'
 
 export const useMeQuery = (): UseQueryResult<any> => {
-  const setEmail = useAuthStore(selectSetEmail)
-  const setUsername = useAuthStore(selectSetUsername)
-  const clearState = useAuthStore(selectClearState)
+  const setEmail = useProfileStore(selectSetEmail)
+  const setUsername = useProfileStore(selectSetUsername)
+  const clearState = useProfileStore(selectClearState)
 
   return useQuery([QUERY_KEY.ME], AuthAPI.me, {
     retry: false,

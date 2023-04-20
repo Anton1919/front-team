@@ -1,17 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-type ThemeType = 'light' | 'dark'
+import { selectSetTheme, selectTheme, useProfileStore } from '@/features/auth/store'
 
 export const useTheme = (): (() => void) => {
-  const [theme, setTheme] = useState<ThemeType>(
-    (localStorage.getItem('theme') as ThemeType) || 'dark'
-  )
+  const theme = useProfileStore(selectTheme)
+  const setTheme = useProfileStore(selectSetTheme)
 
   const toggle = (): void => setTheme(theme === 'light' ? 'dark' : 'light')
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
   }, [theme])
 
   return toggle

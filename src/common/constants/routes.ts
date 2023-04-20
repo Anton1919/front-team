@@ -6,6 +6,6 @@ export const PATHS = {
     PASSWORD_RECOVERY: '/auth/password-recovery',
     FORGOT_PASSWORD: '/auth/forgot-password',
     CONFIRM_MESSAGE: '/auth/confirm-message',
-    CONFIRMED: 'auth/confirm-message/confirmed',
+    CONFIRMED: '/auth/confirm-message/confirmed',
   },
 } as const

@@ -23,3 +23,7 @@ export type MeResponseType = {
   email: string
   username: string
 }
+
+export type LoginResponseType = {
+  accessToken: string
+}
