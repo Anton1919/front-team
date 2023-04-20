@@ -7,7 +7,7 @@ import svg from '../profile-settings/profile-photo/image.svg'
 import s from './profile.module.scss'
 
 import { Button } from '@/common/components/button/Button'
-import { useGetProfile } from '@/features/account/hooks/useGetProfile'
+import { useGetProfile } from '@/features/profile/hooks/useGetProfile'
 
 const Profile: NextPage = () => {
   const { push } = useRouter()

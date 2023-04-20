@@ -6,7 +6,7 @@ import logoutSvg from './icons/log-out.svg'
 import macSvg from './icons/mac.svg'
 import phoneSvg from './icons/phone.svg'
 
-import DeviceItem from '@/features/account/ui/my-profile/DevicesTab/DeviceItem'
+import DeviceItem from '@/features/profile/ui/my-profile/DevicesTab/DeviceItem'
 
 const DevicesTab: NextPage = () => {
   return (

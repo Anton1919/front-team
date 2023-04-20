@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import ProfileSettingsContainer from '@/features/account/ui/profile-settings-container'
+import ProfileSettingsContainer from '@/features/profile/ui/profile-settings-container'
 import { NextPageWithLayout } from '@/pages/_app'
 
 const AccountCreate: NextPageWithLayout = () => {

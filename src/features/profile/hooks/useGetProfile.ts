@@ -6,17 +6,16 @@ import { isoDate } from '@/common/utils/isoDate'
 import { AccountAPI } from '@/features/account/api'
 import { ProfileType } from '@/features/account/types'
 import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
+import { ProfileAPI } from '@/features/profile/api'
+import { selectSetUser, useCreateAccountStore } from '@/features/profile/store'
+import { ProfileType } from '@/features/profile/types'
 
 export const useGetProfile = (): UseQueryResult<ProfileType> => {
   const refetchRefreshToken = useRefetchRefreshToken()
 
-  const getProfile = useQuery([QUERY_KEY.GET_PROFILE], AccountAPI.getProfile, {
+  const getProfile = useQuery([QUERY_KEY.GET_PROFILE], ProfileAPI.getProfile, {
     select: (data: ProfileType) => ({ ...data, birthday: isoDate(data.birthday as string) }),
-    retry: false,
-    refetchInterval: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-    refetchIntervalInBackground: false,
+
     onError: async (error: AxiosError) => {
       await refetchRefreshToken(error, getProfile.refetch)
     },
