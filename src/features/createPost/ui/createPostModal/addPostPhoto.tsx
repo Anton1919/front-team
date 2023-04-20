@@ -14,14 +14,14 @@ import { Button } from '@/common/components/button/Button'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { Spinner } from '@/common/components/spinner'
 import svg from '@/features/account/ui/profile-settings/profile-photo/image.svg'
-import { useCreatePostMutation } from '@/features/createPost/hooks/useCreatePostMutation'
+import { useCreatePost } from '@/features/createPost/hooks/useCreatePost'
 
 type PropsType = {
   closeFirstModal: () => void
 }
 
 const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
-  const { mutate: createPost, isLoading } = useCreatePostMutation()
+  const { mutate: createPost, isLoading } = useCreatePost()
 
   const { closeModal } = useModal()
 

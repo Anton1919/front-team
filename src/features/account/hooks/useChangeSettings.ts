@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useGetProfile } from '@/features/account/hooks/useGetProfile'
-import { useUpdateAccount } from '@/features/account/hooks/useUpdateAccount'
+import { useUpdateProfile } from '@/features/account/hooks/useUpdateProfile'
 import { CreateAccountDataType } from '@/features/account/types'
 
 const birthdayPattern = {
@@ -29,7 +29,7 @@ export const useChangeSettings = (): any => {
     }
   }, [setValue, profileData])
 
-  const { mutateAsync: createAccount, isLoading } = useUpdateAccount()
+  const { mutateAsync: createAccount, isLoading } = useUpdateProfile()
 
   const onSubmit = async (data: CreateAccountDataType): Promise<void> => {
     const formData = new FormData()
