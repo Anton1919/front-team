@@ -1,8 +1,7 @@
-import homeI from '@/common/assets/icons/home.svg';
-import createI from '@/common/assets/icons/create.svg';
-import MyProfileI from '@/common/assets/icons/myProfile.svg';
-import statisticsI from '@/common/assets/icons/statistics.svg';
-import FavoritesI from '@/common/assets/icons/favorites.svg';
+import FavoritesI from '@/common/assets/icons/favorites.svg'
+import homeI from '@/common/assets/icons/home.svg'
+import MyProfileI from '@/common/assets/icons/myProfile.svg'
+import statisticsI from '@/common/assets/icons/statistics.svg'
 
 export const linksData = [
   { title: 'Home', path: '/', icon: homeI },

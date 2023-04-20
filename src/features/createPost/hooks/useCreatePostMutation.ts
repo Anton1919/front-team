@@ -1,26 +1,28 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 
-import { AxiosError } from 'axios';
+import { useRefreshToken } from '@/features/auth/hooks/login/useMeQuery'
+import { PostsAPI } from '@/features/createPost/api'
 
-import { useRefreshToken } from '@/features/auth/hooks/login/useMeQuery';
-import { PostsAPI } from '@/features/createPost/api';
+const resStatus = 401
 
-export const useCreatePostMutation = () => {
-  const { refetch } = useRefreshToken();
+export const useCreatePostMutation = (): any => {
+  const { refetch } = useRefreshToken()
   const createPost = useMutation({
-    // queryKey:['createPost'],
     mutationFn: PostsAPI.createPost,
+
     onSuccess: () => {
       alert('Пост опубликован')
     },
     onError: async (error: AxiosError, data) => {
       alert('Кабзда')
-      if (error.response?.status === 401){
-        await refetch();
-        await createPost.mutateAsync(data)
 
+      if (error.response?.status === resStatus) {
+        await refetch()
+        await createPost.mutateAsync(data)
       }
-    }
-  });
+    },
+  })
+
   return createPost
-};
+}
