@@ -24,7 +24,6 @@
     "react-spinners": "^0.13.8",
     "sass": "^1.60.0",
     "storybook-addon-next": "^1.8.0",
-    "swiper": "^9.2.3",
     "typescript": "5.0.3",
     "zustand": "^4.3.7"
   },
@@ -59,3 +58,4 @@
     "storybook": "^7.0.0"
   }
 }
+
