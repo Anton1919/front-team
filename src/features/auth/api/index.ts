@@ -23,7 +23,7 @@ export const AuthAPI = {
     return instance.post('auth/registration-email-resending', data)
   },
   login(data: LoginDataType): Promise<LoginResponseType> {
-    return instance.post('auth/login', data)
+    return instance.post('auth/login', data).then(res => res.data)
   },
   refreshToken() {
     return instance

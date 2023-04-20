@@ -8,7 +8,7 @@ export const ProfileAPI = {
   updateProfilePhoto(data: FormData | '') {
     return instance.put('user/profile/photo', data).then(res => res.data)
   },
-  getProfile(): Promise<ProfileType> {
+  getProfile() {
     return instance.get<ProfileType>('user/profile').then(res => res.data)
   },
 }

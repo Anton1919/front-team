@@ -3,9 +3,9 @@ import { AxiosError } from 'axios'
 
 import { MUTATION_KEY, QUERY_KEY } from '@/common/constants/queryKeys'
 import { isoDate } from '@/common/utils/isoDate'
+import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
 import { ProfileAPI } from '@/features/profile/api'
 import { ProfileType } from '@/features/profile/types'
-import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
 
 export const useUpdatePhoto = (): UseMutationResult<unknown, unknown, FormData | ''> => {
   const refetchRefreshToken = useRefetchRefreshToken()

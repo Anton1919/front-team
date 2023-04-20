@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query'
 import { AxiosError } from 'axios'
 
-import { ProfileAPI } from '@/features/profile/api'
 import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
+import { ProfileAPI } from '@/features/profile/api'
 
 export const useUpdateProfileInfo = (): UseMutationResult<any, unknown, any> => {
   const refetchRefreshToken = useRefetchRefreshToken()

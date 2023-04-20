@@ -12,7 +12,7 @@ export const useLoginMutation = (): UseMutationResult<any, unknown, LoginDataTyp
   return useMutation({
     mutationFn: AuthAPI.login,
     onSuccess: async res => {
-      const { accessToken } = res.data
+      const { accessToken } = res
 
       setAccessToken(accessToken)
       await queryClient.invalidateQueries([QUERY_KEY.ME])

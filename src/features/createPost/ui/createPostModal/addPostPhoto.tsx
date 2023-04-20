@@ -13,8 +13,8 @@ import s from './AddPostPhoto.module.scss'
 import { Button } from '@/common/components/button/Button'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { Spinner } from '@/common/components/spinner'
-import svg from '@/features/profile/ui/profile-settings/profile-photo/image.svg'
 import { useCreatePost } from '@/features/createPost/hooks/useCreatePost'
+import svg from '@/features/profile/ui/profile-settings/profile-photo/image.svg'
 
 type PropsType = {
   closeFirstModal: () => void
