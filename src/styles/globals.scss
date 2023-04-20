@@ -1,9 +1,29 @@
-@import "constants";
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 * {
     padding: 0;
     margin: 0;
-    border: 0;
+}
+
+body[data-theme='dark'] {
+    --color-text: #FFFFFF;
+    --bg-color:  #000000;
+
+    --bg-modal: #2D2D2D;
+
+    --card-color: #131313;
+    --card-border-color: #2D2D2D;
+    --filter-moon: invert(100%) sepia(87%) saturate(0%) hue-rotate(218deg) brightness(111%) contrast(101%);
+}
+body[data-theme='light'] {
+    --color-text: #000000;
+    --bg-color: #EDF3FA;
+
+    --bg-modal: #FFFFFF;
+
+    --card-color: #F7FBFF;
+    --card-border-color: #F7FBFF;
+
+    --filter-color: invert(100%) sepia(0%) saturate(7500%) hue-rotate(155deg) brightness(100%) contrast(103%);
 }
 
 *,
@@ -15,8 +35,9 @@
 }
 
 body {
-    background: $dark-color_900;
-    color: $light-color_100;
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--color-text);
 }
 
 :focus,
@@ -29,24 +50,6 @@ a:active {
     outline: none;
 }
 
-nav,
-footer,
-header,
-aside {
-    display: block;
-}
-
-html,
-body {
-    height: 100%;
-    width: 100%;
-    font-size: 100%;
-    line-height: 1;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
 input,
 button,
 textarea {
@@ -56,21 +59,6 @@ textarea {
 
 input::-ms-clear {
     display: none;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    border-bottom: 2px solid black !important;
-    -webkit-text-fill-color: inherit;
-    -webkit-box-shadow: 0 0 0 1000px $light-color_100 inset;
-    transition: background-color 5000s ease-in-out 0s;
 }
 
 button {
@@ -99,16 +87,6 @@ ul li {
 
 img {
     vertical-align: top;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .material-icons {

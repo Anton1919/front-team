@@ -1,42 +1,46 @@
-import React from 'react';
-import Image from 'next/image';
+import { FC } from 'react'
 
-import logOutSvg from '@/common/assets/icons/logOut.svg';
-import { Button } from '@/common/components/button/Button';
-import { selectEmail, useAuthStore } from '@/features/auth/store';
+import Image from 'next/image'
 
-import { useLogout } from '@/features/auth/hooks/logout/useLogout';
+import s from './LogOut.module.scss'
 
-import { useModal } from '@/common/components/modalWindow/useModal';
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout';
+import logOutSvg from '@/common/assets/icons/logOut.svg'
+import { Button } from '@/common/components/button/Button'
+import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { useModal } from '@/common/components/modalWindow/useModal'
+import { useLogout } from '@/features/auth/hooks/logout/useLogout'
+import { selectEmail, useAuthStore } from '@/features/auth/store'
 
-import s from './LogOut.module.scss';
+export const LogOut: FC = () => {
+  const { isOpen, openModal, closeModal } = useModal()
+  const email = useAuthStore(selectEmail)
 
-export const LogOut = () => {
-  const { isOpen, openModal, closeModal } = useModal();
-  const email = useAuthStore(selectEmail);
+  const { mutateAsync: logout } = useLogout()
 
-  const { mutateAsync: logout } = useLogout();
-
-  const logOutHandler = async () => {
-    await logout();
-    closeModal();
-  };
+  const logOutHandler = async (): Promise<void> => {
+    try {
+      await logout({})
+      closeModal()
+    } catch (e) {
+      /* empty */
+    }
+  }
 
   return (
     <>
-      <div className={s.logOut} onClick={openModal}>
-        <Image src={logOutSvg} alt={'log out icon'} />
+      <div className={s.logOut} onClick={openModal} aria-hidden>
+        <Image className={s.logOutIcon} src={logOutSvg} alt="log out icon" />
         <span>Log out</span>
       </div>
-      <ModalLayout isOpen={isOpen} closeModal={closeModal} title={'Log out'}>
-        <div>Are you really want to log out of your account {email} ?
+      <ModalLayout isOpen={isOpen} closeModal={closeModal} title="Log out">
+        <div>
+          Are you really want to log out of your account {email} ?
           <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
-            <Button button_name={'Yes'} variant={'transparent'} button_handler={logOutHandler} />
-            <Button button_name={'No'} button_handler={closeModal} />
+            <Button buttonName="Yes" variant="transparent" buttonHandler={logOutHandler} />
+            <Button buttonName="No" buttonHandler={closeModal} />
           </div>
         </div>
       </ModalLayout>
     </>
-  );
-};
+  )
+}

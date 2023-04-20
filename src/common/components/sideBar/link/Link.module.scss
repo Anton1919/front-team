@@ -1,7 +1,7 @@
 @import '../../../../styles/constants';
 
 .link {
-  color: $light-color_100;
+  color: var(--color-text);
   font-weight: 500;
 
   &:hover {
@@ -20,7 +20,7 @@
     width: 24px;
     height: 24px;
     vertical-align: middle;
-
+    filter: var(--filter-color);
   }
 }
 

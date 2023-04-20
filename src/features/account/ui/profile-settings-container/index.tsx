@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-
-import ProfilePhoto from '@/features/account/ui/profile-settings/profile-photo';
-import ProfileSettings from '@/features/account/ui/profile-settings';
+import { FC, useState } from 'react'
 
 import s from './ProfileSettingsContainer.module.scss'
 
-const ProfileSettingsContainer = () => {
+import ProfileSettings from '@/features/account/ui/profile-settings'
+import ProfilePhoto from '@/features/account/ui/profile-settings/profile-photo'
 
-  const [imgFile, setImgFile] = useState<File>();
+const ProfileSettingsContainer: FC = () => {
+  const [imgFile, setImgFile] = useState<File>()
 
   return (
-
     <div className={s.block}>
-      <ProfilePhoto setImgFile={setImgFile}/>
-      <ProfileSettings imgFile={imgFile} buttonText={'Edit profile'}/>
+      <ProfilePhoto setImgFile={setImgFile} />
+      <ProfileSettings imgFile={imgFile} buttonText="Edit profile" />
     </div>
-  );
-};
+  )
+}
 
-export default ProfileSettingsContainer;
+export default ProfileSettingsContainer

@@ -1,17 +1,20 @@
-import React from 'react';
-import Head from 'next/head';
+import Head from 'next/head'
 
-import { Login } from '@/features/auth/ui/login';
+import { getLayoutHeader } from '@/common/components/layout/LayoutHeader'
+import { Login } from '@/features/auth/ui/login'
+import { NextPageWithLayout } from '@/pages/_app'
 
-const LoginPage = () => {
+const LoginPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
         <title>Login</title>
       </Head>
-      <Login/>
+      <Login />
     </>
   )
-};
+}
 
-export default LoginPage;
+LoginPage.getLayout = getLayoutHeader
+
+export default LoginPage

@@ -14,7 +14,7 @@
 
   .modalContent {
     min-width: 438px;
-    background: $dark-color_300;
+    background-color: var(--bg-modal);
 
     .title {
       display: flex;
@@ -31,6 +31,7 @@
         cursor: pointer;
         height: 14px;
         margin-left: 294px;
+        filter: var(--filter-color);
       }
     }
 

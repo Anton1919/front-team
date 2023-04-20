@@ -4,6 +4,8 @@
 
   top: 50%;
   transform: translateY(-50%);
+
+  filter: var(--filter-color);
 }
 
 .icon.disabled {

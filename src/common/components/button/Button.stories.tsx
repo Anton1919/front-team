@@ -1,7 +1,6 @@
+import { Meta, StoryObj } from '@storybook/react'
 
-import { Meta, StoryObj } from '@storybook/react';
-
-import { Button } from './Button';
+import { Button } from './Button'
 
 export default {
   component: Button,
@@ -15,54 +14,53 @@ export default {
   argTypes: {
     variant: {
       description: 'This param control style button and has four variants ',
-
     },
     disabled: {
       description: 'This param responsable for button style and ations',
       control: 'boolean',
-      defaultValue: false
+      defaultValue: false,
     },
     button_name: {
       description: 'This name for any button',
-      defaultValue: 'Send'
+      defaultValue: 'Send',
     },
     sx: {
-      description: ' This param is waiting object {width: number, height:number}'
+      description: ' This param is waiting object {width: number, height:number}',
     },
   },
-} as Meta<typeof Button>;
+} as Meta<typeof Button>
 
 type Story = StoryObj<typeof Button>
 
 export const Primary: Story = {
   args: {
-    button_name: 'Send',
+    buttonName: 'Send',
     disabled: false,
     variant: 'primary',
-    sx: { width: 200, height: 50 }
-  }
+    sx: { width: 200, height: 50 },
+  },
 }
 export const White: Story = {
   args: {
-    button_name: 'Send',
+    buttonName: 'Send',
     disabled: false,
     variant: 'white',
-    sx: { width: 200, height: 50 }
-  }
+    sx: { width: 200, height: 50 },
+  },
 }
 export const Transparent: Story = {
   args: {
-    button_name: 'Send',
+    buttonName: 'Send',
     disabled: false,
     variant: 'transparent',
-    sx: { width: 200, height: 50 }
-  }
+    sx: { width: 200, height: 50 },
+  },
 }
 export const Outlined: Story = {
   args: {
-    button_name: 'Send',
+    buttonName: 'Send',
     disabled: false,
     variant: 'outlined',
-    sx: { width: 200, height: 50 }
-  }
+    sx: { width: 200, height: 50 },
+  },
 }

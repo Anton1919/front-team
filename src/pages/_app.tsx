@@ -1,36 +1,37 @@
 import '@/styles/globals.scss'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useState } from 'react'
 
-import { NextPage } from 'next';
-
-import { AuthRedirect } from '@/common/components/authRedirect';
-
-import { useIsAuth } from '@/common/hooks/useIsAuth';
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
+import { AuthRedirect } from '@/common/components/authRedirect'
+import { useIsAuth } from '@/common/hooks/useIsAuth'
+
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
-    getLayout?: (page: ReactElement) => ReactNode
+  getLayout?: (page: ReactElement) => ReactNode
 }
 type AppPropsWithLayout = AppProps & {
-    Component: NextPageWithLayout
+  Component: NextPageWithLayout
 }
 
-const queryClient = new QueryClient();
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+const App = ({ Component, pageProps }: AppPropsWithLayout): ReactNode => {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: { queries: { refetchOnWindowFocus: false } },
+      })
+  )
 
   useIsAuth()
 
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || (page => page)
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthRedirect>
-        <div id="modals"/>
-        {getLayout(<Component {...pageProps} />)}
-      </AuthRedirect>
+      <AuthRedirect>{getLayout(<Component {...pageProps} />)}</AuthRedirect>
     </QueryClientProvider>
   )
 }
+
+export default App
