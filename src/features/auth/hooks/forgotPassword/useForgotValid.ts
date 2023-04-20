@@ -1,12 +1,8 @@
 import { useForm } from 'react-hook-form'
 
-// eslint-disable-next-line import/no-cycle
 import { useForgotMutation } from '@/features/auth/hooks/forgotPassword/useForgotMutation'
 import { selectSetEmail, useProfileStore } from '@/features/auth/store'
-
-export type ForgotField = {
-  email: string
-}
+import { ForgotField } from '@/features/auth/types'
 
 const emailPattern = {
   value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/gi,

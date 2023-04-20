@@ -1,8 +1,7 @@
 import { instance } from '@/common/constants/instance'
-// eslint-disable-next-line import/no-cycle
-import { ForgotField } from '@/features/auth/hooks/forgotPassword/useForgotValid'
 import {
   AuthDataType,
+  ForgotField,
   LoginDataType,
   LoginResponseType,
   MeResponseType,
@@ -20,8 +19,8 @@ export const AuthAPI = {
   confirm(data: RegistrationConfirmationType) {
     return instance.post('auth/registration-confirmation', data)
   },
-  resendRegistration() {
-    return instance.post('auth/registration-email-resending', {})
+  resendRegistration(data: ForgotField): Promise<{}> {
+    return instance.post('auth/registration-email-resending', data)
   },
   login(data: LoginDataType): Promise<LoginResponseType> {
     return instance.post('auth/login', data)
@@ -32,10 +31,10 @@ export const AuthAPI = {
       .then(res => res.data)
       .catch(res => res)
   },
-  forgotPassword(data: ForgotField) {
+  forgotPassword(data: ForgotField): Promise<{}> {
     return instance.post('auth/password-recovery', data)
   },
-  newPassword(data: NewPasswordType) {
+  newPassword(data: NewPasswordType): Promise<{}> {
     return instance.post('auth/new-password', data)
   },
   logout() {

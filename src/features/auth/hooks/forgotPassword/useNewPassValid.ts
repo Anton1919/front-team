@@ -2,11 +2,7 @@ import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 
 import { useNewPassMutation } from '@/features/auth/hooks/forgotPassword/useNewPassMutation'
-
-export type NewPassField = {
-  password: string
-  cpassword: string
-}
+import { NewPassField } from '@/features/auth/types'
 
 export const useNewPassValid = (recoveryCode: string): any => {
   const { mutate: newPass, error, isError, isLoading } = useNewPassMutation()

@@ -18,6 +18,11 @@ export type NewPasswordType = {
   recoveryCode: string
 }
 
+export type NewPassField = {
+  password: string
+  cpassword: string
+}
+
 export type MeResponseType = {
   userId: number
   email: string
@@ -26,4 +31,8 @@ export type MeResponseType = {
 
 export type LoginResponseType = {
   accessToken: string
+}
+
+export type ForgotField = {
+  email: string
 }
