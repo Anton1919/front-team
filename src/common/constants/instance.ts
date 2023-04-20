@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { AuthState } from '@/features/auth/store'
+import { ProfileState } from '@/features/auth/store'
 
 export const instance = axios.create({
   baseURL: 'https://photostock-wine.vercel.app/',
@@ -8,7 +8,8 @@ export const instance = axios.create({
 })
 
 instance.interceptors.request.use(config => {
-  const { accessToken } = (JSON.parse(localStorage.getItem('auth')!) as { state: AuthState }).state
+  const { accessToken } = (JSON.parse(localStorage.getItem('profile')!) as { state: ProfileState })
+    .state
 
   if (typeof window !== 'undefined') {
     // eslint-disable-next-line no-param-reassign

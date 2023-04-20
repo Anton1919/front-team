@@ -34,7 +34,7 @@ export const useProfileStore = create(
       setEmail: email => set({ email }),
       setAccessToken: accessToken => set({ accessToken }),
       setTheme: theme => set({ theme }),
-      clearState: () => set({ initialValue }),
+      clearState: () => set(initialValue),
     })),
     { name: 'profile' }
   )
