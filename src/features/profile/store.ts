@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
-import { ProfileType } from '@/features/account/types'
+import { ProfileType } from '@/features/profile/types'
 
 type AccountState = {
   userState: ProfileType

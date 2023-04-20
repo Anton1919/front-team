@@ -3,7 +3,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/common/components/button/Button'
-import s from '@/features/account/ui/my-profile/DevicesTab/DeviceItem/DeviceItem.module.scss'
+import s from '@/features/profile/ui/my-profile/DevicesTab/DeviceItem/DeviceItem.module.scss'
 
 type PropsType = {
   title?: string

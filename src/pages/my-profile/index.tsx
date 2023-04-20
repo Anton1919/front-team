@@ -1,5 +1,5 @@
 import { getLayoutSideBar } from '@/common/components/layout/LayoutSidebar'
-import Profile from '@/features/account/ui/my-profile'
+import Profile from '@/features/profile/ui/my-profile'
 import { NextPageWithLayout } from '@/pages/_app'
 
 const ProfilePage: NextPageWithLayout = () => {

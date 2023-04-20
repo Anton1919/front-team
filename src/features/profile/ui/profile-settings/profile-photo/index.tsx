@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, useEffect, useState } from 'react'
+import { ChangeEventHandler, FC, useState } from 'react'
 
 import Image from 'next/image'
 
@@ -9,17 +9,14 @@ import s from './ProfilePhoto.module.scss'
 import { Button } from '@/common/components/button/Button'
 import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
 import { useModal } from '@/common/components/modalWindow/useModal'
-import { useGetProfile } from '@/features/account/hooks/useGetProfile'
+import { useGetProfile } from '@/features/profile/hooks/useGetProfile'
+import { useUpdatePhoto } from '@/features/profile/hooks/useUpdatePhoto'
 
-type PropsType = {
-  setImgFile: (img: File | undefined) => void
-}
-
-const ProfilePhoto: FC<PropsType> = ({ setImgFile }) => {
+const ProfilePhoto: FC = () => {
   const { data } = useGetProfile()
+  const { mutate: updatePhoto } = useUpdatePhoto()
   const { isOpen, openModal, closeModal } = useModal()
   const [toggleModal, setToggleModal] = useState(false)
-  const [avatarURL, setAvatarURL] = useState<string | undefined>(data?.avatar)
   const [modalPhoto, setModalPhoto] = useState<string>()
   const [file, setFile] = useState<File | undefined>()
 
@@ -34,11 +31,12 @@ const ProfilePhoto: FC<PropsType> = ({ setImgFile }) => {
   }
   const handleSave = (): void => {
     if (file) {
-      const objectUrl = URL.createObjectURL(file)
+      const formData = new FormData()
 
-      setAvatarURL(objectUrl)
-      setImgFile(file)
+      formData.append('avatar', file)
+      updatePhoto(formData)
     }
+
     setToggleModal(false)
     closeModal()
   }
@@ -49,21 +47,15 @@ const ProfilePhoto: FC<PropsType> = ({ setImgFile }) => {
   }
 
   const onDeletePhotoHandler = (): void => {
-    setAvatarURL(undefined)
-    setFile(undefined)
-    setImgFile(undefined)
+    updatePhoto('')
   }
-
-  useEffect(() => {
-    setAvatarURL(data?.avatar)
-  }, [data])
 
   return (
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
-        <div className={avatarURL ? s.fileDataURL : s.photo}>
-          <Image src={avatarURL || svg} alt="my-profile photo" width={46} height={46} />
-          {avatarURL && (
+        <div className={data?.avatar ? s.fileDataURL : s.photo}>
+          <Image src={data?.avatar || svg} alt="my-profile photo" width={46} height={46} />
+          {data?.avatar && (
             <button type="button" className={s.deletePhoto} onClick={onDeletePhotoHandler}>
               <Image src={deleteSvg} alt="delete" width={15} height={15} />
             </button>
@@ -73,7 +65,7 @@ const ProfilePhoto: FC<PropsType> = ({ setImgFile }) => {
 
       <div className={s.addPhoto}>
         <Button
-          buttonName={avatarURL ? 'Change photo' : 'Add a Profile Photo'}
+          buttonName={data?.avatar ? 'Change photo' : 'Add a Profile Photo'}
           variant="transparent"
           buttonHandler={openModal}
         />
