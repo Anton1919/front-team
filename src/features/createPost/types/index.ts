@@ -1,4 +1,4 @@
-export type CreatePostDataType={
-    photos:string[]
-    description:string
+export type CreatePostDataType = {
+  photos: string[]
+  description: string
 }

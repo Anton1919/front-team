@@ -12,22 +12,22 @@ const birthdayPattern = {
 }
 
 export const useChangeSettings = (): any => {
-  const { data } = useGetProfile()
+  const { data: profileData } = useGetProfile()
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<CreateAccountDataType>({ defaultValues: { ...data } })
+  } = useForm<CreateAccountDataType>({ defaultValues: { ...profileData } })
 
   useEffect(() => {
-    if (data) {
-      Object.entries(data).forEach(([key, value]) => {
+    if (profileData) {
+      Object.entries(profileData).forEach(([key, value]) => {
         setValue(key as any, value)
       })
     }
-  }, [setValue, data])
+  }, [setValue, profileData])
 
   const { mutateAsync: createAccount, isLoading } = useUpdateAccount()
 

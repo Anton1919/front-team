@@ -34,20 +34,21 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
   const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>): any => {
     setToggleModal(true)
     if (e.target?.files && e.target?.files.length) {
-      const resultPhoto = []
-      const resultFiles = []
+      const resultPhoto: string[] = []
+      const resultFiles: File[] = []
 
-      for (const file of e.target?.files) {
-        const objectUrl = URL.createObjectURL(file as File)
+      Array.from(e.target?.files).forEach(el => {
+        const objectUrl = URL.createObjectURL(el)
 
         resultPhoto.push(objectUrl)
-        resultFiles.push(file as File)
-      }
+        resultFiles.push(el as File)
+      })
+
       setModalPhoto(resultPhoto)
       setFile(resultFiles)
     }
   }
-  const handleSave = () => {
+  const handleSave = (): void => {
     if (file) {
       setToggleModal(false)
       closeModal()
@@ -70,8 +71,8 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
       {!toggleModal ? (
         <>
           <div className={s.modalPhoto} />
-          <label className={s.selectPhotoFromComputer}>
-            <input type="file" multiple onChange={onPhotoSelected} />
+          <label htmlFor="Select-from-computer" className={s.selectPhotoFromComputer}>
+            <input id="Select-from-computer" type="file" multiple onChange={onPhotoSelected} />
             Select from computer
           </label>
         </>
@@ -85,11 +86,11 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
                 pagination
                 modules={[Navigation, Pagination, Mousewheel, Keyboard]}
               >
-                {modalPhoto.map((file, index) => {
+                {modalPhoto.map((photo, index) => {
                   return (
-                    <SwiperSlide key={index} className={s.img2}>
+                    <SwiperSlide key={+index} className={s.img2}>
                       <Image
-                        src={file || svg}
+                        src={photo || svg}
                         alt="my-profile"
                         sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,

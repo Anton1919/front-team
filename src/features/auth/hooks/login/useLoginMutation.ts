@@ -1,5 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
+import { QUERY_KEY } from '@/common/constants/queryKeys'
 import { AuthAPI } from '@/features/auth/api'
 import { selectSetAccessToken, useAuthStore } from '@/features/auth/store'
 import { LoginDataType } from '@/features/auth/types'
@@ -14,7 +15,7 @@ export const useLoginMutation = (): UseMutationResult<any, unknown, LoginDataTyp
       const { accessToken } = res.data
 
       setAccessToken(accessToken)
-      await queryClient.invalidateQueries(['me'])
+      await queryClient.invalidateQueries([QUERY_KEY.ME])
     },
   })
 }

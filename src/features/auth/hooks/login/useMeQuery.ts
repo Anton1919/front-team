@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { QueryClient, useQuery, UseQueryResult } from '@tanstack/react-query'
 import { AxiosError } from 'axios'
 
 import { QUERY_KEY } from '@/common/constants/queryKeys'
@@ -42,12 +42,16 @@ export const useRefreshToken = (): UseQueryResult<{ accessToken: string }> => {
   return useQuery([QUERY_KEY.REFRESH_TOKEN], AuthAPI.refreshToken, {
     retry: false,
     enabled: false,
-    onSuccess: data => {
-      const { accessToken } = data
+    onSuccess: res => {
+      console.log('onSuccess')
+      console.log({ res })
+      const { accessToken } = res
 
       setAccessToken(accessToken)
     },
     onError: (error: AxiosError) => {
+      console.log('onError')
+      console.log({ error })
       if (error.response?.status === STATUS_CODE.UNAUTHORIZED) {
         clearState()
       }

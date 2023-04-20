@@ -1,8 +1,7 @@
-import { instance } from '@/common/constants/instance';
+import { instance } from '@/common/constants/instance'
 
 export const PostsAPI = {
   createPost(data: FormData) {
-    return instance.post('user/post', data)
-      .then(res => res.data);
-  }
+    return instance.post('user/post', data).then(res => res.data)
+  },
 }

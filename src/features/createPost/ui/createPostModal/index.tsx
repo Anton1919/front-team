@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FC } from 'react'
 
 import Image from 'next/image'
 
@@ -8,18 +8,17 @@ import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import AddPostPhoto from '@/features/createPost/ui/createPostModal/addPostPhoto'
 
-const CreatePostModal = () => {
+const CreatePostModal: FC = () => {
   const { isOpen, openModal, closeModal } = useModal()
-  const [, setImgFile] = useState<File>()
 
   return (
     <>
-      <div className={s.logOut} onClick={openModal}>
+      <div className={s.logOut} onClick={openModal} aria-hidden>
         <Image src={createSvg} alt="Create out icon" />
         <span>Create</span>
       </div>
       <ModalLayout isOpen={isOpen} closeModal={closeModal} title="Add Photo">
-        <AddPostPhoto closeFirstModal={closeModal} setImgFile={setImgFile} />
+        <AddPostPhoto closeFirstModal={closeModal} />
       </ModalLayout>
     </>
   )
