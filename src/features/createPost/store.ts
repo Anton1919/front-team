@@ -4,21 +4,21 @@ import { immer } from 'zustand/middleware/immer'
 
 import svg from '@/features/profile/ui/profile-settings/profile-photo/image.svg'
 
-type PostsType = {
+type PostState = {
   posts: PostType[]
 }
 
 export type PostType = {
   id: number
-  photo: any
+  photo: string
 }
 
 type PostsActions = {
   setPost: (post: PostType) => void
 }
-type PostsStore = PostsActions & PostsType
+type PostsStore = PostsActions & PostState
 
-const initialValue: PostsType = {
+const initialValue: PostState = {
   posts: [
     { id: 1, photo: svg },
     { id: 2, photo: svg },
@@ -35,5 +35,5 @@ export const usePostsStore = create(
   )
 )
 
-export const selectPosts = (state: PostsStore): PostsType => state.posts
+export const selectPosts = (state: PostsStore): PostType[] => state.posts
 export const selectSetPost = (state: PostsStore): ((post: PostType) => void) => state.setPost
