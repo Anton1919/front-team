@@ -56,7 +56,7 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
       const formData = new FormData()
 
       Object.values(file).forEach(value => {
-        formData.append('postPhoto[]', value)
+        formData.append('postPhoto', value)
       })
       createPost(formData)
     }
