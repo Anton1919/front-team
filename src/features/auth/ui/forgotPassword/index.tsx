@@ -1,17 +1,33 @@
 import { FC } from 'react'
 
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
 
 import s from './ForgotPassword.module.scss'
 
 import { Button } from '@/common/components/button/Button'
 import { Card } from '@/common/components/card'
 import { BaseInput } from '@/common/components/input'
-import { useForgotValid } from '@/features/auth/hooks/forgotPassword/useForgotValid'
+import { useForgot } from '@/features/auth/hooks/forgotPassword/useForgot'
+import { selectSetEmail, useProfileStore } from '@/features/auth/store'
+import { ForgotField } from '@/features/auth/types'
+import { ForgotPassValidate } from '@/features/auth/validate'
 
 export const ForgotPassword: FC = () => {
-  const { register, errors, emailRules, serverErrorMessage, handleSubmit, onSubmit } =
-    useForgotValid()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotField>()
+
+  const { mutate: forgotPass, isError } = useForgot()
+
+  const setEmail = useProfileStore(selectSetEmail)
+
+  const onSubmit = async (data: ForgotField): Promise<void> => {
+    await forgotPass(data)
+    setEmail(data.email)
+  }
 
   return (
     <Card maxWidth="378px" className={s.container}>
@@ -22,14 +38,14 @@ export const ForgotPassword: FC = () => {
             name="email"
             label="Email"
             register={register}
-            rules={emailRules}
+            rules={ForgotPassValidate.email}
             error={errors.email?.message}
           />
           <p className={s.text}>
             Enter your email address and we will send you further instructions{' '}
           </p>
         </div>
-        <p className={s.errorMessage}>{serverErrorMessage}</p>
+        <p className={s.errorMessage}>{isError && 'Something went wrong try again later'}</p>
         <div className={s.linksWrapper}>
           <Button buttonName="Send Instructions" />
           <Link className={s.link} href="/auth">

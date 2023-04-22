@@ -5,7 +5,7 @@ import { PATHS } from '@/common/constants/routes'
 import { AuthAPI } from '@/features/auth/api'
 import { NewPasswordType } from '@/features/auth/types'
 
-export const useNewPassMutation = (): UseMutationResult<any, unknown, NewPasswordType> => {
+export const useNewPass = (): UseMutationResult<any, unknown, NewPasswordType> => {
   const { push } = useRouter()
 
   return useMutation({

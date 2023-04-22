@@ -1,27 +1,35 @@
 import { FC } from 'react'
 
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
 
 import s from './Registration.module.scss'
 
 import { Button } from '@/common/components/button/Button'
 import { Card } from '@/common/components/card'
 import { BaseInput, PasswordInput } from '@/common/components/input'
-import { useRegisterValid } from '@/features/auth/hooks/registration/useRegisterValid'
+import { useRegister } from '@/features/auth/hooks/registration/useRegister'
+import { selectSetEmail, useProfileStore } from '@/features/auth/store'
+import { RegisterFormFields } from '@/features/auth/types'
+import { RegisterValidate } from '@/features/auth/validate'
 
 export const Registration: FC = () => {
+  const setEmail = useProfileStore(selectSetEmail)
+
   const {
     register,
-    errors,
-    emailRules,
-    passwordRules,
-    cPasswordRules,
     handleSubmit,
-    onSubmit,
-    serverErrorMessage,
-    userNameRules,
-    isLoading,
-  } = useRegisterValid()
+    formState: { errors },
+    getValues,
+  } = useForm<RegisterFormFields>()
+
+  const { mutate: registration, isError, isLoading } = useRegister()
+  const onSubmit = (data: RegisterFormFields): void => {
+    const { username, email, password } = data
+
+    registration({ username, email, password })
+    setEmail(email)
+  }
 
   return (
     <Card maxWidth="378px" className={s.container}>
@@ -32,7 +40,7 @@ export const Registration: FC = () => {
           name="username"
           label="username"
           register={register}
-          rules={userNameRules}
+          rules={RegisterValidate.username}
           error={errors.username?.message}
         />
         <BaseInput
@@ -40,7 +48,7 @@ export const Registration: FC = () => {
           name="email"
           label="Email"
           register={register}
-          rules={emailRules}
+          rules={RegisterValidate.email}
           error={errors.email?.message}
         />
         <PasswordInput
@@ -48,7 +56,7 @@ export const Registration: FC = () => {
           name="password"
           label="New password"
           register={register}
-          rules={passwordRules}
+          rules={RegisterValidate.registerPassword}
           error={errors.password?.message}
         />
         <PasswordInput
@@ -56,12 +64,12 @@ export const Registration: FC = () => {
           name="cpassword"
           label="Confirm password"
           register={register}
-          rules={cPasswordRules}
+          rules={RegisterValidate.cPassword(getValues)}
           error={errors.cpassword?.message}
         />
         <Button buttonName="Sign up" disabled={isLoading} />
       </form>
-      <div className={s.serverError}>{serverErrorMessage}</div>
+      <div className={s.serverError}>{isError && 'Try again later'}</div>
       <p className={s.text}>Do you have an account?</p>
       <Link className={s.link} href="/auth">
         Sign In
