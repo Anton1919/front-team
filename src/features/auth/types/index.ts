@@ -6,6 +6,11 @@ export type AuthDataType = {
 
 export type RegisterFormFields = AuthDataType & { cpassword?: string }
 
+export type PasswordFields = {
+  password: string
+  cpassword: string
+}
+
 export type LoginDataType = {
   emailOrUsername: string
   password: string
@@ -18,11 +23,6 @@ export type RegistrationConfirmationType = {
 export type NewPasswordType = {
   newPassword: string
   recoveryCode: string
-}
-
-export type PasswordFields = {
-  password: string
-  cpassword: string
 }
 
 export type MeResponseType = {

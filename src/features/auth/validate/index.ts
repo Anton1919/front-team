@@ -1,6 +1,4 @@
-import { UseFormGetValues } from 'react-hook-form'
-
-import { PasswordFields, RegisterFormFields } from '@/features/auth/types'
+import { FieldValues, UseFormGetValues } from 'react-hook-form'
 
 const emailPattern = {
   value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/gi,
@@ -22,7 +20,7 @@ const registerPassword = {
   maxLength: { value: 20, message: 'Password must be shorter than 20 characters' },
 }
 
-const cPassword = (getValues: UseFormGetValues<PasswordFields | RegisterFormFields>): any => {
+const cPassword = <T extends FieldValues>(getValues: UseFormGetValues<T>): any => {
   return {
     required: 'You must enter your password.',
     validate: (value: string) => {
