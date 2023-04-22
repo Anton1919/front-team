@@ -1,8 +1,8 @@
 export enum QUERY_KEY {
-  // query
   ME = 'me',
   GET_PROFILE = 'get-profile',
   REFRESH_TOKEN = 'refresh-token',
+  GET_POSTS = 'get-posts',
 }
 
 export enum MUTATION_KEY {

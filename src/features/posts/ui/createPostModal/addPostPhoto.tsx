@@ -13,7 +13,7 @@ import s from './AddPostPhoto.module.scss'
 import { Button } from '@/common/components/button/Button'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { Spinner } from '@/common/components/spinner'
-import { useCreatePost } from '@/features/createPost/hooks/useCreatePost'
+import { useCreatePost } from '@/features/posts/hooks/useCreatePost'
 import svg from '@/features/profile/ui/profile-settings/profile-photo/image.svg'
 
 type PropsType = {
@@ -55,8 +55,8 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
       closeFirstModal()
       const formData = new FormData()
 
-      Object.entries(file).forEach(([key, value]) => {
-        formData.append(key, value)
+      Object.values(file).forEach(value => {
+        formData.append('postPhoto', value)
       })
       createPost(formData)
     }

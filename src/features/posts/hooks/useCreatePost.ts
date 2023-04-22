@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { AxiosError } from 'axios'
 
 import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
-import { PostsAPI } from '@/features/createPost/api'
+import { PostsAPI } from '@/features/posts/api'
 
 export const useCreatePost = (): any => {
   const refetchRefreshToken = useRefetchRefreshToken()

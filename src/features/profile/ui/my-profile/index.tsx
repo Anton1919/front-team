@@ -7,27 +7,12 @@ import svg from '../profile-settings/profile-photo/image.svg'
 import s from './profile.module.scss'
 
 import { Button } from '@/common/components/button/Button'
+import { Posts } from '@/features/posts/ui/posts/posts'
 import { useGetProfile } from '@/features/profile/hooks/useGetProfile'
 
 const Profile: NextPage = () => {
   const { push } = useRouter()
   const { data: user } = useGetProfile()
-
-  const testArrayWithPhotoContent = [
-    { id: 1, photo: svg },
-    { id: 2, photo: svg },
-    { id: 3, photo: svg },
-    { id: 4, photo: svg },
-    { id: 5, photo: svg },
-    { id: 6, photo: svg },
-    { id: 7, photo: svg },
-    { id: 8, photo: svg },
-    { id: 9, photo: svg },
-    { id: 10, photo: svg },
-    { id: 11, photo: svg },
-    { id: 12, photo: svg },
-    { id: 13, photo: svg },
-  ]
 
   const onClickHandler = async (): Promise<void> => {
     await push('/my-profile/edit-profile')
@@ -66,15 +51,8 @@ const Profile: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className={s.photoContent}>
-        {testArrayWithPhotoContent.map(photo => {
-          return (
-            <div className={s.photo} key={photo.id}>
-              <Image src={photo.photo} alt="photo content" width={200} height={200} />
-            </div>
-          )
-        })}
-      </div>
+
+      <Posts />
     </div>
   )
 }
