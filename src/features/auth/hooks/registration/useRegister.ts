@@ -3,15 +3,16 @@ import { useRouter } from 'next/router'
 
 import { PATHS } from '@/common/constants/routes'
 import { AuthAPI } from '@/features/auth/api'
-import { ForgotField } from '@/features/auth/types'
+import { AuthDataType } from '@/features/auth/types'
 
-export const useForgotMutation = (): UseMutationResult<any, unknown, ForgotField> => {
+export const useRegister = (): UseMutationResult<any, unknown, AuthDataType> => {
   const { push } = useRouter()
 
   return useMutation({
-    mutationFn: AuthAPI.forgotPassword,
-    onSuccess: () => {
-      push(PATHS.PUBLIC.CONFIRM_MESSAGE)
+    mutationFn: AuthAPI.register,
+    retry: false,
+    onSuccess: async () => {
+      await push(PATHS.PUBLIC.CONFIRM_MESSAGE)
     },
   })
 }

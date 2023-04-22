@@ -5,7 +5,7 @@ import { AuthAPI } from '@/features/auth/api'
 import { selectSetAccessToken, useProfileStore } from '@/features/auth/store'
 import { LoginDataType } from '@/features/auth/types'
 
-export const useLoginMutation = (): UseMutationResult<any, unknown, LoginDataType> => {
+export const useLogin = (): UseMutationResult<any, unknown, LoginDataType> => {
   const setAccessToken = useProfileStore(selectSetAccessToken)
   const queryClient = useQueryClient()
 

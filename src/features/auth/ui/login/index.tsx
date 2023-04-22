@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
 
 import s from './Login.module.scss'
 
@@ -8,19 +9,20 @@ import { Button } from '@/common/components/button/Button'
 import { Card } from '@/common/components/card'
 import { BaseInput, PasswordInput } from '@/common/components/input/'
 import { PATHS } from '@/common/constants/routes'
-import { useLoginValid } from '@/features/auth/hooks/login/useLoginValid'
+import { useLogin } from '@/features/auth/hooks/login/useLogin'
+import { LoginDataType } from '@/features/auth/types'
+import { LoginValidate } from '@/features/auth/validate'
 
 export const Login: FC = () => {
   const {
     register,
-    errors,
-    usernameRules,
-    passwordRules,
     handleSubmit,
-    onSubmit,
-    errorServer,
-    isLoading,
-  } = useLoginValid()
+    formState: { errors },
+  } = useForm<LoginDataType>()
+
+  const { mutate: login, isError, isLoading } = useLogin()
+
+  const onSubmit = (data: LoginDataType): void => login(data)
 
   return (
     <Card maxWidth="378px" className={s.loginContainer}>
@@ -30,7 +32,7 @@ export const Login: FC = () => {
           name="emailOrUsername"
           label="Email or username"
           register={register}
-          rules={usernameRules}
+          rules={LoginValidate.username}
           error={errors.emailOrUsername?.message}
         />
         <div>
@@ -38,13 +40,13 @@ export const Login: FC = () => {
             name="password"
             label="Password"
             register={register}
-            rules={passwordRules}
+            rules={LoginValidate.loginPassword}
             error={errors.password?.message}
           />
           <Link href={PATHS.PUBLIC.FORGOT_PASSWORD} className={s.forgot}>
             <span>Forgot password</span>
           </Link>
-          <div className={s.serverErrorMessage}>{errorServer}</div>
+          <div className={s.serverErrorMessage}>{isError && 'Incorrect login or password'}</div>
         </div>
 
         <Button buttonName="Sign in" disabled={isLoading} />
