@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
+import eyeIcon from '../../../assets/icons/eye-password.svg'
 import { BaseInput, BaseInputProps } from '../baseInput'
 import { InputIcon } from '../inputIcon'
-
-import eyeIcon from '@/common/assets/icons/eye-password.svg'
 
 export const PasswordInput = <TFormValues extends Record<string, unknown>>({
   error,

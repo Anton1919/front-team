@@ -1,0 +1,19 @@
+.button {
+  width: 36px;
+  height: 36px;
+  background-image: url('../../../assets/icons/arrow.svg');
+  background-repeat: no-repeat;
+  background-color: #333333;
+  background-position: center;
+
+  border: none;
+  border-radius: 2px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.prev {
+  transform: rotate(180deg);
+}
