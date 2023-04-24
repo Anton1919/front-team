@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import classNames from 'classnames'
 import Image from 'next/image'
 import { EffectFade, Keyboard, Mousewheel, Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -8,11 +9,12 @@ import s from './ImgSlider.module.scss'
 
 type Props = {
   urls: string[]
+  classname?: string
 }
-export const ImgSlider: FC<Props> = ({ urls }) => {
+export const ImgSlider: FC<Props> = ({ urls, classname }) => {
   return (
     <Swiper
-      className={s.slider}
+      className={classNames(s.slider, classname)}
       effect="fade"
       centeredSlides
       navigation
@@ -21,7 +23,7 @@ export const ImgSlider: FC<Props> = ({ urls }) => {
     >
       {urls.map(url => (
         <SwiperSlide className={s.slide} key={url}>
-          <Image src={url} alt="photo" width={490} height={600} />
+          <Image src={url} alt="photo" width={900} height={500} />
         </SwiperSlide>
       ))}
     </Swiper>

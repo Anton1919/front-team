@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import createSvg from '@/common/assets/icons/create.svg'
 import s from '@/common/components/logOut/LogOut.module.scss'
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import AddPostPhoto from '@/features/posts/ui/createPostModal/addPostPhoto'
 
@@ -17,9 +17,9 @@ const CreatePostModal: FC = () => {
         <Image src={createSvg} alt="Create out icon" />
         <span>Create</span>
       </div>
-      <ModalLayout isOpen={isOpen} closeModal={closeModal} title="Add Photo">
+      <ModalBase isOpen={isOpen} closeModal={closeModal} title="Add Photo">
         <AddPostPhoto closeFirstModal={closeModal} />
-      </ModalLayout>
+      </ModalBase>
     </>
   )
 }

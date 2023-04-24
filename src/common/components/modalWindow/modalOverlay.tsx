@@ -12,7 +12,7 @@ import {
 
 import ReactDOM from 'react-dom'
 
-import s from './modalWindow.module.scss'
+import s from './Modal.module.scss'
 
 import { getNumberOfPenultimateElement } from '@/common/utils/getNumberOfPenultimateElement'
 

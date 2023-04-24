@@ -22,13 +22,15 @@
 
 .postWrapper {
   display: flex;
-  column-gap: 20px;
+  justify-content: space-between;
+  width: 100%;
 
-  .postImg {
-    object-fit: cover;
+  .img {
+    width: 100%;
   }
-}
 
-.description {
-  max-width: 300px;
+  .textContent {
+    width: 80%;
+
+  }
 }

@@ -7,7 +7,7 @@ import svg from './image.svg'
 import s from './ProfilePhoto.module.scss'
 
 import { Button } from '@/common/components/button/Button'
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { useGetProfile } from '@/features/profile/hooks/useGetProfile'
 import { useUpdatePhoto } from '@/features/profile/hooks/useUpdatePhoto'
@@ -71,7 +71,7 @@ const ProfilePhoto: FC = () => {
         />
       </div>
 
-      <ModalLayout isOpen={isOpen} title="Add a Profile Photo" closeModal={closeHandler}>
+      <ModalBase isOpen={isOpen} title="Add a Profile Photo" closeModal={closeHandler}>
         {!toggleModal ? (
           <>
             <div className={s.modalPhoto}>
@@ -111,7 +111,7 @@ const ProfilePhoto: FC = () => {
             </div>
           </>
         )}
-      </ModalLayout>
+      </ModalBase>
     </div>
   )
 }

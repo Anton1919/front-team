@@ -6,7 +6,7 @@ import s from './LogOut.module.scss'
 
 import logOutSvg from '@/common/assets/icons/logOut.svg'
 import { Button } from '@/common/components/button/Button'
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { useLogout } from '@/features/auth/hooks/logout/useLogout'
 import { selectEmail, useProfileStore } from '@/features/auth/store'
@@ -32,7 +32,7 @@ export const LogOut: FC = () => {
         <Image className={s.logOutIcon} src={logOutSvg} alt="log out icon" />
         <span>Log out</span>
       </div>
-      <ModalLayout isOpen={isOpen} closeModal={closeModal} title="Log out">
+      <ModalBase isOpen={isOpen} closeModal={closeModal} title="Log out">
         <div>
           Are you really want to log out of your account {email} ?
           <div style={{ display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px' }}>
@@ -40,7 +40,7 @@ export const LogOut: FC = () => {
             <Button buttonName="No" buttonHandler={closeModal} />
           </div>
         </div>
-      </ModalLayout>
+      </ModalBase>
     </>
   )
 }

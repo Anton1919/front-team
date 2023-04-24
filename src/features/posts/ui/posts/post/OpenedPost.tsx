@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ModalLayout } from '@/common/components/modalWindow/modalLayout'
+import { ModalPost } from '@/common/components/modalWindow/layouts/ModalPost'
 import { PostSlider } from '@/common/components/slider/postSlider'
 import { useGetPosts } from '@/features/posts/hooks/useGetPosts'
 import { PostsResponseType } from '@/features/posts/types'
@@ -23,8 +23,8 @@ export const OpenedPost: FC<Props> = ({ postID, isOpen, closeModal }) => {
   if (post) initSlide = posts.indexOf(post)
 
   return (
-    <ModalLayout isOpen={isOpen} closeModal={closeModal} title="Post">
+    <ModalPost isOpen={isOpen} closeModal={closeModal}>
       <PostSlider posts={posts} initSlide={initSlide} />
-    </ModalLayout>
+    </ModalPost>
   )
 }

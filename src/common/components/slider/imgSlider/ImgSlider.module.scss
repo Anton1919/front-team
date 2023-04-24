@@ -1,13 +1,13 @@
 .slider {
-  max-width: 800px;
+
 }
 
 .slide {
   display: flex;
   justify-content: center;
+  min-height: 600px;
 
   img {
-    width: 100%;
     height: 100%;
   }
 }

@@ -1,28 +1,19 @@
 import { FC, ReactNode } from 'react'
 
-import classNames from 'classnames'
 import Image from 'next/image'
 
-import s from './modalWindow.module.scss'
+import s from './ModalBase.module.scss'
 
 import closeIcon from '@/common/assets/icons/close.svg'
 import { ModalOverlay } from '@/common/components/modalWindow/modalOverlay'
 
-type PropsType = {
-  title: string
+export type BaseModalProps = {
+  title?: string
   children: ReactNode
   isOpen: boolean
   closeModal: () => void
-  classNameChildren?: string
 }
-
-export const ModalLayout: FC<PropsType> = ({
-  title,
-  children,
-  closeModal,
-  isOpen,
-  classNameChildren,
-}) => {
+export const ModalBase: FC<BaseModalProps> = ({ title, children, closeModal, isOpen }) => {
   return (
     <ModalOverlay isOpen={isOpen} onClose={closeModal}>
       <div className={s.modalContent}>
@@ -30,7 +21,7 @@ export const ModalLayout: FC<PropsType> = ({
           {title}
           <Image src={closeIcon} alt="close" className={s.closeModal} onClick={closeModal} />
         </div>
-        <div className={classNames(s.children, classNameChildren)}>{children}</div>
+        <div className={s.children}>{children}</div>
       </div>
     </ModalOverlay>
   )

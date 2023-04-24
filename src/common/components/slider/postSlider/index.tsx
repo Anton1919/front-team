@@ -9,6 +9,7 @@ import s from './PostSlider.module.scss'
 import { ArrowButton } from '@/common/components/button/arrowButton'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { PostType } from '@/features/posts/types'
+import { PostHeader } from '@/features/posts/ui/postHeader'
 
 type Props = {
   initSlide?: number
@@ -40,12 +41,13 @@ export const PostSlider: FC<Props> = ({ initSlide = 0, posts }) => {
           return (
             <SwiperSlide key={post.id}>
               <div className={s.postWrapper}>
-                <ImgSlider urls={post.postPhotos} />
-                <p className={s.description}>
+                <ImgSlider classname={s.img} urls={post.postPhotos} />
+                <div className={s.textContent}>
+                  <PostHeader title="Post 1" />
                   About me: Давно выяснено, что при оценке дизайна и композиции читаемый текст
                   мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более
                   или менее стандартное
-                </p>
+                </div>
               </div>
             </SwiperSlide>
           )
