@@ -1,0 +1,21 @@
+.postDescription {
+  display: flex;
+  margin: 20px 0;
+  column-gap: 10px;
+
+  .textContent {
+
+    .username {
+      font-weight: 600;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+  .additionalInformation {
+    .time {
+      font-size: 12px;
+      color: #BDC1C7
+    }
+  }
+}

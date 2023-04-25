@@ -7,6 +7,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import s from './PostSlider.module.scss'
 
 import { ArrowButton } from '@/common/components/button/arrowButton'
+import { AddCommentIpnut } from '@/common/components/post/addCommentIpnut'
+import { PostComment } from '@/common/components/post/postComment'
+import { PostDescription } from '@/common/components/post/postDescription'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { PostType } from '@/features/posts/types'
 import { PostHeader } from '@/features/posts/ui/postHeader'
@@ -44,9 +47,16 @@ export const PostSlider: FC<Props> = ({ initSlide = 0, posts }) => {
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
                   <PostHeader title="Post 1" />
-                  About me: Давно выяснено, что при оценке дизайна и композиции читаемый текст
-                  мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более
-                  или менее стандартное
+                  <PostDescription
+                    username="Arsen"
+                    text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'
+                  />
+                  <PostComment
+                    username="Arsen"
+                    text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'
+                    like={5}
+                  />
+                  <AddCommentIpnut addComment={() => {}} />
                 </div>
               </div>
             </SwiperSlide>
