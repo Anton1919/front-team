@@ -5,13 +5,15 @@ import { useDeletePost } from '@/features/posts/hooks/useDeletePost'
 
 type PropsType = {
   id: number
+  closeModal: () => void
 }
 
-const DeletePost: FC<PropsType> = ({ id }) => {
+const DeletePost: FC<PropsType> = ({ id, closeModal }) => {
   const { mutate: deletePost } = useDeletePost()
 
   const onClickHandler = (): any => {
     deletePost(id)
+    closeModal()
   }
 
   return (

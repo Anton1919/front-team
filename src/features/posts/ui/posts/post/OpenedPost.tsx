@@ -25,7 +25,7 @@ export const OpenedPost: FC<Props> = ({ postID, isOpen, closeModal }) => {
 
   return (
     <ModalPost isOpen={isOpen} closeModal={closeModal}>
-      <DeletePost id={postID} />
+      <DeletePost id={postID} closeModal={closeModal} />
       <PostSlider posts={posts} initSlide={initSlide} />
     </ModalPost>
   )
