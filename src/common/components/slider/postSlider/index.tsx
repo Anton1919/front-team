@@ -13,7 +13,6 @@ import { PostDescription } from '@/common/components/post/postDescription'
 import { PostHeader } from '@/common/components/post/postHeader'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { PostType } from '@/features/posts/types'
-import DeletePost from '@/features/posts/ui/deletePost/deletePost'
 
 type Props = {
   initSlide?: number
@@ -48,7 +47,6 @@ export const PostSlider: FC<Props> = ({ initSlide = 0, posts }) => {
         {posts.map(post => {
           return (
             <SwiperSlide key={post.id}>
-              <DeletePost id={post.id} />
               <div className={s.postWrapper}>
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
