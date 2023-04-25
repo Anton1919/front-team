@@ -4,7 +4,6 @@ import { ModalPost } from '@/common/components/modalWindow/layouts/ModalPost'
 import { PostSlider } from '@/common/components/slider/postSlider'
 import { useGetPosts } from '@/features/posts/hooks/useGetPosts'
 import { PostsResponseType } from '@/features/posts/types'
-import DeletePost from '@/features/posts/ui/deletePost/deletePost'
 
 type Props = {
   postID: number
@@ -25,8 +24,7 @@ export const OpenedPost: FC<Props> = ({ postID, isOpen, closeModal }) => {
 
   return (
     <ModalPost isOpen={isOpen} closeModal={closeModal}>
-      <DeletePost id={postID} closeModal={closeModal} />
-      <PostSlider posts={posts} initSlide={initSlide} />
+      <PostSlider closeModal={closeModal} posts={posts} initSlide={initSlide} />
     </ModalPost>
   )
 }

@@ -17,7 +17,7 @@ const DeletePost: FC<PropsType> = ({ id, closeModal }) => {
   }
 
   return (
-    <div style={{ position: 'relative', top: '10px', left: '860px' }}>
+    <div>
       <Button buttonHandler={onClickHandler} variant="transparent" buttonName="Delete post" />
     </div>
   )
