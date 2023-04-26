@@ -9,8 +9,7 @@ type PropsType = {
 }
 
 const DeletePost: FC<PropsType> = ({ id, closeModal }) => {
-  const { mutate: deletePost } = useDeletePost()
-
+  const { mutate: deletePost, isLoading } = useDeletePost()
   const onClickHandler = (): any => {
     deletePost(id)
     closeModal()
@@ -18,7 +17,12 @@ const DeletePost: FC<PropsType> = ({ id, closeModal }) => {
 
   return (
     <div>
-      <Button buttonHandler={onClickHandler} variant="transparent" buttonName="Delete post" />
+      <Button
+        disabled={isLoading}
+        buttonHandler={onClickHandler}
+        variant="transparent"
+        buttonName="Delete post"
+      />
     </div>
   )
 }
