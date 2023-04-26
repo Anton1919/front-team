@@ -17,8 +17,9 @@ import { PostType } from '@/features/posts/types'
 type Props = {
   initSlide?: number
   posts: PostType[]
+  closeModal: () => void
 }
-export const PostSlider: FC<Props> = ({ initSlide = 0, posts }) => {
+export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
   const swiperRef = useRef<any>(null)
   const [slideIndex, setSlideIndex] = useState<number>(initSlide)
 
@@ -50,7 +51,7 @@ export const PostSlider: FC<Props> = ({ initSlide = 0, posts }) => {
               <div className={s.postWrapper}>
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
-                  <PostHeader title="Post 1" />
+                  <PostHeader closeModal={closeModal} postId={post.id} title="Post 1" />
                   <PostDescription
                     username="Arsen"
                     text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'
