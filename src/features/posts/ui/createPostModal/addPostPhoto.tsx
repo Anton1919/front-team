@@ -20,7 +20,7 @@ type PropsType = {
   closeFirstModal: () => void
 }
 
-const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
+export const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
   const { mutate: createPost, isLoading } = useCreatePost()
 
   const { closeModal } = useModal()
@@ -112,5 +112,3 @@ const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
     </div>
   )
 }
-
-export default AddPostPhoto

@@ -5,7 +5,7 @@ import { linksData } from './linksData'
 import style from './SideBar.module.scss'
 
 import { LogOut } from '@/common/components/logOut'
-import CreatePostModal from '@/features/posts/ui/createPostModal'
+import { CreatePostModal } from '@/features/posts/ui/createPostModal'
 
 const FOUR = 4
 const SideBar: FC = () => {
