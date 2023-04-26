@@ -9,11 +9,13 @@ type PropsType = {
 }
 
 const DeletePost: FC<PropsType> = ({ id, closeModal }) => {
-  const { mutate: deletePost, isLoading } = useDeletePost()
+  const { mutate: deletePost, isLoading, isError, error } = useDeletePost()
   const onClickHandler = (): any => {
     deletePost(id)
     closeModal()
   }
+
+  if (isError) return <div>{error?.response?.data.message}</div>
 
   return (
     <div>

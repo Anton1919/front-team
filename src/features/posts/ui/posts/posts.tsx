@@ -2,13 +2,19 @@ import { FC } from 'react'
 
 import s from './Posts.module.scss'
 
+import { Spinner } from '@/common/components/spinner'
 import { useGetPosts } from '@/features/posts/hooks/useGetPosts'
 import { Post } from '@/features/posts/ui/posts/post'
 
 export const Posts: FC = () => {
   const { data: postsData, isError, isLoading, error } = useGetPosts({ pageNumber: 1, pageSize: 8 })
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    )
   if (isError) return <div>{error?.response?.data.message}</div>
 
   return (
