@@ -1,3 +1,24 @@
-.step {
+.steps {
+  width: 100%;
+  max-width: 1000px;
+}
 
+.step {
+  height: 100%;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  border-bottom: 2px solid #4C4C4C;
+
+  .back { cursor: pointer}
+
+  .next, .publish {
+    background: transparent;
+    border: 0;
+    color: #397DF6;
+    font-size: 16px;
+  }
 }

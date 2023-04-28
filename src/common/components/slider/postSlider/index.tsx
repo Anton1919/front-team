@@ -12,6 +12,7 @@ import { PostComment } from '@/common/components/post/postComment'
 import { PostDescription } from '@/common/components/post/postDescription'
 import { PostHeader } from '@/common/components/post/postHeader'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
+import { selectUsername, useProfileStore } from '@/features/auth/store'
 import { PostType } from '@/features/posts/types'
 
 type Props = {
@@ -21,6 +22,7 @@ type Props = {
 }
 export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
   const swiperRef = useRef<any>(null)
+  const username = useProfileStore(selectUsername)
   const [slideIndex, setSlideIndex] = useState<number>(initSlide)
 
   return (
@@ -52,10 +54,9 @@ export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
                   <PostHeader closeModal={closeModal} postId={post.id} title="Post 1" />
-                  <PostDescription
-                    username="Arsen"
-                    text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'
-                  />
+                  {post.description && (
+                    <PostDescription username={username} text={post.description} />
+                  )}
                   <PostComment
                     username="Arsen"
                     text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'

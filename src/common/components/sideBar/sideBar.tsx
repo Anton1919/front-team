@@ -5,7 +5,7 @@ import { linksData } from './linksData'
 import style from './SideBar.module.scss'
 
 import { LogOut } from '@/common/components/logOut'
-import { CreatePostModal } from '@/features/posts/ui/createPostModal'
+import { CreatePost } from '@/features/posts/ui/createPost'
 
 const FOUR = 4
 const SideBar: FC = () => {
@@ -14,7 +14,7 @@ const SideBar: FC = () => {
       {linksData.slice(0, 1).map(l => (
         <SharedLink key={l.path} text={l.title} href={l.path} icon={l.icon} />
       ))}
-      <CreatePostModal />
+      <CreatePost />
       {linksData.slice(1, FOUR).map(l => (
         <SharedLink key={l.path} text={l.title} href={l.path} icon={l.icon} />
       ))}

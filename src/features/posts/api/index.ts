@@ -3,7 +3,7 @@ import { GetPostsParamsType, PostsResponseType } from '@/features/posts/types'
 
 export const PostsAPI = {
   createPost(data: FormData) {
-    return instance.post('user/post', data).then(res => res.data)
+    return instance.post('user/post', data)
   },
 
   getPosts(params: GetPostsParamsType) {
