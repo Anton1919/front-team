@@ -14,7 +14,7 @@ export const SelectPhoto: FC = () => {
 
   const onChangeSelect = (e: ChangeEvent<HTMLInputElement>): void => {
     const files = e.target?.files
-    const urls = []
+    const urls: string[] = []
 
     if (files && files.length) {
       Array.from(files).forEach(file => {

@@ -1,5 +1,6 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
+import classNames from 'classnames'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 
 import s from './Steps.module.scss'
@@ -12,47 +13,42 @@ import {
   useCreatePostStore,
 } from '@/features/posts/createPostStore'
 import { useCreatePost } from '@/features/posts/hooks/useCreatePost'
+import { NavigationSlider } from '@/features/posts/ui/createPost/navigationSlider'
 import { DescriptionStep } from '@/features/posts/ui/createPost/steps/description'
+import { FinalStep } from '@/features/posts/ui/createPost/steps/final'
 
-type Props = {
-  closeModal: () => void
-}
+const lastIndexSlide = 2
 
-export const CreatePostSteps: FC<Props> = ({ closeModal }) => {
+export const CreatePostSteps: FC = () => {
   const formData = useCreatePostStore(selectFormData)
-  const { mutate: createPost } = useCreatePost()
+  const { mutateAsync: createPost, isLoading, status } = useCreatePost()
 
-  const photos = useCreatePostStore(selectPhotoUrls)
   const clearState = useCreatePostStore(selectClearState)
+  const photos = useCreatePostStore(selectPhotoUrls)
+
   const swiperRef = useRef<SwiperRef | null>(null)
   const [slideIndex, setSlideIndex] = useState<number>(0)
 
   const createPostHandler = (): void => {
+    swiperRef.current?.swiper.slideNext()
     createPost(formData)
-    closeModal()
-    clearState()
   }
+
+  useEffect(() => {
+    return () => {
+      if (status === 'success') clearState()
+    }
+  }, [status])
 
   return (
     <>
-      <div className={s.navigation}>
-        <div className={s.back} onClick={() => swiperRef.current?.swiper.slidePrev()} aria-hidden>
-          back
-        </div>
-        {slideIndex === 0 ? (
-          <button
-            className={s.next}
-            onClick={() => swiperRef.current?.swiper.slideNext()}
-            type="button"
-          >
-            Next
-          </button>
-        ) : (
-          <button className={s.publish} type="button" onClick={createPostHandler}>
-            Publish
-          </button>
-        )}
-      </div>
+      <NavigationSlider
+        createPostHandler={createPostHandler}
+        slideIndex={slideIndex}
+        slideNext={() => swiperRef.current?.swiper.slideNext()}
+        slidePrev={() => swiperRef.current?.swiper.slidePrev()}
+        isHidden={slideIndex === lastIndexSlide}
+      />
       <Swiper
         ref={swiperRef}
         className={s.steps}
@@ -65,6 +61,10 @@ export const CreatePostSteps: FC<Props> = ({ closeModal }) => {
 
         <SwiperSlide className={s.step}>
           <DescriptionStep />
+        </SwiperSlide>
+
+        <SwiperSlide className={classNames(s.step, s.lastSlide)}>
+          <FinalStep isLoading={isLoading} />
         </SwiperSlide>
       </Swiper>
     </>

@@ -29,7 +29,7 @@ export const CreatePost: FC = () => {
         title="Add post"
       >
         {!urlsPhoto.length && <SelectPhoto />}
-        {urlsPhoto.length ? <CreatePostSteps closeModal={closeModal} /> : null}
+        {urlsPhoto.length ? <CreatePostSteps /> : null}
       </ModalBase>
     </>
   )
