@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { ModalPost } from '@/common/components/modalWindow/layouts/ModalPost'
 import { PostSlider } from '@/common/components/slider/postSlider'
+import { Spinner } from '@/common/components/spinner'
 import { useGetPosts } from '@/features/posts/hooks/useGetPosts'
 import { PostsResponseType } from '@/features/posts/types'
 
@@ -12,7 +13,7 @@ type Props = {
 }
 
 export const OpenedPost: FC<Props> = ({ postID, isOpen, closeModal }) => {
-  const { data: postsData } = useGetPosts({ pageNumber: 1, pageSize: 8 })
+  const { data: postsData, isLoading } = useGetPosts({ pageNumber: 1, pageSize: 8 })
 
   const { posts } = postsData as PostsResponseType
 
@@ -21,6 +22,12 @@ export const OpenedPost: FC<Props> = ({ postID, isOpen, closeModal }) => {
   let initSlide
 
   if (post) initSlide = posts.indexOf(post)
+  if (isLoading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    )
 
   return (
     <ModalPost isOpen={isOpen} closeModal={closeModal}>

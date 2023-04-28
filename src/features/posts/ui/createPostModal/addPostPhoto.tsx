@@ -14,6 +14,7 @@ import { Button } from '@/common/components/button/Button'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { Spinner } from '@/common/components/spinner'
 import { useCreatePost } from '@/features/posts/hooks/useCreatePost'
+import { selectSetState, usePostsStore } from '@/features/posts/store'
 import svg from '@/features/profile/ui/profile-settings/profile-photo/image.svg'
 
 type PropsType = {
@@ -22,7 +23,7 @@ type PropsType = {
 
 export const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
   const { mutate: createPost, isLoading } = useCreatePost()
-
+  const setStatus = usePostsStore(selectSetState)
   const { closeModal } = useModal()
 
   const [modalPhoto, setModalPhoto] = useState<string[]>([])
@@ -50,6 +51,7 @@ export const AddPostPhoto: FC<PropsType> = ({ closeFirstModal }) => {
   }
   const handleSave = (): void => {
     if (file) {
+      setStatus({ state: 'loading' })
       setToggleModal(false)
       closeModal()
       closeFirstModal()

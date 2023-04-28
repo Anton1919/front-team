@@ -14,7 +14,7 @@ export const useGetProfile = (): UseQueryResult<ProfileType> => {
     select: (data: ProfileType) => ({ ...data, birthday: isoDate(data.birthday as string) }),
 
     onError: async (error: AxiosError) => {
-      await refetchRefreshToken(error, getProfile.refetch)
+      await refetchRefreshToken(error, () => getProfile)
     },
   })
 
