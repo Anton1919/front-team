@@ -18,11 +18,13 @@ const Profile: NextPage = () => {
     await push('/my-profile/edit-profile')
   }
 
+  const avatar = user?.avatar[1].key
+
   return (
     <div className={s.profile}>
       <div className={s.about}>
         <div className={s.profilePhoto}>
-          <Image src={user?.avatar || svg} alt="profile photo" width={204} height={204} />
+          <Image src={avatar || svg} alt="profile photo" width={204} height={204} />
         </div>
 
         <div className={s.description}>

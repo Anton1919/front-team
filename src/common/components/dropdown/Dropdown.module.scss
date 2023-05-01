@@ -1,0 +1,20 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .button {
+    background: transparent;
+    background-image: url('../../assets/icons/more.svg');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    border: 0;
+  }
+}
+
+.list {
+  position: absolute;
+  left: -321%;
+  background-color: #4C4C4C;
+}

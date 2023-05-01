@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { Navigation } from 'swiper'
@@ -13,6 +13,7 @@ import { PostDescription } from '@/common/components/post/postDescription'
 import { PostHeader } from '@/common/components/post/postHeader'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { selectUsername, useProfileStore } from '@/features/auth/store'
+import { selectSetPostID, useCreatePostStore } from '@/features/posts/createPostStore'
 import { PostType } from '@/features/posts/types'
 
 type Props = {
@@ -22,8 +23,13 @@ type Props = {
 }
 export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
   const swiperRef = useRef<any>(null)
+  const setCurrentPostID = useCreatePostStore(selectSetPostID)
   const username = useProfileStore(selectUsername)
   const [slideIndex, setSlideIndex] = useState<number>(initSlide)
+
+  useEffect(() => {
+    setCurrentPostID(posts[slideIndex].id)
+  }, [slideIndex])
 
   return (
     <div className={s.wrapper}>
@@ -53,7 +59,7 @@ export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
               <div className={s.postWrapper}>
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
-                  <PostHeader closeModal={closeModal} postId={post.id} title="Post 1" />
+                  <PostHeader closeModal={closeModal} title="Post 1" />
                   {post.description && (
                     <PostDescription username={username} text={post.description} />
                   )}

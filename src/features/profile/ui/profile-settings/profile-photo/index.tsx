@@ -50,11 +50,13 @@ const ProfilePhoto: FC = () => {
     updatePhoto('')
   }
 
+  const avatar = data?.avatar[1].key
+
   return (
     <div className={s.wrapper}>
       <div className={s.photoWrapper}>
         <div className={data?.avatar ? s.fileDataURL : s.photo}>
-          <Image src={data?.avatar || svg} alt="my-profile photo" width={46} height={46} />
+          <Image src={avatar || svg} alt="my-profile photo" width={300} height={300} />
           {data?.avatar && (
             <button type="button" className={s.deletePhoto} onClick={onDeletePhotoHandler}>
               <Image src={deleteSvg} alt="delete" width={15} height={15} />

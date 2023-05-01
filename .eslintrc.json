@@ -169,7 +169,7 @@
       "error"
     ],
     "@typescript-eslint/explicit-function-return-type": [
-      "error",
+      "off",
       {
         "allowExpressions": true
       }
