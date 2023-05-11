@@ -18,7 +18,7 @@ const Profile: NextPage = () => {
     await push('/my-profile/edit-profile')
   }
 
-  const avatar = user?.avatar[1].key
+  const avatar = user?.avatar.original
 
   return (
     <div className={s.profile}>

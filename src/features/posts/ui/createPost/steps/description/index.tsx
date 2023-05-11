@@ -15,7 +15,7 @@ export const DescriptionStep: FC = () => {
   const photo = useCreatePostStore(selectPhotoUrls)[0]
   const setDescription = useCreatePostStore(selectSetDescription)
 
-  const setDescriptionHandler = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+  const setDescriptionHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value)
   }
 

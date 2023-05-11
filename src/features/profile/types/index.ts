@@ -5,12 +5,10 @@ export type ProfileType = {
   birthday: string
   city: string
   aboutMe: string
-  avatar: AvatarType[]
+  avatar: AvatarType
 }
 
 type AvatarType = {
-  key: string
-  resolution: ResolutionType
+  original: string
+  thumbnail: string
 }
-
-type ResolutionType = 'original' | 'thumbnail'
