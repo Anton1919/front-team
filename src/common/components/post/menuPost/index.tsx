@@ -6,6 +6,7 @@ import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
 import { selectCurrentPostID, useCreatePostStore } from '@/features/posts/createPostStore'
 import { useDeletePost } from '@/features/posts/hooks/useDeletePost'
+import { DescriptionStep } from '@/features/posts/ui/createPost/steps/description'
 
 type Props = {
   closeModal: () => void
@@ -32,7 +33,7 @@ export const MenuPost: FC<Props> = ({ closeModal }) => {
       <DropdownItem onClick={openModal}>
         Edit post
         <ModalBase isOpen={modalOpen} closeModal={closeOpenedModal}>
-          Edit post
+          <DescriptionStep />
         </ModalBase>
       </DropdownItem>
       <DropdownItem onClick={deletePost}>Delete post</DropdownItem>

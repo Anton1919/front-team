@@ -11,6 +11,7 @@ type Props = {
   urls: string[]
   classname?: string
 }
+
 export const ImgSlider: FC<Props> = ({ urls, classname }) => {
   return (
     <Swiper

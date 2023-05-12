@@ -13,7 +13,11 @@ import { PostDescription } from '@/common/components/post/postDescription'
 import { PostHeader } from '@/common/components/post/postHeader'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { selectUsername, useProfileStore } from '@/features/auth/store'
-import { selectSetPostID, useCreatePostStore } from '@/features/posts/createPostStore'
+import {
+  selectSetPhotoUrls,
+  selectSetPostID,
+  useCreatePostStore,
+} from '@/features/posts/createPostStore'
 import { PostType } from '@/features/posts/types'
 
 type Props = {
@@ -25,10 +29,12 @@ export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
   const swiperRef = useRef<any>(null)
   const setCurrentPostID = useCreatePostStore(selectSetPostID)
   const username = useProfileStore(selectUsername)
+  const setPhotoUrls = useCreatePostStore(selectSetPhotoUrls)
   const [slideIndex, setSlideIndex] = useState<number>(initSlide)
 
   useEffect(() => {
     setCurrentPostID(posts[slideIndex].id)
+    setPhotoUrls(posts[slideIndex].postPhotos)
   }, [slideIndex])
 
   return (

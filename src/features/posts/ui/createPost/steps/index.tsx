@@ -8,6 +8,7 @@ import s from './Steps.module.scss'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import {
   selectClearState,
+  selectDescription,
   selectFormData,
   selectPhotoUrls,
   useCreatePostStore,
@@ -20,18 +21,19 @@ import { FinalStep } from '@/features/posts/ui/createPost/steps/final'
 const lastIndexSlide = 2
 
 export const CreatePostSteps: FC = () => {
-  const formData = useCreatePostStore(selectFormData)
-  const { mutateAsync: createPost, isLoading, status } = useCreatePost()
-
+  const postPhoto = useCreatePostStore(selectFormData)
+  const description = useCreatePostStore(selectDescription)
   const clearState = useCreatePostStore(selectClearState)
   const photos = useCreatePostStore(selectPhotoUrls)
+
+  const { mutateAsync: createPost, isLoading, status } = useCreatePost()
 
   const swiperRef = useRef<SwiperRef | null>(null)
   const [slideIndex, setSlideIndex] = useState<number>(0)
 
-  const createPostHandler = (): void => {
+  const createPostHandler = () => {
     swiperRef.current?.swiper.slideNext()
-    createPost(formData)
+    createPost({ description, postPhoto })
   }
 
   useEffect(() => {

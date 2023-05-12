@@ -1,11 +1,10 @@
 import { instance } from '@/common/constants/instance'
-import { GetPostsParamsType, PostsResponseType } from '@/features/posts/types'
+import { CreatePostType, GetPostsParamsType, PostsResponseType } from '@/features/posts/types'
 
 export const PostsAPI = {
-  createPost(data: FormData) {
+  createPost(data: CreatePostType) {
     return instance.post('user/post', data)
   },
-
   getPosts(params: GetPostsParamsType) {
     return instance.get<PostsResponseType>(`user/post`, { params }).then(res => res.data)
   },

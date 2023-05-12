@@ -3,6 +3,7 @@ import { immer } from 'zustand/middleware/immer'
 
 export type CreatePostState = {
   formData: FormData
+  description: ''
   photoUrls: string[]
   currentPostID: number
 }
@@ -24,6 +25,7 @@ type CreatePostStore = CreatePostActions & CreatePostState
 
 const initialValue: CreatePostState = {
   formData: new FormData(),
+  description: '',
   photoUrls: [],
   currentPostID: 0,
 }
@@ -31,7 +33,7 @@ const initialValue: CreatePostState = {
 export const useCreatePostStore = create(
   immer<CreatePostStore>(set => ({
     ...initialValue,
-    setDescription: description => set(state => state.formData.set('description', description)),
+    setDescription: description => set({ description }),
     setFormData: (value, file) => set(state => state.formData.append(value, file)),
     setPhotoUrls: photoUrls => set({ photoUrls }),
     setCurrentPostID: currentPostID => set({ currentPostID }),
@@ -47,6 +49,7 @@ export const selectClearState = (state: CreatePostStore): ClearStateType => stat
 export const selectSetPostID = (state: CreatePostStore): SetCurrentPostIDType =>
   state.setCurrentPostID
 export const selectCurrentPostID = (state: CreatePostStore): number => state.currentPostID
+export const selectDescription = (state: CreatePostStore): string => state.description
 
 export const selectSetDescription = (state: CreatePostStore): setDescriptionType =>
   state.setDescription

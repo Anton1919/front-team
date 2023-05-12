@@ -10,8 +10,14 @@ export type PostsResponseType = {
   totalCount: number
   posts: PostType[]
 }
+
 export type PostType = {
   id: number
   description: string
   postPhotos: string[]
+}
+
+export type CreatePostType = {
+  description: string
+  postPhoto: FormData
 }
