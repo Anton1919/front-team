@@ -7,13 +7,13 @@ import s from './CreatePost.module.scss'
 import createSvg from '@/common/assets/icons/create.svg'
 import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
-import { selectPhotoUrls, useCreatePostStore } from '@/features/posts/createPostStore'
+import { selectPhotoUrls, usePostStore } from '@/features/posts/store'
 import { SelectPhoto } from '@/features/posts/ui/createPost/selectPhoto'
 import { CreatePostSteps } from '@/features/posts/ui/createPost/steps'
 
 export const CreatePost: FC = () => {
   const { isOpen, openModal, closeModal } = useModal()
-  const urlsPhoto = useCreatePostStore(selectPhotoUrls)
+  const urlsPhoto = usePostStore(selectPhotoUrls)
 
   return (
     <>

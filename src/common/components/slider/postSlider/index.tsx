@@ -13,7 +13,12 @@ import { PostDescription } from '@/common/components/post/postDescription'
 import { PostHeader } from '@/common/components/post/postHeader'
 import { ImgSlider } from '@/common/components/slider/imgSlider'
 import { selectUsername, useProfileStore } from '@/features/auth/store'
-import { selectSetPostID, useCreatePostStore } from '@/features/posts/createPostStore'
+import {
+  selectSetDescription,
+  selectSetPhotoUrls,
+  selectSetPostID,
+  usePostStore,
+} from '@/features/posts/store'
 import { PostType } from '@/features/posts/types'
 
 type Props = {
@@ -23,12 +28,22 @@ type Props = {
 }
 export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
   const swiperRef = useRef<any>(null)
-  const setCurrentPostID = useCreatePostStore(selectSetPostID)
+  const setCurrentPostID = usePostStore(selectSetPostID)
+  const setPhotoUrls = usePostStore(selectSetPhotoUrls)
+  const setDescription = usePostStore(selectSetDescription)
   const username = useProfileStore(selectUsername)
   const [slideIndex, setSlideIndex] = useState<number>(initSlide)
 
   useEffect(() => {
     setCurrentPostID(posts[slideIndex].id)
+    setPhotoUrls(posts[slideIndex].postPhotos)
+    setDescription(posts[slideIndex].description)
+
+    return () => {
+      setCurrentPostID(0)
+      setPhotoUrls([])
+      setDescription('')
+    }
   }, [slideIndex])
 
   return (
@@ -59,12 +74,12 @@ export const PostSlider: FC<Props> = ({ closeModal, initSlide = 0, posts }) => {
               <div className={s.postWrapper}>
                 <ImgSlider classname={s.img} urls={post.postPhotos} />
                 <div className={s.textContent}>
-                  <PostHeader closeModal={closeModal} title="Post 1" />
+                  <PostHeader closeModal={closeModal} title={username} />
                   {post.description && (
                     <PostDescription username={username} text={post.description} />
                   )}
                   <PostComment
-                    username="Arsen"
+                    username="Username"
                     text='Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.'
                     like={5}
                   />

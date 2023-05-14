@@ -5,19 +5,20 @@ import { MUTATION_KEY, QUERY_KEY } from '@/common/constants/queryKeys'
 import { useRefetchRefreshToken } from '@/features/auth/hooks/login/useRefetchRefreshToken'
 import { PostsAPI } from '@/features/posts/api'
 
-export const useDeletePost = (): any => {
-  const queryClient = useQueryClient()
+export const useChangePost = (id: number, data: FormData) => {
   const refetchRefreshToken = useRefetchRefreshToken()
-  const deletePost = useMutation({
-    mutationKey: [MUTATION_KEY.DELETE_POST],
-    mutationFn: PostsAPI.deletePost,
+  const queryClient = useQueryClient()
+  const changePost = useMutation({
+    mutationKey: [MUTATION_KEY.CHANGE_POST],
+    mutationFn: () => PostsAPI.changePost(id, data),
+
     onSuccess: () => {
-      queryClient.invalidateQueries([QUERY_KEY.GET_POSTS]).then(res => res)
+      queryClient.invalidateQueries([QUERY_KEY.GET_POSTS])
     },
     onError: async (error: AxiosError, data) => {
-      await refetchRefreshToken(error, () => deletePost.mutateAsync(data))
+      await refetchRefreshToken(error, () => changePost.mutateAsync(data))
     },
   })
 
-  return deletePost
+  return changePost
 }

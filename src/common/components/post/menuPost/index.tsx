@@ -2,10 +2,10 @@ import { FC, useState } from 'react'
 
 import { Dropdown } from '@/common/components/dropdown'
 import { DropdownItem } from '@/common/components/dropdown/dropdownItem'
-import { ModalBase } from '@/common/components/modalWindow/layouts/ModalBase'
 import { useModal } from '@/common/components/modalWindow/useModal'
-import { selectCurrentPostID, useCreatePostStore } from '@/features/posts/createPostStore'
 import { useDeletePost } from '@/features/posts/hooks/useDeletePost'
+import { selectCurrentPostID, usePostStore } from '@/features/posts/store'
+import { ChangePost } from '@/features/posts/ui/changePost'
 
 type Props = {
   closeModal: () => void
@@ -13,10 +13,9 @@ type Props = {
 
 export const MenuPost: FC<Props> = ({ closeModal }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-
   const { isOpen: modalOpen, openModal, closeModal: closeOpenedModal } = useModal()
 
-  const postID = useCreatePostStore(selectCurrentPostID)
+  const postID = usePostStore(selectCurrentPostID)
   const { mutateAsync: removePost } = useDeletePost()
 
   const deletePost = async () => {
@@ -25,15 +24,15 @@ export const MenuPost: FC<Props> = ({ closeModal }) => {
     closeModal()
   }
 
-  // const editPost = () => {}
+  const openEditPost = () => {
+    openModal()
+    setIsOpen(false)
+  }
 
   return (
     <Dropdown isOpen={isOpen} setIsOpen={setIsOpen}>
-      <DropdownItem onClick={openModal}>
-        Edit post
-        <ModalBase isOpen={modalOpen} closeModal={closeOpenedModal}>
-          Edit post
-        </ModalBase>
+      <DropdownItem onClick={openEditPost}>
+        Edit post <ChangePost postID={postID} isOpen={modalOpen} close={closeOpenedModal} />
       </DropdownItem>
       <DropdownItem onClick={deletePost}>Delete post</DropdownItem>
     </Dropdown>

@@ -1,23 +1,26 @@
-import { ChangeEvent, FC } from 'react'
+import { FC } from 'react'
 
 import Image from 'next/image'
 
 import s from './Description.module.scss'
 
+import { Button } from '@/common/components/button/Button'
 import { Textarea } from '@/common/components/textarea/Textarea'
 import {
+  selectDescription,
   selectPhotoUrls,
   selectSetDescription,
-  useCreatePostStore,
-} from '@/features/posts/createPostStore'
+  usePostStore,
+} from '@/features/posts/store'
 
-export const DescriptionStep: FC = () => {
-  const photo = useCreatePostStore(selectPhotoUrls)[0]
-  const setDescription = useCreatePostStore(selectSetDescription)
+type Props = {
+  changePost?: () => void
+}
 
-  const setDescriptionHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setDescription(e.target.value)
-  }
+export const DescriptionStep: FC<Props> = ({ changePost }) => {
+  const photo = usePostStore(selectPhotoUrls)[0]
+  const setDescription = usePostStore(selectSetDescription)
+  const description = usePostStore(selectDescription)
 
   return (
     <div className={s.wrapper}>
@@ -27,11 +30,17 @@ export const DescriptionStep: FC = () => {
       <div className={s.info}>
         <div>Add publication descriptions</div>
         <Textarea
+          value={description}
           className={s.textarea}
           placeholder="description"
           name="post-description"
-          onChange={setDescriptionHandler}
+          onChange={e => setDescription(e.target.value)}
         />
+        {changePost ? (
+          <div className={s.save}>
+            <Button buttonHandler={changePost} buttonName="Save changes" />
+          </div>
+        ) : null}
       </div>
     </div>
   )

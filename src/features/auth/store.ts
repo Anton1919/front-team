@@ -8,6 +8,7 @@ export type ProfileState = {
   email: string
   accessToken: string
   username: string
+  avatar: string
   theme: ThemeType
 }
 type ProfileActions = {
@@ -16,6 +17,7 @@ type ProfileActions = {
   setAccessToken: (accessToken: string) => void
   setTheme: (theme: ThemeType) => void
   clearState: () => void
+  setAvatar: (avatar: string) => void
 }
 type ProfileStore = ProfileActions & ProfileState
 
@@ -23,6 +25,7 @@ const initialValue: Omit<ProfileState, 'theme'> = {
   email: '',
   accessToken: '',
   username: '',
+  avatar: '',
 }
 
 export const useProfileStore = create(
@@ -33,6 +36,7 @@ export const useProfileStore = create(
       setUsername: username => set({ username }),
       setEmail: email => set({ email }),
       setAccessToken: accessToken => set({ accessToken }),
+      setAvatar: avatar => set({ avatar }),
       setTheme: theme => set({ theme }),
       clearState: () => set(initialValue),
     })),
@@ -50,4 +54,6 @@ export const selectSetUsername = (state: ProfileStore): ((username: string) => v
   state.setUsername
 export const selectTheme = (state: ProfileStore): ThemeType => state.theme
 export const selectSetTheme = (state: ProfileStore): ((theme: ThemeType) => void) => state.setTheme
+export const selectSetAvatar = (state: ProfileStore) => state.setAvatar
+export const selectAvatar = (state: ProfileStore): string => state.avatar
 export const selectClearState = (state: ProfileStore): (() => void) => state.clearState
