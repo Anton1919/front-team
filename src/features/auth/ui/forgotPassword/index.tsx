@@ -13,6 +13,9 @@ import { selectSetEmail, useProfileStore } from '@/features/auth/store'
 import { ForgotField } from '@/features/auth/types'
 import { ForgotPassValidate } from '@/features/auth/validate'
 
+// @ts-ignore
+import ReCAPTCHA from 'react-google-recaptcha'
+
 export const ForgotPassword: FC = () => {
   const {
     register,
@@ -52,6 +55,14 @@ export const ForgotPassword: FC = () => {
             Back to Sing In
           </Link>
         </div>
+           {/* <div className="g-recaptcha"
+          data-sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4"
+          data-callback='test'
+          data-action='submit'
+        >Submit</div> */}
+        <ReCAPTCHA
+          sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4"
+        />
       </form>
     </Card>
   )
