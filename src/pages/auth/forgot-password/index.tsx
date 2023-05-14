@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import Script from 'next/script'
 
 import { getLayoutHeader } from '@/common/components/layout/LayoutHeader'
 import { ForgotPassword } from '@/features/auth/ui/forgotPassword'
 import { NextPageWithLayout } from '@/pages/_app'
-import Script from 'next/script'
+
+const googleCaptchaScript = 'https://www.google.com/recaptcha/api.js'
 
 const Forgot: NextPageWithLayout = () => {
   return (
@@ -12,7 +14,7 @@ const Forgot: NextPageWithLayout = () => {
         <title>Forgot password</title>
       </Head>
       <ForgotPassword />
-      <Script src={'https://www.google.com/recaptcha/api.js'}/>
+      <Script src={googleCaptchaScript} />
     </>
   )
 }

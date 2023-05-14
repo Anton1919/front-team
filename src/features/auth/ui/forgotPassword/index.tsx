@@ -1,6 +1,8 @@
 import { FC } from 'react'
 
 import Link from 'next/link'
+// @ts-ignore
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
 import s from './ForgotPassword.module.scss'
@@ -12,9 +14,6 @@ import { useForgot } from '@/features/auth/hooks/forgotPassword/useForgot'
 import { selectSetEmail, useProfileStore } from '@/features/auth/store'
 import { ForgotField } from '@/features/auth/types'
 import { ForgotPassValidate } from '@/features/auth/validate'
-
-// @ts-ignore
-import ReCAPTCHA from 'react-google-recaptcha'
 
 export const ForgotPassword: FC = () => {
   const {
@@ -55,14 +54,12 @@ export const ForgotPassword: FC = () => {
             Back to Sing In
           </Link>
         </div>
-           {/* <div className="g-recaptcha"
+        {/* <div className="g-recaptcha"
           data-sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4"
           data-callback='test'
           data-action='submit'
         >Submit</div> */}
-        <ReCAPTCHA
-          sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4"
-        />
+        <ReCAPTCHA sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4" />
       </form>
     </Card>
   )
