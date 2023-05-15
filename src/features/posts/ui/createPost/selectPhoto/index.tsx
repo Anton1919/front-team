@@ -2,15 +2,11 @@ import { ChangeEvent, FC } from 'react'
 
 import s from './SelectPhoto.module.scss'
 
-import {
-  selectSetFormData,
-  selectSetPhotoUrls,
-  useCreatePostStore,
-} from '@/features/posts/createPostStore'
+import { selectSetFormData, selectSetPhotoUrls, usePostStore } from '@/features/posts/store'
 
 export const SelectPhoto: FC = () => {
-  const setPhotoUrls = useCreatePostStore(selectSetPhotoUrls)
-  const setFormData = useCreatePostStore(selectSetFormData)
+  const setPhotoUrls = usePostStore(selectSetPhotoUrls)
+  const setFormData = usePostStore(selectSetFormData)
 
   const onChangeSelect = (e: ChangeEvent<HTMLInputElement>): void => {
     const files = e.target?.files

@@ -6,13 +6,14 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import s from './Steps.module.scss'
 
 import { ImgSlider } from '@/common/components/slider/imgSlider'
+import { useCreatePost } from '@/features/posts/hooks/useCreatePost'
 import {
   selectClearState,
+  selectCollectFormData,
   selectFormData,
   selectPhotoUrls,
-  useCreatePostStore,
-} from '@/features/posts/createPostStore'
-import { useCreatePost } from '@/features/posts/hooks/useCreatePost'
+  usePostStore,
+} from '@/features/posts/store'
 import { NavigationSlider } from '@/features/posts/ui/createPost/navigationSlider'
 import { DescriptionStep } from '@/features/posts/ui/createPost/steps/description'
 import { FinalStep } from '@/features/posts/ui/createPost/steps/final'
@@ -20,16 +21,18 @@ import { FinalStep } from '@/features/posts/ui/createPost/steps/final'
 const lastIndexSlide = 2
 
 export const CreatePostSteps: FC = () => {
-  const formData = useCreatePostStore(selectFormData)
+  const formData = usePostStore(selectFormData)
   const { mutateAsync: createPost, isLoading, status } = useCreatePost()
 
-  const clearState = useCreatePostStore(selectClearState)
-  const photos = useCreatePostStore(selectPhotoUrls)
+  const clearState = usePostStore(selectClearState)
+  const photos = usePostStore(selectPhotoUrls)
+  const collectFormData = usePostStore(selectCollectFormData)
 
   const swiperRef = useRef<SwiperRef | null>(null)
   const [slideIndex, setSlideIndex] = useState<number>(0)
 
   const createPostHandler = (): void => {
+    collectFormData()
     swiperRef.current?.swiper.slideNext()
     createPost(formData)
   }
@@ -60,7 +63,7 @@ export const CreatePostSteps: FC = () => {
         </SwiperSlide>
 
         <SwiperSlide className={s.step}>
-          <DescriptionStep />
+          <DescriptionStep changePost={createPostHandler} />
         </SwiperSlide>
 
         <SwiperSlide className={classNames(s.step, s.lastSlide)}>

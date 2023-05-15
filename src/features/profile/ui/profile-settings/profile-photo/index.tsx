@@ -50,7 +50,7 @@ const ProfilePhoto: FC = () => {
     updatePhoto('')
   }
 
-  const avatar = data?.avatar[1].key
+  const avatar = data?.avatar.original
 
   return (
     <div className={s.wrapper}>

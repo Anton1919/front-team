@@ -10,4 +10,5 @@ export enum MUTATION_KEY {
   UPDATE_PROFILE_PHOTO = 'update-profile-photo',
   DELETE_POST = 'delete-post',
   CREATE_POST = 'create-post',
+  CHANGE_POST = 'change-post',
 }

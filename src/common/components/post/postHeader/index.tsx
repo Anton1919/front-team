@@ -4,15 +4,18 @@ import Image from 'next/image'
 
 import s from './PostHeader.module.scss'
 
-import avatar from '@/common/assets/icons/fake-avatar.jpg'
 import { MenuPost } from '@/common/components/post/menuPost'
+import { selectAvatar, useProfileStore } from '@/features/auth/store'
 
 type Props = {
   title: string
 
   closeModal: () => void
 }
+
 export const PostHeader: FC<Props> = ({ title, closeModal }) => {
+  const avatar = useProfileStore(selectAvatar)
+
   return (
     <div className={s.wrapper}>
       <div className={s.postTitle}>

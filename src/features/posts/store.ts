@@ -1,24 +1,61 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
-export type PostsState = {
-  state: 'idle' | 'loading' | 'succeeded'
+export type CreatePostState = {
+  formData: FormData
+  photoUrls: string[]
+  currentPostID: number
+  description: string
 }
-type PostsActions = {
-  setState: (state: PostsState) => void
-}
-type PostsStore = PostsActions & PostsState
 
-export const usePostsStore = create(
-  persist(
-    immer<PostsStore>(set => ({
-      state: 'idle',
-      setState: state => set(state),
-    })),
-    { name: 'posts' }
-  )
+type setDescriptionType = (description: string) => void
+type SetCurrentPostIDType = (postID: number) => void
+type setFormDataType = (value: string, file: File) => void
+type setPhotoUrlsType = (photoUrls: string[]) => void
+type ClearStateType = () => void
+type CollectFormDataType = () => void
+type CreatePostActions = {
+  setDescription: setDescriptionType
+  setFormData: setFormDataType
+  setPhotoUrls: setPhotoUrlsType
+  clearState: ClearStateType
+  setCurrentPostID: SetCurrentPostIDType
+  collectFormData: CollectFormDataType
+}
+
+type Store = CreatePostActions & CreatePostState
+
+const initialValue: CreatePostState = {
+  formData: new FormData(),
+  photoUrls: [],
+  currentPostID: 0,
+  description: '',
+}
+
+export const usePostStore = create(
+  immer<Store>(set => ({
+    ...initialValue,
+    setDescription: description => set({ description }),
+    setFormData: (value, file) => set(state => state.formData.append(value, file)),
+    setPhotoUrls: photoUrls => set({ photoUrls }),
+    setCurrentPostID: currentPostID => set({ currentPostID }),
+    clearState: () => set(initialValue),
+    collectFormData: () =>
+      set(state => {
+        if (state.description) {
+          state.formData.set('description', state.description)
+        }
+      }),
+  }))
 )
 
-export const selectState = (state: PostsStore): string => state.state
-export const selectSetState = (state: PostsStore): ((value: PostsState) => void) => state.setState
+export const selectFormData = (state: Store): FormData => state.formData
+export const selectPhotoUrls = (state: Store): string[] => state.photoUrls
+export const selectSetFormData = (state: Store): setFormDataType => state.setFormData
+export const selectSetPhotoUrls = (state: Store): setPhotoUrlsType => state.setPhotoUrls
+export const selectClearState = (state: Store): ClearStateType => state.clearState
+export const selectSetPostID = (state: Store): SetCurrentPostIDType => state.setCurrentPostID
+export const selectCurrentPostID = (state: Store): number => state.currentPostID
+export const selectSetDescription = (state: Store): setDescriptionType => state.setDescription
+export const selectDescription = (state: Store): string => state.description
+export const selectCollectFormData = (state: Store) => state.collectFormData
