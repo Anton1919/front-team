@@ -1,6 +1,8 @@
-import { FC } from 'react'
+import { FC, RefObject, useRef } from 'react'
 
 import Link from 'next/link'
+// @ts-ignore
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
 import s from './ForgotPassword.module.scss'
@@ -24,8 +26,13 @@ export const ForgotPassword: FC = () => {
 
   const setEmail = useProfileStore(selectSetEmail)
 
+  const recaptchaRef = useRef() as RefObject<HTMLFormElement>
+
   const onSubmit = async (data: ForgotField): Promise<void> => {
-    await forgotPass(data)
+    const recaptchaValue = recaptchaRef.current?.getValue()
+
+    await forgotPass({ ...data, recaptchaValue })
+
     setEmail(data.email)
   }
 
@@ -45,6 +52,15 @@ export const ForgotPassword: FC = () => {
             Enter your email address and we will send you further instructions{' '}
           </p>
         </div>
+        <ReCAPTCHA
+          theme="dark"
+          name="Captcha"
+          label="Captcha"
+          hl="en"
+          ref={recaptchaRef}
+          className={s.captcha}
+          sitekey="6LeJNgwmAAAAAP7qLfeYU88mcXSMObbZoSg6S64Y"
+        />
         <p className={s.errorMessage}>{isError && 'Something went wrong try again later'}</p>
         <div className={s.linksWrapper}>
           <Button buttonName="Send Instructions" />
