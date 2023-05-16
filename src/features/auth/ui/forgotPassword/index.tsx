@@ -36,8 +36,6 @@ export const ForgotPassword: FC = () => {
     setEmail(data.email)
   }
 
-
-
   return (
     <Card maxWidth="378px" className={s.container}>
       <h2 className={s.title}>Forgot password</h2>
@@ -70,11 +68,6 @@ export const ForgotPassword: FC = () => {
             Back to Sing In
           </Link>
         </div>
-              <div className="g-recaptcha"
-          data-sitekey="6LeqtrclAAAAAKgERDmVJqyrysVHMXYTGOWbdjI4"
-          data-callback='test'
-          data-action='submit'
-                     >Submit</div>
       </form>
     </Card>
   )
