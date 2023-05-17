@@ -1,4 +1,4 @@
-import { FC, RefObject, useRef } from 'react'
+import { FC, useState } from 'react'
 
 import Link from 'next/link'
 // @ts-ignore
@@ -26,13 +26,14 @@ export const ForgotPassword: FC = () => {
 
   const setEmail = useProfileStore(selectSetEmail)
 
-  const recaptchaRef = useRef() as RefObject<HTMLFormElement>
+  const [recaptchaValue, setRecaptchaValue] = useState('')
+
+  const getRecaptchaValue = (value: string) => {
+    setRecaptchaValue(value)
+  }
 
   const onSubmit = async (data: ForgotField): Promise<void> => {
-    const recaptchaValue = recaptchaRef.current?.getValue()
-
     await forgotPass({ ...data, recaptchaValue })
-
     setEmail(data.email)
   }
 
@@ -54,13 +55,13 @@ export const ForgotPassword: FC = () => {
         </div>
         <ReCAPTCHA
           theme="dark"
-          name="Captcha"
-          label="Captcha"
           hl="en"
-          ref={recaptchaRef}
+          {...register('recaptchaValue', ForgotPassValidate.recaptchaValue)}
+          onChange={getRecaptchaValue}
           className={s.captcha}
           sitekey="6LeJNgwmAAAAAP7qLfeYU88mcXSMObbZoSg6S64Y"
         />
+        <p className={s.errorMessage}>{errors.recaptchaValue && errors.recaptchaValue.message}</p>
         <p className={s.errorMessage}>{isError && 'Something went wrong try again later'}</p>
         <div className={s.linksWrapper}>
           <Button buttonName="Send Instructions" />

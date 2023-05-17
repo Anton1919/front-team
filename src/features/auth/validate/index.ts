@@ -6,6 +6,7 @@ const emailPattern = {
 }
 
 const email = { required: 'You must enter your email.', pattern: emailPattern }
+const recaptchaValue = { required: 'Please verify that you are not a robot.' }
 
 const username = {
   required: 'You must enter your email or username.',
@@ -33,5 +34,5 @@ const cPassword = <T extends FieldValues>(getValues: UseFormGetValues<T>): any =
 
 export const RegisterValidate = { email, username, registerPassword, cPassword }
 export const LoginValidate = { username, loginPassword }
-export const ForgotPassValidate = { email }
+export const ForgotPassValidate = { email, recaptchaValue }
 export const NewPasswordValidate = { registerPassword, cPassword }
