@@ -20,7 +20,6 @@ export const ForgotPassword: FC = () => {
     register,
     setValue,
     handleSubmit,
-    
     clearErrors,
     formState: { errors },
   } = useForm<ForgotField>({
@@ -40,7 +39,7 @@ export const ForgotPassword: FC = () => {
   }
 
   const onSubmit = async (data: ForgotField): Promise<void> => {
-    const res = await forgotPass(data)
+    await forgotPass(data)
     setEmail(data.email)
   }
 
