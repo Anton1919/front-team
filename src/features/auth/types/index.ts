@@ -37,5 +37,5 @@ export type LoginResponseType = {
 
 export type ForgotField = {
   email: string
-  recaptchaValue?: string
+  recaptchaValue: string
 }
