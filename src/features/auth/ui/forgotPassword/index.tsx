@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import Link from 'next/link'
 // @ts-ignore
@@ -18,22 +18,29 @@ import { ForgotPassValidate } from '@/features/auth/validate'
 export const ForgotPassword: FC = () => {
   const {
     register,
+    setValue,
     handleSubmit,
+    
+    clearErrors,
     formState: { errors },
-  } = useForm<ForgotField>()
+  } = useForm<ForgotField>({
+    values: {
+      email: '',
+      recaptchaValue: '',
+    },
+  })
 
   const { mutate: forgotPass, isError } = useForgot()
 
   const setEmail = useProfileStore(selectSetEmail)
 
-  const [recaptchaValue, setRecaptchaValue] = useState('')
-
-  const getRecaptchaValue = (value: string) => {
-    setRecaptchaValue(value)
+  const getRecaptchaValueHandler = (value: string) => {
+    setValue('recaptchaValue', value)
+    clearErrors('recaptchaValue')
   }
 
   const onSubmit = async (data: ForgotField): Promise<void> => {
-    await forgotPass({ ...data, recaptchaValue })
+    const res = await forgotPass(data)
     setEmail(data.email)
   }
 
@@ -57,9 +64,9 @@ export const ForgotPassword: FC = () => {
           theme="dark"
           hl="en"
           {...register('recaptchaValue', ForgotPassValidate.recaptchaValue)}
-          onChange={getRecaptchaValue}
+          onChange={getRecaptchaValueHandler}
           className={s.captcha}
-          sitekey="6LeJNgwmAAAAAP7qLfeYU88mcXSMObbZoSg6S64Y"
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PABLIC_RECAPTCHA_SITE_KEY}
         />
         <p className={s.errorMessage}>{errors.recaptchaValue && errors.recaptchaValue.message}</p>
         <p className={s.errorMessage}>{isError && 'Something went wrong try again later'}</p>
